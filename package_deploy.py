@@ -63,7 +63,7 @@ def package(destination,predictions_only=False,live=False):
              'requirements/locks/linux-amd64.txt','THIRD_PARTY_NOTICES.md',
              'app.py','inference.py','imagery.py','model.py','predictions.py','run.sh','prepare_data.py',
              'README.md','README_DEPLOY.md','README_GEODES.md','package_deploy.py',
-             'README_COG.md','README_REGIONS.md','cog_data.py','prepare_cog.py','validate_cog.py',
+             'README_COG.md','README_REGIONS.md','cog_data.py','prepare_cog.py','scripts/validate_cog.py',
              'prepare_regions.py','precompute_regions.py','preparation/regions_config.json','preparation/cog_config.json',
              'preparation/prepare_continuous_kaggle.ipynb',
              'preparation/prepare_regions_kaggle.ipynb',

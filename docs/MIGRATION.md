@@ -8,7 +8,7 @@ The destination did not exist and was created exclusively. The original project 
 
 90 curated files, 2,593,551 bytes: all 17 root Python files, four original regression modules included; five root README files; Dockerfile/Compose/requirements/run script/templates; frontend/assets; model config/license; six preparation config/builder/notebook files; Postman source/collection/request/docs; editable diagram sources/config/metadata, renderer/packager and twelve SVGs.
 
-Runtime modules stay at root. `benchmark_cog.py` is imported by an original regression; `precompute_regions.py` is also a regression dependency. `package_deploy.py` has a fixed allowlist requiring the retained root README names and preparation notebooks. `regions_config.json` reuses `preparation/cog_config.json`. The two standalone COG notebooks contain source/config matching the imported modules and have no execution outputs.
+Runtime modules stay at root. `scripts/benchmark_cog.py` is imported by an original regression; `precompute_regions.py` is also a regression dependency. `package_deploy.py` has a fixed allowlist requiring the retained root README names and preparation notebooks. `regions_config.json` reuses `preparation/cog_config.json`. The two standalone COG notebooks contain source/config matching the imported modules and have no execution outputs.
 
 ## Classification and exclusions
 

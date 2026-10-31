@@ -296,7 +296,7 @@ def test_live_acquisition_to_real_model_and_exports(tmp_path,monkeypatch):
 
 def test_cog_boa_offset_and_nodata(tmp_path, monkeypatch):
     """A PB05 DN of 2000 means reflectance 0.1, not 0.2; nodata stays invalid."""
-    import benchmark_cog
+    from scripts import benchmark_cog
     from rasterio.transform import from_origin
     path = tmp_path/'band.tif'
     raw = np.full((24,24),2000,dtype=np.uint16)

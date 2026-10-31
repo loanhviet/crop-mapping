@@ -4,4 +4,4 @@ Prepare a single continuous region with `python prepare_cog.py --config preparat
 
 See [asset contracts](docs/ASSETS.md) and [architecture](docs/ARCHITECTURE.md). Preparation reads public STAC/COG assets, applies scale/offset and quality rules, records provenance and publishes completed cubes atomically. Exact network availability and fresh full-dataset reproduction were not tested in this migration.
 
-Interactive Analyze always runs TSViT. Do not use old saved-prediction/cache timing reports as measurements of current inference. `validate_cog.py` is a separate ground-truth overlap evaluation, not part of inference; it requires reference TARGET files and does not establish full-region accuracy.
+Interactive Analyze always runs TSViT. Do not use old saved-prediction/cache timing reports as measurements of current inference. `python -m scripts.validate_cog` is a separate ground-truth overlap evaluation, not part of inference; it requires reference TARGET files and does not establish full-region accuracy.

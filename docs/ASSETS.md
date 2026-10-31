@@ -39,7 +39,7 @@ data/
 └── S2_10003.npy
 ```
 
-Original arrays have `[T,10,128,128]` shape; inference uses a 120×120 usable footprint in 24×24 windows. CI metadata must include feature 20000, which one test uses to generate a temporary array. Ground-truth TARGET arrays are not required for normal inference or this regression suite. `validate_cog.py` separately requires reference targets.
+Original arrays have `[T,10,128,128]` shape; inference uses a 120×120 usable footprint in 24×24 windows. CI metadata must include feature 20000, which one test uses to generate a temporary array. Ground-truth TARGET arrays are not required for normal inference or this regression suite. `python -m scripts.validate_cog` separately requires reference targets.
 
 Catalog metadata includes region id, split, season, CRS/origin/shape, geometry, dates, DOY, frame order and image hash. `inference.PreparedProvider` is the runtime source of truth. Do not edit frame order or replace sources with unrelated imagery to satisfy tests.
 
