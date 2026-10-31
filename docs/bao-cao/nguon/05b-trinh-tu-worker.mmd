@@ -1,0 +1,34 @@
+sequenceDiagram
+    autonumber
+    participant W as Worker run_analysis
+    participant P as PreparedProvider
+    participant E as Engine
+    participant M as TSViT PyTorch
+    participant R as Kho tác vụ RESULTS
+    Note over W,M: Đường thành công trong CROP_SOURCE=prepared.<br/>Model được nạp sẵn, batch suy luận mỗi cửa sổ bằng 1.
+    W->>W: Kiểm tra Event hủy
+    W->>P: get(), parts(), valid_mask()
+    P-->>W: Metadata và mask hợp lệ
+    W->>W: preview(patch_id) từ inference.py
+    W->>W: Giao mask, tạo lưới nhãn và danh sách cửa sổ
+    W->>R: Ghi running, phase=inference
+    loop Mỗi cửa sổ 24×24 thuộc vùng phân tích
+        W->>W: Kiểm tra Event hủy
+        W->>P: window(patch_id,row,col), window_doy(...)
+        P->>P: Xác định khối nguồn nếu là mosaic
+        P-->>W: image [T,10,24,24], DOY [T]
+        W->>E: predict(image,doy)
+        E->>E: preprocess(), thêm batch, chuyển device
+        E->>M: forward(x), x=[1,60,24,24,11]
+        M-->>E: logits [1,19,24,24]
+        E->>E: softmax(dim=1), max(dim=1)
+        E-->>W: labels và confidence [24,24]
+        W->>W: Ghép cửa sổ vào lưới H×W
+        W->>R: Cập nhật progress và message
+    end
+    W->>W: Kiểm tra Event trước khi xuất
+    W->>R: Ghi phase=export, progress=95
+    W->>W: export_result(): áp mask, thống kê và chuyển CRS
+    W->>R: Ghi các sản phẩm và result.json
+    W->>R: Ghi done, progress=100, result
+    W->>W: finally: xóa khỏi pending

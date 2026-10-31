@@ -1,0 +1,31 @@
+stateDiagram-v2
+    direction TB
+    state "Chờ xử lý (queued)" as queued
+    state "Đang xử lý (running)" as running
+    state "Hoàn thành (done)" as done
+    state "Đã hủy (cancelled)" as cancelled
+    state "Có lỗi (error)" as error
+    [*] --> queued: POST hợp lệ, còn chỗ, tạo job_id
+    queued --> running: Worker chuẩn bị xong và ghi tiến độ
+    queued --> cancelled: Event đã bật, worker nhận ra khi bắt đầu
+    queued --> error: Lỗi chuẩn bị / server khởi động lại
+    running --> running: Cập nhật phase, progress, message
+    running --> cancelled: Worker nhận Event tại điểm kiểm tra hủy
+    running --> error: Lỗi xử lý / server khởi động lại
+    running --> done: Xuất kết quả thành công, progress=100
+    done --> [*]
+    cancelled --> [*]
+    error --> [*]
+    note right of queued
+        pending có tối đa 4 tác vụ, 1 worker thực thi.
+        Lỗi chuẩn bị sớm cũng có thể dẫn đến error.
+    end note
+    note left of running
+        phase: inference → export → done.
+        DELETE bật Event, không đổi status ngay.
+        Hủy được nhận tại điểm kiểm tra của worker.
+    end note
+    note right of done
+        Giữ kết quả qua lần khởi động lại.
+        Analyze lần nữa tạo job và suy luận mới.
+    end note

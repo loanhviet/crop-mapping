@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+numpy==2.5.4
+einops==0.8.2
+PyYAML==6.0.3
+fastapi==0.143.0
+uvicorn==0.54.0
+rasterio==1.5.2
+pyproj==3.8.0
+Pillow==12.3.0
+httpx==0.28.1
+pytest==9.1.1

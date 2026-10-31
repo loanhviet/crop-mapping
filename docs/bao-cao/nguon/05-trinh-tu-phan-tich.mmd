@@ -1,0 +1,52 @@
+sequenceDiagram
+    autonumber
+    actor U as Người sử dụng
+    participant F as Giao diện web
+    participant A as API FastAPI
+    participant W as Executor / Worker
+    participant R as Kho tác vụ RESULTS
+    Note over A,W: Một worker trong cùng tiến trình API.<br/>Chi tiết gọi model xem sơ đồ trình tự worker.
+    U->>F: Bấm Analyze selected area
+    F->>A: POST /api/analyses {patch_id, season, geometry}
+    A->>A: Kiểm tra Polygon, mùa, vùng và pixel hợp lệ
+    alt Request không hợp lệ hoặc không có pixel hợp lệ
+        A-->>F: HTTP 422
+        F-->>U: Hiển thị lỗi
+    else Đã có 4 tác vụ trong pending
+        A-->>F: HTTP 429
+        F-->>U: Thông báo hàng đợi đầy
+    else Chấp nhận tác vụ
+        A->>R: Tạo UUID, request.json, status=queued
+        A->>A: Tạo Event hủy,  thêm pending dưới Lock
+        A-)W: executor.submit(run_analysis, ...)
+        A-->>F: HTTP 202 {id: job_id, cached: false}
+        F->>F: Lưu job_id vào state và localStorage
+        par Theo dõi tại trình duyệt
+            loop Khi queued/running, chờ 400 ms sau mỗi lần thành công
+                F->>A: GET /api/analyses/{job_id}
+                A->>R: Đọc status.json và request.json
+                R-->>A: Trạng thái, tiến độ, result nếu done
+                A-->>F: JSON trạng thái
+                F-->>U: Cập nhật tiến độ / kết quả / thông báo
+            end
+        and Thực thi khi worker đến lượt
+            W->>W: Kiểm tra Event, đọc ảnh và mask
+            W->>R: status=running,  phase=inference
+            loop Các cửa sổ 24×24 được xử lý lần lượt
+                W->>W: Kiểm tra hủy, đọc cửa sổ, gọi Engine.predict()
+                W->>W: Ghép nhãn và confidence
+                W->>R: Ghi tiến độ đến 94%
+            end
+            W->>W: Kiểm tra Event hủy trước bước xuất
+            W->>R: phase=export,  progress=95%
+            W->>W: export_result(): bản đồ và thống kê
+            W->>R: Ghi các file kết quả
+            W->>R: status=done,  phase=done,  progress=100%,  result
+            W->>W: finally: xóa tác vụ khỏi pending
+        end
+        F->>A: GET /api/analyses/{job_id}/overlay.png
+        A->>R: Đọc overlay.png của tác vụ done
+        A-->>F: PNG đã chiếu sang Web Mercator
+        F-->>U: Hiển thị lớp phủ và bảng diện tích
+    end
+    Note over W,R: Nhánh worker mô tả đường thành công.<br/>Hủy và lỗi xem sơ đồ trạng thái.

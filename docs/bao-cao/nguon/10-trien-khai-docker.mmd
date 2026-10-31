@@ -1,0 +1,30 @@
+flowchart TB
+    B["Thiết bị người sử dụng<br/>Trình duyệt web + Leaflet"]
+    ESRI["Dịch vụ Esri World Imagery<br/>Ảnh nền bản đồ qua Internet"] -->|HTTPS| B
+    B <-->|"HTTP đến địa chỉ/cổng đã cấu hình"| PORT
+    subgraph HOST["Máy chủ chạy Docker Compose: máy local hoặc máy chủ được triển khai"]
+        PORT["Cổng publish của Docker<br/>CROP_BIND:CROP_PORT → container:8000<br/>Mặc định 127.0.0.1:8000 → 8000"]
+        subgraph CT["Container crop-map · image crop-map:prepared"]
+            UV["Uvicorn app:app<br/>0.0.0.0:8000 · workers=1"]
+            FAST["FastAPI + StaticFiles<br/>Phục vụ API và thư mục /app/web"]
+            THREAD["ThreadPoolExecutor(max_workers=1)<br/>run_analysis() trong cùng tiến trình"]
+            TORCH["PyTorch + TSViT<br/>CROP_SOURCE=prepared · CROP_DEVICE=cpu<br/>CROP_THREADS mặc định 2"]
+            PATHS["Các đường dẫn bên trong container<br/>/app/data · /app/weights · /app/results"]
+            UV --> FAST
+            FAST --> THREAD
+            THREAD --> TORCH
+            FAST --> PATHS
+            THREAD --> PATHS
+            TORCH --> PATHS
+        end
+        PORT <--> UV
+        DATA[("Thư mục host ./data<br/>Bind mount chỉ đọc → /app/data")]
+        WEIGHTS[("Thư mục host ./weights<br/>Bind mount chỉ đọc → /app/weights")]
+        RESULTS[("Named volume results<br/>Đọc/ghi → /app/results")]
+        DATA --- PATHS
+        WEIGHTS --- PATHS
+        RESULTS --- PATHS
+        LIMIT["Cấu hình Compose<br/>Giới hạn 2 CPU, RAM 2g<br/>Root filesystem chỉ đọc; /tmp là tmpfs 64m<br/>Container chạy user cropmap"]
+        LIMIT --- CT
+    end
+    HEALTH["Docker HEALTHCHECK<br/>GET http://127.0.0.1:8000/api/health<br/>Kiểm tra trong container mỗi 30 giây"] -.-> UV

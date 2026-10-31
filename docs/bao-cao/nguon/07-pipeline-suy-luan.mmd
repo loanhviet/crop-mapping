@@ -1,0 +1,29 @@
+flowchart TB
+    A["Chuỗi ảnh Sentinel-2 của khối nguồn<br/>T quan sát × 10 band × H × W<br/>Lưới ảnh 10 m; lịch frame_order và DOY từ catalog"]
+    G["GeoJSON Polygon WGS84<br/>Tọa độ [kinh độ, vĩ độ]"] --> M["Chiếu sang CRS ảnh và tạo selected_mask<br/>Dùng tâm pixel; kiểm tra vùng nằm trong phạm vi ảnh"]
+    V["valid_mask từ dữ liệu đã chuẩn bị<br/>Nếu không có mask riêng: tất cả pixel hợp lệ"] --> MV["analysis_mask = selected_mask AND valid_mask"]
+    M --> MV
+    MV --> W["Liệt kê các cửa sổ 24 × 24 không chồng lấn<br/>Chỉ lấy cửa sổ có ít nhất một pixel thuộc analysis_mask"]
+    A --> R
+    W --> R["PreparedProvider.window() và window_doy()<br/>Mosaic: xác định khối con chứa cửa sổ<br/>image: [T,10,24,24]; doy: [T]"]
+    subgraph PRE["preprocess(image, doy) cho từng cửa sổ"]
+        C["Đổi float32; kiểm tra shape và giá trị hữu hạn<br/>DOY nằm trong 1–365"]
+        C --> N["Lấy tối đa 60 quan sát theo thứ tự provider<br/>Chuẩn hóa từng band: (image − MEAN) / STD"]
+        N --> X["Đổi trục ảnh: [t,10,24,24] → [t,24,24,10]<br/>Kênh thứ 11: DOY / 365.0001; t = min(T,60)"]
+        X --> PAD["Đặt vào tensor zero [60,24,24,11]<br/>T < 60: các bước thời gian còn lại giữ zero"]
+    end
+    R --> C
+    PAD --> B["Thêm chiều batch và chuyển device<br/>[1,60,24,24,11]; CPU theo Compose"]
+    B --> MODEL["TSViT.forward()<br/>Logits: [1,19,24,24]"]
+    MODEL --> SOFT["Softmax theo chiều lớp, dim=1<br/>Xác suất: [1,19,24,24]"]
+    SOFT --> MAX["Max theo chiều lớp, dim=1<br/>labels: uint8 [24,24]; confidence: [24,24]"]
+    MAX --> STITCH["Ghép vào labels [H,W] và confidence [H,W]<br/>Lặp lại với các cửa sổ còn lại"]
+    STITCH --> OUT["Áp analysis_mask khi tạo sản phẩm cuối<br/>Ngoài mask: nodata=255 / alpha=0<br/>Lớp Background=0 vẫn là lớp hợp lệ"]
+    OUT --> STAT["Thống kê trên pixel thuộc analysis_mask<br/>area_ha lớp = số pixel lớp × 0.01<br/>percent = số pixel lớp / tổng pixel hợp lệ × 100"]
+    STAT --> FILES["GeoTIFF native CRS · CSV · PNG · GeoJSON WGS84<br/>overlay.png Web Mercator · confidence.npy · result.json"]
+    classDef prep fill:#EFF6FF,stroke:#1D4ED8,color:#111827;
+    classDef model fill:#F5F3FF,stroke:#6D28D9,color:#111827;
+    classDef output fill:#F0FDF4,stroke:#166534,color:#111827;
+    class C,N,X,PAD,B prep;
+    class MODEL,SOFT,MAX model;
+    class OUT,STAT,FILES output;

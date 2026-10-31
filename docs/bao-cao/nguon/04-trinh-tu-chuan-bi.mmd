@@ -1,0 +1,41 @@
+sequenceDiagram
+    autonumber
+    actor U as Người sử dụng
+    participant F as Giao diện web
+    participant A as API FastAPI
+    participant P as PreparedProvider
+    participant D as Kho ảnh local
+    U->>F: Mở trang Crop Map
+    F->>A: GET /api/catalog
+    A->>P: public_catalog(include_external=true)
+    P-->>A: Danh sách vùng công khai trong catalog đã nạp
+    A-->>F: mode, source, seasons, classes, patches
+    F->>F: Tạo danh sách vùng và mùa,  chọn vùng đầu tiên
+    Note over F,P: Mặc định prepared,  mùa catalog hiện tại là 2018–2019.<br/>Chọn vùng dùng default_geometry nếu có, nếu không dùng geometry toàn vùng.
+    opt Người dùng thay đổi vùng, mùa hoặc phạm vi
+        U->>F: Chọn Available region / mùa
+        U->>F: Select area: click hai góc hoặc Whole region
+        F->>F: Tạo GeoJSON Polygon WGS84, tọa độ [lng, lat]
+    end
+    F->>A: POST /api/imagery-plan {patch_id, season, geometry}
+    A->>A: AnalysisRequest: kiểm tra Polygon đóng, một vòng
+    A->>P: resolve(geometry, season, patch_id)
+    P->>P: Kiểm tra mùa, phạm vi,  selection_mask()
+    P-->>A: Metadata vùng và mask vùng chọn
+    A->>P: valid_mask(), parts(), get()
+    P->>D: Đọc mask chất lượng nếu có,  lấy metadata khối nguồn
+    D-->>P: Mask hợp lệ và thông tin ảnh
+    P-->>A: Mask, số quan sát, ngày chụp và các khối
+    alt Phạm vi không hợp lệ hoặc không có pixel hợp lệ
+        A-->>F: HTTP 422 + detail
+        F-->>U: Hiển thị lỗi,  chưa cho phân tích
+    else Vùng chọn có dữ liệu
+        A-->>F: Diện tích, số cửa sổ, số quan sát, valid_area_ha<br/>prediction_ready=false,  estimated_download_gb=0
+        F->>A: GET /api/patches/{patch_id}/preview-bounds
+        A->>A: preview(patch_id), có LRU cache
+        A-->>F: bounds
+        F->>A: GET /api/patches/{patch_id}/preview
+        A-->>F: PNG Sentinel-2, Cache-Control max-age=86400
+        F-->>U: Hiển thị preview và thông tin,  bật nút Analyze
+    end
+    Note over F,A: Bước này kiểm tra và tạo preview,  chưa gọi Engine.predict().

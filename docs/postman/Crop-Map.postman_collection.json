@@ -1,0 +1,591 @@
+{
+  "info": {
+    "_postman_id": "c4eb878c-abca-5f34-9551-e07ca0bc3409",
+    "name": "Crop Map - API prepared",
+    "description": "Luồng thật theo app.py. Chạy folder 01 trước; Delay 400 ms trong Collection Runner. Không cần Authorization. Mỗi POST analyses thực hiện suy luận mới trên vùng nhỏ. Folder 02 kiểm tra lỗi và folder 03 thử hủy thủ công.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    },
+    {
+      "key": "patch_id",
+      "value": "10003",
+      "type": "string"
+    },
+    {
+      "key": "season",
+      "value": "2018–2019",
+      "type": "string"
+    },
+    {
+      "key": "geometry",
+      "value": "{\"type\": \"Polygon\", \"coordinates\": [[[-0.362, 49.304], [-0.36, 49.304], [-0.36, 49.302], [-0.362, 49.302], [-0.362, 49.304]]]}",
+      "type": "string"
+    },
+    {
+      "key": "lat",
+      "value": "49.303",
+      "type": "string"
+    },
+    {
+      "key": "lng",
+      "value": "-0.361",
+      "type": "string"
+    },
+    {
+      "key": "job_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "job_status",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "poll_count",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "key": "max_polls",
+      "value": "120",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Luồng phân tích thành công",
+      "item": [
+        {
+          "id": "f91afce6-3d3b-576c-bbed-be603d707a9a",
+          "name": "01 - Kiểm tra server",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/health",
+            "description": "Chạy sau khi khởi động ./run.sh hoặc docker compose up. Luồng mẫu yêu cầu source_mode=prepared/pastis."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code !== 200) { pm.execution.setNextRequest(null); }",
+                  "else {",
+                  "  const body = pm.response.json();",
+                  "  pm.test(\"Model TSViT sẵn sàng\", () => pm.expect(body.model).to.eql(\"TSViT\"));",
+                  "  pm.test(\"Nguồn ảnh local\", () => pm.expect(body.source_mode).to.be.oneOf([\"prepared\", \"pastis\"]));",
+                  "  if (![\"prepared\", \"pastis\"].includes(body.source_mode)) pm.execution.setNextRequest(null);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "c738659e-4e8f-5979-9c55-25fe9d93873e",
+          "name": "02 - Lấy catalog và chọn vùng mẫu",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/catalog",
+            "description": "Tự lưu patch_id, season, geometry và tọa độ pixel vào Collection Variables. Ưu tiên patch 10003; fallback chỉ chọn một patch test nhỏ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "const catalog = pm.response.json();",
+                  "pm.test(\"Có 19 lớp\", () => pm.expect(catalog.classes).to.have.lengthOf(19));",
+                  "const patches = catalog.patches || [];",
+                  "const patch = patches.find(p => p.id === 10003) || patches.find(p => p.split === \"test\" && p.shape && p.shape[0] <= 120 && p.shape[1] <= 120);",
+                  "if (!patch) {",
+                  "  pm.execution.setNextRequest(null);",
+                  "  throw new Error(\"Không có patch test nhỏ. Chọn một vùng có ảnh và cập nhật Collection Variables trước khi chạy mẫu.\");",
+                  "}",
+                  "let geometry;",
+                  "if (patch.id === 10003) {",
+                  "  geometry = {type:\"Polygon\",coordinates:[[[-0.362,49.304],[-0.360,49.304],[-0.360,49.302],[-0.362,49.302],[-0.362,49.304]]]};",
+                  "} else {",
+                  "  const points = patch.geometry.coordinates[0].slice(0, -1);",
+                  "  const center = points.reduce((sum,p) => [sum[0]+p[0]/points.length,sum[1]+p[1]/points.length], [0,0]);",
+                  "  const ring = points.map(p => [center[0]+(p[0]-center[0])*0.1,center[1]+(p[1]-center[1])*0.1]);",
+                  "  ring.push([...ring[0]]);",
+                  "  geometry = {type:\"Polygon\",coordinates:[ring]};",
+                  "}",
+                  "const points = geometry.coordinates[0].slice(0,-1);",
+                  "const center = points.reduce((sum,p) => [sum[0]+p[0]/points.length,sum[1]+p[1]/points.length], [0,0]);",
+                  "pm.collectionVariables.set(\"patch_id\", patch.id);",
+                  "pm.collectionVariables.set(\"season\", patch.season || catalog.seasons[0]);",
+                  "pm.collectionVariables.set(\"geometry\", JSON.stringify(geometry));",
+                  "pm.collectionVariables.set(\"lng\", center[0]);",
+                  "pm.collectionVariables.set(\"lat\", center[1]);",
+                  "console.log(\"Vùng test:\", patch.name, geometry);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "bfd9e953-854d-5068-a867-9f200f4e3ba0",
+          "name": "03 - Kiểm tra kế hoạch ảnh",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/imagery-plan",
+            "description": "Body raw JSON. Bước này kiểm tra ảnh và diện tích; chưa chạy model.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patch_id\": {{patch_id}},\n  \"season\": \"{{season}}\",\n  \"geometry\": {{geometry}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code !== 200) { pm.execution.setNextRequest(null); }",
+                  "else {",
+                  "  const plan = pm.response.json();",
+                  "  pm.test(\"Có diện tích ảnh hợp lệ\", () => pm.expect(plan.valid_area_ha).to.be.above(0));",
+                  "  pm.test(\"Ảnh đã có trên server\", () => pm.expect(plan.estimated_download_gb).to.eql(0));",
+                  "  pm.test(\"Không dùng prediction lưu sẵn\", () => pm.expect(plan.prediction_ready).to.eql(false));",
+                  "  console.log(\"Kế hoạch:\", plan);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "fc1a9b75-8d2f-5120-b04d-6838fb92e2a4",
+          "name": "04 - Tạo tác vụ phân tích",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/analyses",
+            "description": "Mỗi lần Send tạo một job mới và chạy model mới. Response 202 là đã tiếp nhận, chưa có kết quả cuối. Script lưu body.id thành biến job_id.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patch_id\": {{patch_id}},\n  \"season\": \"{{season}}\",\n  \"geometry\": {{geometry}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 202\", () => pm.response.to.have.status(202));",
+                  "if (pm.response.code !== 202) { pm.execution.setNextRequest(null); }",
+                  "else {",
+                  "  const body = pm.response.json();",
+                  "  pm.test(\"Có UUID tác vụ\", () => pm.expect(body.id).to.match(/^[0-9a-f-]{36}$/));",
+                  "  pm.test(\"Suy luận mới\", () => pm.expect(body.cached).to.eql(false));",
+                  "  pm.collectionVariables.set(\"job_id\", body.id);",
+                  "  pm.collectionVariables.set(\"poll_count\", 0);",
+                  "  console.log(\"job_id:\", body.id);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1018e21-f505-56a0-b6ca-95bcda32d786",
+          "name": "05 - Theo dõi đến khi hoàn thành",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}",
+            "description": "Bấm Send nhiều lần khi test thủ công. Collection Runner tự lặp request này; đặt Delay 400 ms khi chạy. Hết max_polls thì dừng và báo lỗi, không tự hủy job."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code !== 200) { pm.execution.setNextRequest(null); }",
+                  "else {",
+                  "  const body = pm.response.json();",
+                  "  const count = Number(pm.collectionVariables.get(\"poll_count\") || 0) + 1;",
+                  "  const limit = Number(pm.variables.get(\"max_polls\") || 120);",
+                  "  pm.collectionVariables.set(\"poll_count\", count);",
+                  "  pm.collectionVariables.set(\"job_status\", body.status);",
+                  "  pm.test(\"Trạng thái hợp lệ\", () => pm.expect(body.status).to.be.oneOf([\"queued\",\"running\",\"done\",\"cancelled\",\"error\"]));",
+                  "  console.log(body.status, body.progress, body.message);",
+                  "  if ([\"queued\",\"running\"].includes(body.status)) {",
+                  "    if (count >= limit) {",
+                  "      pm.test(\"Hoàn thành trong số lần poll cho phép\", () => pm.expect.fail(\"Tăng max_polls hoặc tiếp tục GET thủ công. Job chưa bị hủy.\"));",
+                  "      pm.execution.setNextRequest(null);",
+                  "    } else pm.execution.setNextRequest(pm.info.requestId);",
+                  "  } else if (body.status === \"done\") {",
+                  "    pm.test(\"Hoàn thành 100%\", () => pm.expect(body.progress).to.eql(100));",
+                  "    pm.test(\"Có thống kê pixel\", () => pm.expect(body.result.pixels).to.be.above(0));",
+                  "    pm.test(\"Tổng số pixel các lớp khớp\", () => pm.expect(body.result.classes.reduce((n,c) => n+c.pixels,0)).to.eql(body.result.pixels));",
+                  "    pm.collectionVariables.set(\"result_json\", JSON.stringify(body.result));",
+                  "  } else {",
+                  "    pm.test(\"Tác vụ hoàn thành thành công\", () => pm.expect.fail(body.message || body.status));",
+                  "    pm.execution.setNextRequest(null);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "b62fd9a5-e9d3-505b-9eab-219014c7b4a5",
+          "name": "06 - Tra cứu pixel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/pixel?lat={{lat}}&lng={{lng}}",
+            "description": "Chỉ dùng khi status=done. lat/lng là query parameters; API trả JSON tên lớp, màu và confidence."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const pixel = pm.response.json();",
+                  "  pm.test(\"Lớp trong 0–18\", () => pm.expect(pixel.id).to.be.within(0,18));",
+                  "  pm.test(\"Confidence trong 0–1\", () => pm.expect(pixel.confidence).to.be.within(0,1));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "89768d84-b7de-5e93-bc2a-78450a74e7b4",
+          "name": "07 - Xem lớp phủ PNG",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/overlay.png",
+            "description": "Response là ảnh PNG, không phải JSON."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"PNG\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"image/png\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "0735963c-0951-5688-8fc7-ec8a77371d4b",
+          "name": "08 - Tải thống kê CSV",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/download/csv",
+            "description": "Response là CSV. Để lưu file, dùng chức năng Download của Postman."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Có cột diện tích\", () => pm.expect(pm.response.text()).to.include(\"area_ha\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "9d736642-17a1-5217-9dc2-47285f19cd75",
+          "name": "09 - Tải ZIP",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/download/zip?include=tif,csv,png,geojson",
+            "description": "ZIP gồm các định dạng được chọn và result.json. Response là binary, không phải JSON."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"ZIP\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/zip\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "01b52be8-814f-529f-9fe3-9c96e067846f",
+          "name": "10 - Xem đặc tả OpenAPI",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/openapi.json",
+            "description": "Đặc tả tự sinh bởi FastAPI; có thể import URL này vào Postman. Swagger UI nằm tại /docs."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Có route phân tích\", () => pm.expect(pm.response.json().paths).to.have.property(\"/api/analyses\"));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 - Kiểm tra lỗi đầu vào",
+      "item": [
+        {
+          "id": "e963477b-7aa6-54f4-812e-1bdd7a9900c5",
+          "name": "E01 - Thiếu geometry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/analyses",
+            "description": "Dự kiến 422; không tạo job.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"patch_id\": {{patch_id}}, \"season\": \"{{season}}\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "9859a245-cc23-5c5b-b95f-bec68edf13d9",
+          "name": "E02 - Mùa chưa có ảnh local",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/analyses",
+            "description": "Prepared hiện chỉ có mùa 2018–2019; dự kiến 422.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patch_id\": {{patch_id}},\n  \"season\": \"2098–2099\",\n  \"geometry\": {{geometry}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "c74eb488-8fc5-5400-921c-fd7b2d874bf0",
+          "name": "E03 - Polygon không đóng",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/imagery-plan",
+            "description": "Điểm đầu khác điểm cuối; dự kiến 422.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"patch_id\": {{patch_id}}, \"season\": \"{{season}}\", \"geometry\": {\"type\":\"Polygon\", \"coordinates\":[[[-0.362,49.304],[-0.360,49.304],[-0.360,49.302],[-0.362,49.302]]]}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "52bf2c8a-03aa-5d1e-b6a3-c8056128c078",
+          "name": "E04 - Job không tồn tại",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/00000000-0000-4000-8000-000000000000",
+            "description": "UUID đúng cấu trúc nhưng không có tác vụ; dự kiến 404."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "42c65cc4-affd-56bc-88fa-c7e22e563447",
+          "name": "E05 - Tọa độ ngoài vùng",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/pixel?lat=0&lng=0",
+            "description": "Chạy sau job done; dự kiến 404."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "cc3226f8-0ebb-57e8-929e-ed0437213560",
+          "name": "E06 - Định dạng ZIP không hợp lệ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}/download/zip?include=unknown",
+            "description": "Chạy sau job done; dự kiến 422."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 - Hủy tác vụ (gửi thủ công)",
+      "item": [
+        {
+          "id": "e9542d89-e359-5cb0-b3fe-7b56ed02ad04",
+          "name": "C01 - Yêu cầu hủy job hiện tại",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{base_url}}/api/analyses/{{job_id}}",
+            "description": "Gửi ngay sau request 04 nếu muốn thử hủy. DELETE chỉ bật Event, không xóa dữ liệu. Sau đó GET trạng thái để biết cancelled/done. Nếu chạy sau happy path đã done thì cancellation_requested=false là hợp lệ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Có kết quả yêu cầu hủy\", () => pm.expect(pm.response.json().cancellation_requested).to.be.a(\"boolean\"));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

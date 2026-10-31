@@ -1,0 +1,40 @@
+{
+  "id": 900010,
+  "slug": "normandy-expanded-2018-2019",
+  "name": "Normandy \u00b7 23.04 \u00d7 23.04 km",
+  "rows": 3,
+  "cols": 3,
+  "origin": [
+    680532.3644586978,
+    5468200.621113034
+  ],
+  "first_block_id": 900020,
+  "reuse": {
+    "0,1": "preparation/cog_config.json"
+  },
+  "block": {
+    "id": 900001,
+    "slug": "normandy-2018-2019",
+    "name": "Normandy \u00b7 7.68 \u00d7 7.68 km",
+    "season": "2018\u20132019",
+    "start_date": "2018-10-01",
+    "end_date": "2019-09-30",
+    "crs": "EPSG:32630",
+    "origin": [
+      688212.3644586978,
+      5468200.621113034
+    ],
+    "shape": [
+      768,
+      768
+    ],
+    "observations": 40,
+    "minimum_observations": 30,
+    "minimum_clear_fraction": 0.5,
+    "minimum_native_fraction": 0.99,
+    "minimum_clear_observations": 3,
+    "default_selection_pixels": 192,
+    "max_analysis_windows": 256,
+    "workers": 4
+  }
+}

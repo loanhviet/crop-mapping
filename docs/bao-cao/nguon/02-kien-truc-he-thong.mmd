@@ -1,0 +1,38 @@
+flowchart TB
+    U["Người sử dụng"] --> UI
+    subgraph CLIENT["Trình duyệt"]
+        UI["Giao diện web<br/>web/index.html · web/style.css · web/app.js<br/>Leaflet: vùng chọn, lớp phủ, tra cứu pixel"]
+        LOCAL["localStorage<br/>crop-map-last-analysis: job_id gần nhất"]
+        UI --> LOCAL
+    end
+    ESRI["Dịch vụ nền bản đồ Esri<br/>World Imagery"] -->|"Ảnh nền qua HTTPS"| UI
+    UI <-->|"HTTP: JSON, PNG và file tải xuống"| API
+    subgraph SERVER["Một tiến trình Uvicorn / FastAPI trên máy chủ"]
+        API["Lớp API và phục vụ tài nguyên tĩnh<br/>app.py · FastAPI + StaticFiles"]
+        EXEC["Bộ điều phối tác vụ<br/>ThreadPoolExecutor: 1 worker<br/>pending + Lock + Event; tối đa 4 tác vụ chờ/chạy"]
+        WORK["Luồng xử lý nền<br/>run_analysis()<br/>Chuẩn bị ảnh → lặp cửa sổ → xuất kết quả"]
+        PROVIDER["Bộ cung cấp ảnh đã chuẩn bị<br/>PreparedProvider<br/>PastisProvider là tên tương thích"]
+        ENGINE["Bộ suy luận<br/>Engine.predict() · preprocess()<br/>TSViT.forward() bằng PyTorch; model giữ trong RAM"]
+        EXPORT["Bộ tạo kết quả<br/>export_result()<br/>Rasterio · NumPy · Pillow"]
+        API -->|"submit(run_analysis, ...)"| EXEC
+        EXEC -->|"Thực thi lần lượt"| WORK
+        API -->|"Catalog, plan, preview"| PROVIDER
+        WORK -->|"window(), window_doy(), valid_mask()"| PROVIDER
+        WORK -->|"Từng cửa sổ 24 × 24"| ENGINE
+        ENGINE -->|"labels và confidence"| WORK
+        WORK --> EXPORT
+    end
+    INPUT[("Kho ảnh local: DATA<br/>Catalog JSON, chuỗi ảnh NPY,<br/>mask chất lượng và RGB preview nếu có")]
+    WEIGHTS[("Kho trọng số: WEIGHTS<br/>config.yaml + best.pth")]
+    OUTPUT[("Kho tác vụ: RESULTS / job_id<br/>request.json · status.json · result.json<br/>GeoTIFF · CSV · PNG · GeoJSON · confidence.npy")]
+    INPUT --> PROVIDER
+    WEIGHTS -->|"Nạp một lần khi khởi động"| ENGINE
+    API -->|"Ghi request, queued; đọc trạng thái và kết quả"| OUTPUT
+    WORK -->|"Cập nhật status.json"| OUTPUT
+    EXPORT -->|"Ghi các sản phẩm kết quả"| OUTPUT
+    classDef external fill:#FFF7ED,stroke:#9A3412,color:#111827;
+    classDef compute fill:#EFF6FF,stroke:#1D4ED8,color:#111827;
+    classDef storage fill:#F0FDF4,stroke:#166534,color:#111827;
+    class API,EXEC,WORK,PROVIDER,ENGINE,EXPORT compute;
+    class INPUT,WEIGHTS,OUTPUT storage;
+    class ESRI external;

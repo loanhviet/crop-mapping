@@ -1,0 +1,52 @@
+@startuml
+!pragma layout smetana
+left to right direction
+skinparam backgroundColor white
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 17
+skinparam shadowing false
+skinparam ArrowColor #334155
+skinparam usecase {
+  BackgroundColor #EFF6FF
+  BorderColor #1E40AF
+}
+skinparam rectangle {
+  BackgroundColor white
+  BorderColor #475569
+}
+actor "Người sử dụng" as User
+rectangle "Hệ thống phân loại cây trồng Crop Map" {
+  usecase "UC-01\nXem bản đồ và vùng có dữ liệu" as UC01
+  usecase "UC-02\nChọn khu vực và mùa phân tích" as UC02
+  usecase "UC-03\nKhoanh vùng phân tích" as UC03
+  usecase "UC-04\nXem thông tin ảnh của vùng chọn" as UC04
+  usecase "UC-05\nYêu cầu phân loại cây trồng" as UC05
+  usecase "UC-06\nTheo dõi tiến độ phân tích" as UC06
+  usecase "UC-07\nYêu cầu hủy phân tích" as UC07
+  usecase "UC-08\nXem bản đồ phân loại và diện tích" as UC08
+  usecase "UC-09\nTra cứu loại cây tại một pixel" as UC09
+  usecase "UC-10\nTải kết quả phân tích" as UC10
+}
+User -- UC01
+User -- UC02
+User -- UC03
+User -- UC04
+User -- UC05
+User -- UC06
+User -- UC07
+User -- UC08
+User -- UC09
+User -- UC10
+note right of UC03
+  Chọn hai góc đối diện hoặc chọn Whole region.
+  Hệ thống cũng có thể chọn sẵn vùng mặc định.
+end note
+note right of UC07
+  Áp dụng khi tác vụ còn trong danh sách pending.
+  Việc dừng phụ thuộc điểm kiểm tra của worker.
+end note
+note right of UC10
+  Điều kiện của UC-08, UC-09, UC-10:
+  tác vụ đã hoàn thành (status = done).
+end note
+@enduml

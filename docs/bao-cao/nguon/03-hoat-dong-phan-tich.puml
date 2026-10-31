@@ -1,0 +1,91 @@
+@startuml
+skinparam backgroundColor white
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #EFF6FF
+  BorderColor #1E40AF
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #9A3412
+}
+skinparam ArrowColor #334155
+|Người sử dụng|
+start
+:Có vùng chọn và kế hoạch ảnh hợp lệ;
+:Bấm Analyze selected area;
+|Giao diện web|
+:Gửi POST /api/analyses\n{patch_id, season, geometry};
+|API FastAPI|
+:Kiểm tra cấu trúc Polygon, mùa, vùng ảnh\nvà tồn tại ít nhất một pixel hợp lệ;
+if (Yêu cầu hợp lệ?) then (Không)
+  :Trả HTTP 422;
+  |Giao diện web|
+  :Hiển thị thông báo lỗi;
+  stop
+else (Có)
+endif
+|API FastAPI|
+:Khóa danh sách pending;
+if (Số tác vụ pending < 4?) then (Không)
+  :Trả HTTP 429;
+  |Giao diện web|
+  :Thông báo hàng đợi đầy;
+  stop
+else (Có)
+endif
+|API FastAPI|
+:Tạo UUID, thư mục tác vụ, request.json;\nghi status = queued; tạo Event hủy;\nthêm pending và submit vào executor;
+:Trả HTTP 202 {id, cached: false};
+fork
+  |Giao diện web|
+  :Lưu job_id vào state và localStorage;
+  repeat
+    :GET /api/analyses/{job_id};\ncập nhật tiến độ và thông báo;
+    if (status là queued hoặc running?) then (Có)
+      :Chờ 400 ms sau lần nhận thành công;
+    else (Không)
+    endif
+  repeat while (status còn queued hoặc running?) is (Có) not (Không)
+fork again
+  |Worker suy luận|
+  :Chờ đến lượt trong executor;
+  if (Event hủy đã bật lúc bắt đầu?) then (Có)
+    :Ghi status = cancelled;
+  else (Không)
+    :Đọc metadata vùng và mask chất lượng;\nmask = mask vùng chọn AND mask hợp lệ;\ntạo preview và cấp phát labels/confidence;
+    :Liệt kê cửa sổ 24 × 24 có pixel thuộc mask;\nghi status = running, phase = inference;
+    while (Còn cửa sổ và chưa nhận hủy?) is (Có)
+      :Đọc chuỗi ảnh và DOY đúng khối nguồn;
+      :Engine.predict(): tiền xử lý → TSViT\n→ softmax → lấy nhãn và confidence;
+      :Ghép cửa sổ vào lưới kết quả;\nghi tiến độ đến 94%;
+    endwhile (Không)
+    if (Nhận hủy trước bước xuất?) then (Có)
+      :Ghi status = cancelled;
+    else (Không)
+      :Ghi phase = export, progress = 95%;\nexport_result(): bản đồ, thống kê, file;
+      :Ghi status = done, phase = done,\nprogress = 100%, result;
+    endif
+  endif
+  :Cuối tác vụ: xóa khỏi pending;
+  note right
+    Ngoại lệ được xử lý thành status = error;
+    nếu Event hủy đã bật thì có thể là cancelled.
+    API DELETE chỉ bật Event.
+    Worker kiểm tra Event lúc bắt đầu,
+    giữa các cửa sổ và trước khi xuất.
+    Không có điểm kiểm tra hủy trong export_result().
+  end note
+end fork
+|Giao diện web|
+if (Trạng thái cuối là done?) then (Có)
+  :Tải overlay.png; hiển thị bản đồ,\ndiện tích từng lớp và chức năng tải file;
+else (Không)
+  if (Trạng thái cuối là cancelled?) then (Có)
+    :Thông báo đã hủy; quay về bước sẵn sàng;
+  else (error)
+    :Hiển thị thông báo lỗi phân tích;
+  endif
+endif
+stop
+@enduml

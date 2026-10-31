@@ -1,0 +1,45 @@
+services:
+  crop-map:
+    image: crop-map:prepared
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${CROP_BIND:-127.0.0.1}:${CROP_PORT:-8000}:8000"
+    environment:
+      CROP_SOURCE: prepared
+      CROP_DEVICE: cpu
+      CROP_THREADS: "${CROP_THREADS:-2}"
+      CROP_DATA_DIR: /app/data
+      CROP_WEIGHTS_DIR: /app/weights
+      CROP_RESULTS_DIR: /app/results
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./weights
+        target: /app/weights
+        read_only: true
+        bind:
+          create_host_path: false
+      - results:/app/results
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 2g
+    cpus: 2
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+volumes:
+  results:

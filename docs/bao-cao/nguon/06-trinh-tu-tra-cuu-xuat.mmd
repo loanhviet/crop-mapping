@@ -1,0 +1,47 @@
+sequenceDiagram
+    autonumber
+    actor U as Người sử dụng
+    participant F as Giao diện web
+    participant A as API FastAPI
+    participant R as Kho kết quả tác vụ
+    Note over F,R: Điều kiện: tác vụ đã done,  các file đã được tạo khi export_result() chạy.
+    rect rgb(239, 246, 255)
+        U->>F: Click trên bản đồ phân loại đang bật
+        F->>A: GET /api/analyses/{job_id}/pixel?lat=...&lng=...
+        A->>R: completed(): đọc status.json
+        alt Tác vụ chưa done
+            A-->>F: HTTP 409
+        else Tác vụ đã done
+            A->>A: Đổi tọa độ WGS84 sang CRS của raster
+            A->>R: Đọc một pixel từ classification.tif
+            R-->>A: Mã lớp tại (row, col)
+            alt Tọa độ ngoài raster hoặc mã lớp = 255
+                A-->>F: HTTP 404
+                F->>F: Ẩn thẻ thông tin pixel
+            else Pixel có nhãn hợp lệ 0–18
+                A->>R: Đọc confidence.npy tại (row, col)
+                R-->>A: Confidence đã tính
+                A-->>F: id, name, color, confidence, row, col
+                F-->>U: Thẻ pixel hiển thị tên lớp và màu
+            end
+        end
+    end
+    rect rgb(240, 253, 244)
+        U->>F: Export,  chọn định dạng và Download
+        F->>F: Một định dạng → file đơn,  nhiều định dạng → ZIP
+        F->>A: GET /api/analyses/{job_id}/download/{format}<br/>ZIP có thể kèm ?include=tif,csv,png,geojson
+        A->>R: completed(): kiểm tra status=done
+        alt format là tif, csv, png hoặc geojson
+            A->>R: Đọc file kết quả tương ứng
+            R-->>A: Nội dung file
+            A-->>F: FileResponse + tên file tải xuống
+        else format=zip và include hợp lệ
+            A->>R: Đọc các file được chọn và result.json
+            R-->>A: Nội dung các file
+            A->>A: Tạo ZIP trong bộ nhớ
+            A-->>F: application/zip
+        end
+        F->>F: Tạo Blob URL và kích hoạt tải file
+        F-->>U: Lưu file và thông báo tải thành công
+    end
+    Note over A,R: Tra cứu pixel và tải file đọc kết quả đã lưu,  không gọi model lại.<br/>API kiểm tra định dạng,  include không hợp lệ trả 422, format lạ trả 404.

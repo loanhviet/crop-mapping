@@ -1,0 +1,11 @@
+**
+!Dockerfile
+!requirements.txt
+!app.py
+!inference.py
+!imagery.py
+!model.py
+!predictions.py
+!web/
+!web/**
+web/benchmarks/

@@ -1,0 +1,25 @@
+flowchart TB
+    IN["Đầu vào sau preprocess<br/>[B,60,24,24,11]; B=1 trong web"] --> PERM["Đổi trục → [B,60,11,24,24]"]
+    PERM --> IMG["10 kênh phổ<br/>[B,60,10,24,24]"]
+    PERM --> DATE["Lấy kênh DOY tại một pixel mỗi thời điểm<br/>Nhân 365.0001 và đổi int64 → [B,60]"]
+    IMG --> PATCH["Chia mỗi ảnh thành 12 × 12 patch, mỗi patch 2 × 2 pixel<br/>144 patch/ảnh; mỗi vector có 2 × 2 × 10 = 40 phần tử"]
+    PATCH --> EMB["Linear 40 → 128<br/>Embedding ảnh: [B×144,60,128]"]
+    DATE --> ONE["One-hot với 366 giá trị, gồm 0 cho padding<br/>[B,60,366]"]
+    ONE --> TEMB["Linear 366 → 128<br/>Embedding thời gian: [B,60,128]"]
+    EMB --> ADD["Cộng embedding thời gian cho từng patch<br/>[B×144,60,128]"]
+    TEMB --> ADD
+    TOKEN["19 token lớp học được<br/>[1,19,128], lặp theo B×144"] --> CAT["Ghép token lớp vào đầu chuỗi<br/>[B×144,79,128] = 19 token lớp + 60 quan sát"]
+    ADD --> CAT
+    CAT --> TEMP["Temporal Transformer<br/>4 tầng; 4 attention heads; dim=128; dim_head=32"]
+    TEMP --> KEEP["Giữ 19 token lớp đầu ra<br/>[B×144,19,128]"]
+    KEEP --> RESHAPE["Tổ chức lại theo lớp và vị trí không gian<br/>[B×19,144,128]"]
+    POS["Embedding vị trí không gian học được<br/>[1,144,128]"] --> SADD["Cộng embedding vị trí; dropout=0<br/>[B×19,144,128]"]
+    RESHAPE --> SADD
+    SADD --> SPACE["Spatial Transformer<br/>4 tầng; 4 attention heads; dim=128; dim_head=32"]
+    SPACE --> HEAD["Đầu phân loại pixel<br/>LayerNorm(128) → Linear(128,4)<br/>Mỗi patch 2×2 sinh 4 điểm số cho mỗi lớp"]
+    HEAD --> LOGIT["Reshape và đổi trục<br/>Logits [B,19,24,24]"]
+    LOGIT --> PRED["Engine.predict(): softmax(dim=1) rồi max(dim=1)<br/>Nhãn và confidence từng pixel"]
+    classDef t fill:#EFF6FF,stroke:#1D4ED8,color:#111827;
+    classDef s fill:#F5F3FF,stroke:#6D28D9,color:#111827;
+    class TEMP,ADD,TEMB,ONE t;
+    class SPACE,SADD,POS,HEAD s;

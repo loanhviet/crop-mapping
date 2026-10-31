@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/results/
+data/imagery/
+data/cog/
+data/predictions/
+data/benchmarks/
+web/benchmarks/
+data/S2_*.npy
+data/TARGET_*.npy
+weights/*.pth
+.env
+deployment/bundles/
+deployment/qa/

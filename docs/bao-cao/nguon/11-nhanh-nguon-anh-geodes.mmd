@@ -1,0 +1,18 @@
+flowchart TB
+    CFG["Nhánh nguồn ảnh tùy chọn<br/>CROP_SOURCE=geodes; cần GEODES_API_KEY<br/>Không phải chế độ mặc định trong compose.yaml"]
+    CFG --> G["geometry + season<br/>new_grid(): tạo lưới UTM 10 m, căn theo ô 24 pixel"]
+    G --> S["GeodesProvider.plan() / search()<br/>Tìm sản phẩm THEIA Sentinel-2 L2A theo bbox và mùa<br/>Lọc cloud cover mức cảnh; mặc định ≤30%"]
+    S --> TILE["Chọn một tile phủ đủ vùng chọn<br/>Loại bản xử lý trùng và sản phẩm ZIP không online"]
+    TILE --> COUNT{"Có ít nhất 3 acquisition online?"}
+    COUNT -->|Không| ERR["Báo lỗi dữ liệu hoặc giới hạn; chưa tạo phân loại"]
+    COUNT -->|Có| SAMPLE["Nếu hơn 60 acquisition: lấy đều tối đa 60<br/>Ước tính dung lượng chưa cache; kiểm tra giới hạn tải"]
+    SAMPLE --> CACHE{"Ảnh căn chỉnh đã có cache?"}
+    CACHE -->|Có| READ["Đọc image, native, clear từ cache NPZ"]
+    CACHE -->|Không| DOWN["Tải ZIP toàn cảnh bằng Download<br/>Đọc 10 band, căn chỉnh và crop về lưới AOI<br/>Đọc mask CLM, EDG, SAT, tuyết; lưu cache NPZ"]
+    READ --> QUALITY
+    DOWN --> QUALITY["Xét từng acquisition<br/>Chỉ giữ nếu ≥50% pixel trong vùng chọn clear<br/>Giữ giá trị ảnh của acquisition được chấp nhận"]
+    QUALITY --> VALID{"Còn ≥3 acquisition và có pixel hợp lệ?"}
+    VALID -->|Không| ERR
+    VALID -->|Có| MASK["Pixel phân tích = selected AND all_native<br/>AND clear_count ≥3"]
+    MASK --> DOY["Tính DOY trên lịch không nhuận; sắp theo DOY rồi ngày<br/>Ghi imagery.npy, preview.png và imagery.json"]
+    DOY --> SHARED["Dùng chung Engine.predict() và export_result()<br/>Cửa sổ 24×24 → preprocess → TSViT → kết quả"]

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#196449">
+  <title>Crop Map — Satellite crop analysis</title>
+  <link rel="icon" href="/assets/map.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/leaflet.css">
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/assets/leaflet.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="header"><img class="desktop-mark" src="/assets/map.svg" alt="" width="38" height="38"><img class="mobile-mark" src="/assets/map-mobile.svg" alt="" width="30" height="30"><h1>Crop Map</h1></header>
+  <main class="workspace" id="workspace">
+    <aside class="sidebar" id="sidebar" aria-label="Crop analysis">
+      <div class="heading"><h2>Crop Analysis</h2><button class="icon-button collapse" id="collapse" aria-label="Collapse analysis panel" aria-expanded="true"><img src="/assets/collapse.svg" alt="" width="22" height="22"></button></div>
+      <p class="muted subtitle">Identify crops from satellite time series</p>
+      <div class="fields">
+        <div class="field"><label>Selected area</label><button id="select-side" class="button neutral">Select area</button></div>
+        <div class="field"><label for="season">Season</label><select id="season"><option>2018–2019</option></select></div>
+      </div>
+      <p class="muted imagery" id="imagery">Prepared Sentinel‑2 time series</p>
+      <p class="small muted" id="source-status"></p>
+      <button id="analyze" class="button primary" disabled>Analyze selected area</button>
+      <div class="status" id="status" aria-live="polite" hidden></div>
+      <hr>
+      <section id="empty-state" class="empty-state">
+        <div class="notice"><strong>Start with an area</strong><p id="empty-description">Choose an available region, then select two corners inside its outline or analyze the whole region.</p></div>
+        <h3>How it works</h3>
+        <ol><li>Select an area and season</li><li>Review the satellite time series</li><li>Analyze and export your crop map</li></ol>
+        <p class="small muted" id="data-description">Available regions use prepared satellite imagery. TSViT runs when you press Analyze.</p>
+      </section>
+      <section id="ready-state" hidden>
+        <div class="notice"><strong>Ready to analyze</strong><p id="ready-description"></p></div>
+        <p class="small muted">Each 10 m pixel receives one of the 19 PASTIS labels, including background.</p>
+      </section>
+      <section id="running-state" hidden>
+        <h3>Analyzing your area</h3><p class="muted" id="progress-message">Preparing imagery</p>
+        <progress id="progress" value="0" max="100"></progress>
+        <div class="progress-label"><span id="progress-label">Satellite imagery preparation</span><span id="progress-percent">0%</span></div>
+        <button class="button neutral" id="cancel-analysis">Cancel analysis</button>
+      </section>
+      <section id="error-state" hidden>
+        <div class="notice error"><strong id="error-title">Analysis unavailable</strong><p id="error-message"></p></div>
+        <button class="button neutral" id="retry">Try again</button>
+      </section>
+      <section id="results" hidden>
+        <h3>Classification Results</h3>
+        <div class="crop-table" id="crop-table" aria-label="Crop areas"></div>
+        <hr><div class="total"><strong>Analyzed area</strong><strong id="total-area"></strong></div>
+        <p class="small muted" id="result-note"></p>
+        <button class="button primary" id="export">↓&nbsp; Download results</button>
+      </section>
+    </aside>
+    <section class="map-pane" aria-label="Satellite map">
+      <div id="map"></div>
+      <div class="map-left">
+        <button class="map-button expand" id="expand" aria-label="Expand analysis panel" aria-expanded="false" hidden><img src="/assets/collapse.svg" alt="" width="22" height="22"></button>
+        <button id="select-map" class="button neutral map-button">▧&nbsp; Select area</button>
+        <button id="select-whole" class="button neutral map-button" hidden>Whole region</button>
+        <button id="draw-cancel" class="button neutral map-button" hidden>Cancel</button>
+      </div>
+      <label class="classification-switch map-card" id="classification-switch" hidden><input id="show-results" type="checkbox" checked>Show classification results</label>
+      <div class="map-controls">
+        <button class="map-button" id="zoom-in" aria-label="Zoom in"><img src="/assets/plus.svg" alt="" width="24" height="24"></button>
+        <button class="map-button" id="zoom-out" aria-label="Zoom out"><img src="/assets/minus.svg" alt="" width="24" height="24"></button>
+        <button class="map-button" id="home" aria-label="Return to selected area"><img src="/assets/home.svg" alt="" width="24" height="24"></button>
+      </div>
+      <div class="map-message map-card" id="map-message" aria-live="polite" hidden></div>
+      <div class="coverage-switch map-card" id="coverage-control" hidden>
+        <label for="available-region">Available region</label>
+        <select id="available-region" aria-label="Available imagery region"></select>
+      </div>
+      <button class="map-button layers-button" id="layers-button" aria-label="Map layers" aria-expanded="false"><img src="/assets/layers.svg" alt="" width="24" height="24"></button>
+      <div class="layers-panel map-card" id="layers-panel" hidden>
+        <strong>Map layers</strong>
+        <label><input type="checkbox" id="satellite-layer" checked>Satellite basemap</label>
+        <label><input type="checkbox" id="imagery-layer" disabled>Acquired Sentinel‑2 · <span id="preview-date">after analysis</span></label>
+        <label>Result opacity <input type="range" id="opacity" min="0.1" max="1" step="0.05" value="0.7"></label>
+        <p class="small muted">Basemap imagery may be newer than the analyzed season.</p>
+      </div>
+      <div class="pixel-card map-card" id="pixel-card" hidden>
+        <div class="heading"><h3 id="pixel-name"></h3><button class="icon-button" id="pixel-close" aria-label="Close crop details"><img src="/assets/close.svg" width="24" height="24" alt=""></button></div>
+
+      </div>
+      <noscript><div class="map-card">Enable JavaScript to select an area and run analysis.</div></noscript>
+    </section>
+  </main>
+  <dialog id="confirm-dialog">
+    <div class="heading"><h2>Reselect area?</h2><button class="icon-button dialog-close" aria-label="Close"><img src="/assets/close.svg" width="24" height="24" alt=""></button></div>
+    <p class="muted">Your current result will leave the map. Download it first if you need a copy.</p>
+    <div class="dialog-actions"><button class="button neutral dialog-close">Keep results</button><button class="button primary" id="confirm-reselect">Reselect area</button></div>
+  </dialog>
+  <dialog id="export-dialog">
+    <div class="heading"><h2>Download results</h2><button class="icon-button dialog-close" aria-label="Close"><img src="/assets/close.svg" width="24" height="24" alt=""></button></div>
+    <p class="muted" id="export-description"></p><hr>
+    <label class="export-label" for="export-format">File format</label>
+    <select id="export-format"><option value="tif">GeoTIFF (.tif)</option><option value="geojson">GeoJSON (.geojson)</option><option value="png">Classification image (.png)</option><option value="csv">Area summary (.csv)</option></select>
+    <strong>Include in export</strong>
+    <label class="checkbox-row"><input type="checkbox" checked disabled>Selected file format</label>
+    <label class="checkbox-row"><input type="checkbox" id="include-csv" checked>Area summary (.csv)</label>
+    <label class="checkbox-row"><input type="checkbox" id="include-png">Classification preview (.png)</label>
+    <div class="notice"><p>GeoTIFF includes coordinates and class IDs. Multiple files download together as a ZIP.</p></div>
+    <p id="download-error" class="error-text" hidden></p>
+    <div class="dialog-actions"><button class="button neutral dialog-close">Cancel</button><button class="button primary" id="download">Download</button></div>
+  </dialog>
+  <dialog id="download-dialog">
+    <div class="heading"><h2>Download ready</h2><button class="icon-button dialog-close" aria-label="Close"><img src="/assets/close.svg" width="24" height="24" alt=""></button></div>
+    <p class="muted">Your download has started. It contains the predictions from this analysis.</p>
+    <button class="button primary dialog-close">Back to map</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
