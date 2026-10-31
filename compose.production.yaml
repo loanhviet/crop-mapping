@@ -20,12 +20,6 @@ services:
         read_only: true
         bind:
           create_host_path: false
-      - type: bind
-        source: ${CROP_WEIGHTS_DIR:-./weights}
-        target: /app/weights
-        read_only: true
-        bind:
-          create_host_path: false
       - results:/app/results
     read_only: true
     tmpfs:

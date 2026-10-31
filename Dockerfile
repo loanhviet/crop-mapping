@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
 # Pinned base index: CPython 3.13.18, Debian Bookworm (glibc 2.36).
 # This phase validates CPU linux/amd64 only.
-FROM python:3.13.18-slim-bookworm@sha256:281d39ff02e3b389401586134ff9e6572954687822a58055ec07a60ded4e0b7f
+FROM python:3.13.18-slim-bookworm@sha256:281d39ff02e3b389401586134ff9e6572954687822a58055ec07a60ded4e0b7f AS runtime
 
 ARG TARGETARCH
 
@@ -49,3 +49,14 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4).read()"
 CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--no-proxy-headers"]
+
+# Release builds receive only a verified best.pth through a named local context.
+# The checkpoint remains excluded from Git and the main build context.
+FROM runtime AS release
+COPY --from=checkpoint best.pth /app/weights/best.pth
+COPY weights/config.yaml weights/LICENSE.txt /app/weights/
+COPY assets/model-manifest.json /app/assets/model-manifest.json
+RUN python -c "import hashlib,json,pathlib; r=pathlib.Path('/app'); m=json.loads((r/'assets/model-manifest.json').read_text()); p=r/'weights/best.pth'; assert p.stat().st_size == m['bytes']; assert hashlib.sha256(p.read_bytes()).hexdigest() == m['sha256']; assert hashlib.sha256((r/'weights/config.yaml').read_bytes()).hexdigest() == m['config_sha256']"
+
+# Preserve docker build / local Compose behavior without requiring a checkpoint context.
+FROM runtime AS development

@@ -16,10 +16,17 @@ See `requirements/locks/` for the exact Python distributions. A dependency
 license inventory is recorded with local validation evidence; it is not a
 substitute for owner review of distribution rights.
 
-No checkpoint, satellite imagery, ground truth, credentials or private .env is
-included in the image. Public redistribution of the application code/UI still
-requires confirmation by the repository owner: no project-wide license has been
-selected. Existing third-party licenses do not grant rights to unrelated code.
+The release image intentionally includes the exact trained TSViT checkpoint and
+matching config identified by assets/model-manifest.json. Development images do
+not package a checkpoint. Satellite imagery, ground truth, credentials and private
+.env files remain excluded.
+
+A generic Apache-2.0 text is retained from the original weights directory. This
+migration has not established an explicit redistribution grant for the trained
+best.pth artifact itself. The owner must confirm that the grant applies to this
+exact checkpoint before public publication. Public redistribution of application
+code/UI also requires owner confirmation: no project-wide license has been selected.
+Existing third-party licenses do not automatically grant rights to unrelated code.
 Do not push publicly until ownership, notices, dependency terms and the first
 public-push approval have been reviewed. No public push is authorized by this
 notice.

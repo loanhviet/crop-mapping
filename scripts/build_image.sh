@@ -17,7 +17,11 @@ VERSION=sha-$(git rev-parse --short=12 HEAD)
 REPOSITORY=${IMAGE_REPOSITORY:-loanhviet070105/crop-mapping}
 BUILDER=${BUILDX_BUILDER:-default}
 mkdir -p .validation/phase2
-exec docker buildx build --builder "$BUILDER" --platform "linux/$ARCH" \
+CHECKPOINT_CONTEXT=$(mktemp -d "$PROJECT_ROOT/.validation/phase2/checkpoint.XXXXXX")
+python3 -B scripts/prepare_release_checkpoint.py \
+  --source "${CROP_CHECKPOINT_FILE:-$PROJECT_ROOT/weights/best.pth}" \
+  --destination "$CHECKPOINT_CONTEXT"
+exec docker buildx build --target release --build-context "checkpoint=$CHECKPOINT_CONTEXT" --builder "$BUILDER" --platform "linux/$ARCH" \
   --build-arg "VCS_REF=$REVISION" --build-arg "IMAGE_VERSION=$VERSION" \
   --tag "$REPOSITORY:$VERSION-$ARCH" \
   --metadata-file ".validation/phase2/build-$VERSION-$ARCH.json" \

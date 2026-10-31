@@ -24,7 +24,7 @@ def compose_config(settings):
     return json.loads(result.stdout)
 
 
-def test_host_paths_do_not_leak_into_container_paths(tmp_path):
+def test_host_paths_and_legacy_weights_setting_do_not_hide_packaged_model(tmp_path):
     digest = "loanhviet070105/crop-mapping@sha256:" + "a" * 64
     config = compose_config(dict(CROP_IMAGE=digest, CROP_DATA_DIR=str(tmp_path / "imagery"),
                                  CROP_WEIGHTS_DIR=str(tmp_path / "model"), CROP_THREADS="3",
@@ -36,7 +36,7 @@ def test_host_paths_do_not_leak_into_container_paths(tmp_path):
     assert service["environment"]["CROP_THREADS"] == "3"
     bind = {v["target"]: v for v in service["volumes"] if v["type"] == "bind"}
     assert bind["/app/data"]["source"] == str(tmp_path / "imagery")
-    assert bind["/app/weights"]["source"] == str(tmp_path / "model")
+    assert "/app/weights" not in bind
     assert all(v["read_only"] and not v["bind"]["create_host_path"] for v in bind.values())
     assert int(service["mem_limit"]) == 3 * 1024**3
     assert float(service["cpus"]) == 2
