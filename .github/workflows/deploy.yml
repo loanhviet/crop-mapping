@@ -46,6 +46,34 @@ jobs:
           if descriptor['digest'] != os.environ['DIGEST']:
               raise SystemExit('Digest does not match the published source commit tag')
           PY
+      - name: Report runner IPv4 and wait for manual SSH allowlist
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_SSH_PORT: ${{ vars.EC2_SSH_PORT || '22' }}
+        run: |
+          python3 -u - <<'PY'
+          import ipaddress, os, re, socket, time, urllib.request
+          host = os.environ['EC2_HOST']
+          port = int(os.environ['EC2_SSH_PORT'])
+          if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]*', host) or not 1 <= port <= 65535:
+              raise SystemExit('Invalid EC2 host/SSH port')
+          with urllib.request.urlopen('https://checkip.amazonaws.com', timeout=15) as response:
+              address = str(ipaddress.IPv4Address(response.read(128).decode().strip()))
+          notice = f'Runner source IPv4: {address}/32. If needed, temporarily allow only this source for TCP {port} in the EC2 Security Group. Remove that temporary rule after this run. Waiting up to 7 minutes; no AWS changes are automated.'
+          print(notice, flush=True)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(notice + '\n\n')
+          deadline = time.monotonic() + 420
+          while time.monotonic() < deadline:
+              try:
+                  with socket.create_connection((host, port), timeout=5):
+                      print('TCP reachable; pinned SSH authentication follows.', flush=True)
+                      break
+              except OSError:
+                  time.sleep(10)
+          else:
+              raise SystemExit('SSH TCP reachability timed out; review the exact /32 rule, host and port. Remove any temporary rule.')
+          PY
       - name: Deploy and verify over pinned SSH
         env:
           DIGEST: ${{ inputs.image_digest }}

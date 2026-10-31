@@ -24,6 +24,7 @@ class FakeDeployment(Deployment):
         self.fail_candidate = False
         self.fail_rollback = False
         self.volume = 'actual-results'
+        self.running_volume = 'actual-results'
 
     def compose(self, override, *args):
         if args[0] == 'config':
@@ -39,7 +40,7 @@ class FakeDeployment(Deployment):
         return {'Image': self.current, 'Config': {'Image': self.current},
                 'State': {'Health': {'Status': 'healthy'}},
                 'Mounts': [{'Destination': '/app/data', 'Type': 'bind', 'Source': DATA, 'RW': False},
-                           {'Destination': '/app/results', 'Type': 'volume', 'Name': 'actual-results', 'Source': '/volume', 'RW': True}],
+                           {'Destination': '/app/results', 'Type': 'volume', 'Name': self.running_volume, 'Source': '/volume', 'RW': True}],
                 'NetworkSettings': {'Ports': {'8000/tcp': [{'HostIp': '127.0.0.1', 'HostPort': '8000'}]}}}
 
     def image_info(self, image):
@@ -63,7 +64,7 @@ class FakeDeployment(Deployment):
 @pytest.fixture
 def deploy(tmp_path, monkeypatch):
     (tmp_path / 'compose.production.yaml').write_text('reviewed compose fixture')
-    (tmp_path / '.env.production').write_text(f'CROP_IMAGE={OLD}\nCROP_RESULTS_VOLUME=actual-results\n')
+    (tmp_path / '.env').write_text(f'CROP_IMAGE={OLD}\nCROP_RESULTS_VOLUME=actual-results\n')
     original_is_dir = Path.is_dir
     monkeypatch.setattr(Path, 'is_dir', lambda p: str(p) == DATA or original_is_dir(p))
     return FakeDeployment(tmp_path)
@@ -127,3 +128,21 @@ def test_partial_update_timeout_restores_previous_image(deploy, monkeypatch):
     with pytest.raises(RuntimeError, match='health timeout'):
         deploy.execute()
     assert deploy.up_images == [NEW, OLD] and deploy.current == OLD
+
+
+def test_existing_env_and_verified_ec2_digest_are_idempotent(deploy):
+    current = REPOSITORY + '@sha256:e4001dc8787c610981c08e1cd52bd14a9afd5e8606dc6aaacf9eaa56b6945d71'
+    checkpoint = '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733'
+    deploy.current = deploy.image = current
+    deploy.volume = deploy.running_volume = 'crop-mapping-results'
+    deploy.checkpoint_sha = checkpoint
+    deploy.health = lambda: dict(status='ok', model='TSViT', device='cpu', checkpoint_sha256=checkpoint)
+    deploy.envfile.write_text(f'CROP_IMAGE={current}\nCROP_RESULTS_VOLUME=crop-mapping-results\nCROP_THREADS=2\n')
+    deploy.execute()
+    deploy.execute()
+    assert deploy.envfile == deploy.root / '.env'
+    assert not (deploy.root / '.env.production').exists()
+    assert deploy.current == current and deploy.up_images == []
+    assert 'CROP_RESULTS_VOLUME=crop-mapping-results' in deploy.envfile.read_text()
+    assert 'CROP_THREADS=2' in deploy.envfile.read_text()
+    assert deploy.envfile.read_text().count('CROP_IMAGE=') == 1

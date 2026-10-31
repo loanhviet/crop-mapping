@@ -31,7 +31,7 @@ def atomic_write(path, content):
 class Deployment:
     def __init__(self, directory, image, revision, compose_sha, checkpoint_sha):
         self.root = directory.resolve()
-        self.envfile = self.root / '.env.production'
+        self.envfile = self.root / '.env'
         self.composefile = self.root / 'compose.production.yaml'
         self.image, self.revision = image, revision
         self.compose_sha, self.checkpoint_sha = compose_sha, checkpoint_sha
@@ -126,9 +126,12 @@ class Deployment:
                 candidate = self.image_info(self.image)
                 if candidate['Architecture'] != 'amd64' or candidate['Os'] != 'linux' or candidate['Config'].get('Labels', {}).get('org.opencontainers.image.revision') != self.revision:
                     raise RuntimeError('Candidate platform/source revision mismatch')
+                if previous == self.image:
+                    self.verify(override, self.image, self.checkpoint_sha, mounts)
                 atomic_write(self.state / 'pending.json', json.dumps(dict(previous=previous, candidate=self.image, checkpoint=old_checkpoint)).encode())
                 try:
-                    self.up(override)
+                    if previous != self.image:
+                        self.up(override)
                     self.verify(override, self.image, self.checkpoint_sha, mounts)
                     lines = [line for line in original.decode().splitlines() if not re.match(r'^\s*(?:export\s+)?CROP_IMAGE\s*=', line)]
                     atomic_write(self.envfile, ('\n'.join(lines) + f'\nCROP_IMAGE={self.image}\n').encode())
