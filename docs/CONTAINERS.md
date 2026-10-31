@@ -1,6 +1,6 @@
 # CPU AMD64 containers and Docker Hub
 
-This phase targets **Linux CPU / linux/amd64**. ARM64 and multi-platform publishing are out of scope. Application/model/preprocessing/UI behavior is unchanged. Docker Hub target: `loanhviet070105/crop-mapping`; no public push is authorized or performed.
+This phase targets **Linux CPU / linux/amd64**. ARM64 and multi-platform publishing are out of scope. Application/model/preprocessing/UI behavior is unchanged. Docker Hub target: `loanhviet070105/crop-mapping`. Phase 2 local validation evidence is recorded separately; the owner reports that an AMD64 image was subsequently published.
 
 ## Build
 
@@ -111,7 +111,7 @@ docker pull loanhviet070105/crop-mapping@sha256:REPLACE_WITH_PUBLISHED_DIGEST
 
 ## Future CI checkpoint provisioning (design only)
 
-No GitHub Actions workflow is created. A trusted artifact store must supply the
+The GitHub Actions publishing workflow is described in [CI.md](CI.md). A trusted artifact store must supply the
 exact manifest-pinned checkpoint to an ephemeral runner directory. The artifact
 URL/object identity and access policy have not been established. Prefer scoped
 read-only credentials/OIDC for the approved store; never commit tokens, signed
