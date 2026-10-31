@@ -14,3 +14,19 @@
 The checkpoint URL is passed to curl through a temporary private config file and the download is removed after the context is prepared. `scripts/prepare_release_checkpoint.py` checks source size and SHA256, config hash, and the copied checkpoint before creating the minimal named build context; the release Dockerfile checks again. The runner and BuildKit cache contain the checkpoint during the job and must be trusted; do not export its layers to a public cache without redistribution approval.
 
 A release failure blocks subsequent steps. A public tag lookup that fails for reasons other than HTTP 404 also fails closed. No mutable `latest` tag is created. If a previous run already published the commit tag, verify the existing registry digest and investigate rather than overwrite it. Deploy by the registry digest recorded in the workflow summary and independently verify the pull. This workflow does not deploy to a VPS or build ARM64.
+
+## Compose JSON compatibility
+
+The production mount test checks `read_only: true` in Compose's resolved config
+and requires explicit `bind.create_host_path: false` in the source YAML.
+Compose v2.39.4 omits this false boolean from `config --format json` (`bind: {}`),
+whereas v5.5.1 retains it. The compose-go field uses JSON `omitempty` in v2;
+missing serialized fields must not be treated as proof of the source setting.
+The original PR #3 KeyError was reproduced with v2.39.4; the exact runner Compose
+version has not been verified.
+
+Local daemon probes with both versions verified that an absent bind source fails
+with `bind source path does not exist` and remains absent when the option is false.
+A true-option control created the source directory. The probes used temporary
+paths and an existing local image, cleaned up their own containers, and did not
+build images or touch satellite data. Production Compose remains unchanged.
