@@ -1,0 +1,87 @@
+name: Deploy production digest
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_digest:
+        description: 'Verified Docker Hub digest (sha256: followed by 64 hex digits)'
+        required: true
+        type: string
+      source_revision:
+        description: 'Full source commit SHA recorded by the successful publishing run'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crop-mapping-production-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify published digest and trusted source
+        env:
+          DIGEST: ${{ inputs.image_digest }}
+          REVISION: ${{ inputs.source_revision }}
+        run: |
+          set -euo pipefail
+          [[ "$DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]
+          [[ "$REVISION" =~ ^[0-9a-f]{40}$ ]]
+          git merge-base --is-ancestor "$REVISION" HEAD
+          docker buildx imagetools inspect "loanhviet070105/crop-mapping:sha-$REVISION-amd64" \
+            --format '{{json .Manifest}}' > "$RUNNER_TEMP/published.json"
+          python3 - <<'PY'
+          import json, os, pathlib
+          descriptor = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'published.json').read_text())
+          if descriptor['digest'] != os.environ['DIGEST']:
+              raise SystemExit('Digest does not match the published source commit tag')
+          PY
+      - name: Deploy and verify over pinned SSH
+        env:
+          DIGEST: ${{ inputs.image_digest }}
+          REVISION: ${{ inputs.source_revision }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          EC2_KNOWN_HOSTS: ${{ secrets.EC2_KNOWN_HOSTS }}
+          EC2_SSH_PORT: ${{ vars.EC2_SSH_PORT || '22' }}
+        run: |
+          set -euo pipefail
+          [[ "$EC2_HOST" =~ ^[A-Za-z0-9][A-Za-z0-9.-]*$ ]]
+          [[ "$EC2_USER" = ubuntu ]]
+          [[ "$EC2_SSH_PORT" =~ ^[0-9]+$ ]]
+          test -n "$EC2_SSH_PRIVATE_KEY"
+          test -n "$EC2_KNOWN_HOSTS"
+          umask 077
+          ssh_dir=$(mktemp -d "$RUNNER_TEMP/crop-ssh.XXXXXXXX")
+          printf '%s\n' "$EC2_SSH_PRIVATE_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$EC2_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          options=(-i "$ssh_dir/key" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$ssh_dir/known_hosts" -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=4)
+          remote=""
+          cleanup() {
+            if [[ -n "$remote" ]]; then
+              ssh "${options[@]}" -p "$EC2_SSH_PORT" "$EC2_USER@$EC2_HOST" "rm -rf -- '$remote'" || true
+            fi
+            rm -rf -- "$ssh_dir"
+          }
+          trap cleanup EXIT
+          candidate=$(ssh "${options[@]}" -p "$EC2_SSH_PORT" "$EC2_USER@$EC2_HOST" 'umask 077; mktemp -d /tmp/crop-cd.XXXXXXXX')
+          [[ "$candidate" =~ ^/tmp/crop-cd\.[A-Za-z0-9]+$ ]]
+          remote="$candidate"
+          scp "${options[@]}" -P "$EC2_SSH_PORT" deployment/deploy.py "$EC2_USER@$EC2_HOST:$remote/deploy.py"
+          compose_sha=$(sha256sum compose.production.yaml | cut -d ' ' -f 1)
+          checkpoint_sha=$(python3 -c 'import json; print(json.load(open("assets/model-manifest.json"))["sha256"])')
+          [[ "$checkpoint_sha" =~ ^[0-9a-f]{64}$ ]]
+          ssh "${options[@]}" -p "$EC2_SSH_PORT" "$EC2_USER@$EC2_HOST" \
+            "python3 '$remote/deploy.py' --directory /home/ubuntu/crop-mapping --image 'loanhviet070105/crop-mapping@$DIGEST' --revision '$REVISION' --compose-sha '$compose_sha' --checkpoint-sha '$checkpoint_sha'"
+          printf 'Production verified: `loanhviet070105/crop-mapping@%s`\n\nCheckpoint: `%s`\n' "$DIGEST" "$checkpoint_sha" >> "$GITHUB_STEP_SUMMARY"

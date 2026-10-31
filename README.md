@@ -124,4 +124,4 @@ There is one inference worker and at most four pending/running jobs. The prepare
 
 Keep [model license](weights/LICENSE.txt), [Leaflet license](web/assets/LEAFLET-LICENSE.txt) and [font license](web/assets/CARLITO-LICENSE.txt). Dataset attribution is documented separately. No project-wide license has been selected by the owner; the upstream model license does not automatically license all application code/assets.
 
-See [branch strategy](docs/BRANCHING.md), [architecture](docs/ARCHITECTURE.md) and [migration scope](docs/MIGRATION.md). See [CI and image publishing](docs/CI.md) for the GitHub Actions gates and required checkpoint source. Deployment automation is not implemented.
+See [branch strategy](docs/BRANCHING.md), [architecture](docs/ARCHITECTURE.md) and [migration scope](docs/MIGRATION.md). See [CI and image publishing](docs/CI.md) for the GitHub Actions gates and required checkpoint source. Manual digest-based EC2 deployment is documented in [CD.md](docs/CD.md).
