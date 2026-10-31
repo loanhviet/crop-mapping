@@ -60,6 +60,7 @@ def package(destination,predictions_only=False,live=False):
     if not catalog['patches'] and not cog_catalog['patches']:
         raise ValueError('Prepare local imagery first.')
     names = ['Dockerfile','compose.yaml','.dockerignore','.env.example','requirements.txt',
+             'requirements/locks/linux-amd64.txt','THIRD_PARTY_NOTICES.md',
              'app.py','inference.py','imagery.py','model.py','predictions.py','run.sh','prepare_data.py',
              'README.md','README_DEPLOY.md','README_GEODES.md','package_deploy.py',
              'README_COG.md','README_REGIONS.md','cog_data.py','prepare_cog.py','validate_cog.py',
