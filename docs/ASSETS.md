@@ -64,7 +64,9 @@ A mosaic catalog also requires every referenced child region. The original nine-
 
 ## Docker mounts and artifact storage
 
-Supplied Compose binds `./data` to `/app/data` and `./weights` to `/app/weights`, both read-only. Results use a writable named volume at `/app/results`. Native path variables do not change the host-side bind sources in this unchanged Compose file.
+Phase 2 release images package the exact manifest-verified checkpoint and tracked config/license. Production Compose mounts imagery only, not weights. The build helper accepts CROP_CHECKPOINT_FILE and prepares a minimal named context; the root build context still excludes checkpoint binaries. See [release build and CI provisioning](CONTAINERS.md).
+
+Local development Compose binds `./data` to `/app/data` and `./weights` to `/app/weights`, both read-only. Results use a writable named volume at `/app/results`. Native path variables do not change the host-side bind sources in this unchanged Compose file.
 
 An external asset directory is suitable for native use; Docker requires explicit bind configuration or provisioning into the expected host directories. An application image alone is insufficient. Do not symlink catalog members outside the data root; the provider rejects escaping paths.
 

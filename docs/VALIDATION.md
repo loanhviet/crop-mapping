@@ -24,3 +24,7 @@ The existing Python 3.13 virtual-environment interpreter/dependencies were reuse
 Additional static validation checks all curated Python syntax, JSON and notebook code cells, local Markdown links, declared Docker COPY sources, packaging allowlist sources (with the intentionally absent checkpoint separated), unchanged source hashes and Git exclusions. The final local summary is `.validation/static-results.json`; original preservation is checked again before completing migration.
 
 Before GitHub publication: provision assets using [ASSETS.md](ASSETS.md), run `python scripts/verify_assets.py --profile ci`, then `python -m pytest --require-assets`. Actual container smoke belongs to the next authorized container phase. A passing health endpoint alone does not prove inference or scientific quality.
+
+## Phase 2
+
+This document records Phase 1 migration checks. Subsequent container builds, real inference and portability checks are recorded separately in [Phase 2 validation](CONTAINER_VALIDATION.md).

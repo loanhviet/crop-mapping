@@ -36,7 +36,7 @@ Runtime and original tests stay at root to preserve import, CLI and notebook ass
 
 ## Prerequisites
 
-Python 3.13 and the pinned dependencies in `requirements.txt`; Docker Engine and Compose v2 for container use. Native COG preparation uses Linux `fcntl`. Dependency resolution from a clean machine and ARM64 wheels have not been verified. The supplied image uses CPU PyTorch; GPU is not required.
+Python 3.13 and the pinned dependencies in `requirements.txt`; Docker Engine and Compose v2 for container use. Native COG preparation uses Linux `fcntl`. A hash-locked CPU AMD64 container build is provided; see [container workflow and validation](docs/CONTAINERS.md). The supplied image uses CPU PyTorch; GPU is not required.
 
 ## Local development
 
@@ -44,18 +44,18 @@ Run commands from this repository root, using a new environment:
 
 ```bash
 python3.13 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python -m pip check
 cp .env.example .env
 ```
 
-The repository intentionally does **not** contain weights or satellite datasets. Obtain the exact checkpoint and verify it before starting:
+Git intentionally does **not** contain checkpoint binaries or satellite datasets. The release image packages the verified checkpoint/config; development and native execution still provision weights separately. Obtain the exact checkpoint and verify it before starting:
 
 ```bash
 python3 scripts/verify_assets.py --profile model
 ```
 
-See [model/data provisioning](docs/ASSETS.md). A fresh clone cannot perform inference until these assets are installed.
+See [model/data provisioning](docs/ASSETS.md). A fresh clone cannot perform inference until assets are installed. Production release containers need external imagery but no host weights mount.
 
 For a small prepared PASTIS demo (downloads official imagery):
 
@@ -81,7 +81,7 @@ Without assets, 11 original asset-dependent tests skip explicitly. Lightweight t
 
 ## Docker build and Compose
 
-After provisioning `data/` and `weights/best.pth`:
+After provisioning `data/` and `weights/best.pth` (the local configuration is preserved; [production Compose](docs/CONTAINERS.md#portable-production-compose) pulls a verified registry reference):
 
 ```bash
 docker build -t crop-map:prepared .
@@ -94,7 +94,7 @@ Alternatively `docker compose up -d --build` builds locally. These are setup ins
 
 The unchanged Compose defaults bind localhost:8000, mount data/weights read-only, use a named results volume, run as UID 10001 with a read-only root filesystem, and limit the service to 2 CPUs/2 GiB. `/tmp` is a 64 MiB tmpfs. Do not share a results volume between concurrent application instances. Do not run `down -v` if results must survive.
 
-See [deployment constraints](deployment/README.md) before changing an existing host. Oracle ARM64, Docker Hub publishing and Actions are future work, not implemented deployment claims.
+See [deployment constraints](deployment/README.md) before changing an existing host. Production release builds use `CROP_CHECKPOINT_FILE=/trusted/artifacts/best.pth scripts/build_image.sh amd64`. The helper supplies only the verified file through a named context; the default Docker build target remains development. Production Compose is available in `compose.production.yaml` and never mounts over packaged weights. Docker Hub publication, native Oracle validation and Actions remain separate gated steps; see [CPU container deployment](docs/CONTAINERS.md).
 
 ## API
 
@@ -122,4 +122,4 @@ There is one inference worker and at most four pending/running jobs. The prepare
 
 Keep [model license](weights/LICENSE.txt), [Leaflet license](web/assets/LEAFLET-LICENSE.txt) and [font license](web/assets/CARLITO-LICENSE.txt). Dataset attribution is documented separately. No project-wide license has been selected by the owner; the upstream model license does not automatically license all application code/assets.
 
-See [branch strategy](docs/BRANCHING.md), [architecture](docs/ARCHITECTURE.md) and [migration scope](docs/MIGRATION.md). No remote or Actions workflow is configured.
+See [branch strategy](docs/BRANCHING.md), [architecture](docs/ARCHITECTURE.md) and [migration scope](docs/MIGRATION.md). GitHub origin is configured; no Actions workflow or deployment automation is implemented.

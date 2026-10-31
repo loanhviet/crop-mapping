@@ -16,3 +16,7 @@ Target: GitHub → GitHub Actions → Docker Hub → Oracle Cloud ARM64 → Comp
 Recommended release identity: git commit, image digest, model/config hashes, dataset version and Compose configuration hash. Build once, test that artifact, then deploy it. Do not rebuild source on the VPS. Keep deployment serialized and rollback to a compatible image/model/dataset set. Never expose deployment credentials to untrusted PR events.
 
 ARM64 acceptance must check Python 3.13 wheels (especially the CPU torch pin), clean dependency installation, native build, real inference and geospatial exports. Source portability alone is insufficient evidence. Do not change the model to work around packaging issues.
+
+## Current phase
+
+Phase 1 was merged via PR #1. Phase 2 uses `feat/container-registry` from synchronized `main` (`2f1bbc3`); this phase does not push/merge or create Actions workflows. Scope was narrowed to a reliable CPU AMD64 image; ARM64 and multi-platform work are deferred. Registry publication still requires explicit approval. See [container workflow](CONTAINERS.md).
