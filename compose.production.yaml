@@ -1,0 +1,48 @@
+name: crop-mapping-production
+services:
+  crop-map:
+    image: ${CROP_IMAGE:-loanhviet070105/crop-mapping:unpublished}
+    user: "10001:10001"
+    restart: unless-stopped
+    ports:
+      - "${CROP_BIND:-127.0.0.1}:${CROP_PORT:-8000}:8000"
+    environment:
+      CROP_SOURCE: prepared
+      CROP_DEVICE: "${CROP_DEVICE:-cpu}"
+      CROP_THREADS: "${CROP_THREADS:-2}"
+      CROP_DATA_DIR: /app/data
+      CROP_WEIGHTS_DIR: /app/weights
+      CROP_RESULTS_DIR: /app/results
+    volumes:
+      - type: bind
+        source: ${CROP_DATA_DIR:-./data}
+        target: /app/data
+        read_only: true
+        bind:
+          create_host_path: false
+      - results:/app/results
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cpus: "${CROP_CPUS:-2}"
+    mem_limit: ${CROP_MEMORY_LIMIT:-2g}
+    pids_limit: 256
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4).read()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+volumes:
+  results:
+    name: ${CROP_RESULTS_VOLUME:-crop-mapping-results}

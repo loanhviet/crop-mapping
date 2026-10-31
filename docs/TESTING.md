@@ -1,12 +1,12 @@
 # Validation and regression tests
 
-Run from the repository root after installing `requirements.txt` in an isolated environment.
+Run from the repository root after installing `requirements-dev.txt` in an isolated environment.
 
 ```bash
 python -m pytest -q -rs
 ```
 
-Without provisioned assets this runs 13 original lightweight tests and six asset-integrity tests. Eleven original tests are explicitly skipped with missing-asset reasons. The original four regression files and their assertions remain unchanged.
+Without provisioned assets, the current suite includes the original lightweight and asset-integrity tests plus the Phase 2 Compose/checkpoint contract tests. In the Phase 2 environment the full suite completed with 36 passed and one Starlette deprecation warning; the 11 original data-dependent tests are skipped unless assets are provisioned. The original four regression files and their assertions remain unchanged.
 
 ```bash
 python -m pytest -q -m 'not external_assets'
@@ -20,6 +20,8 @@ See [asset provisioning](ASSETS.md). Minimal PASTIS fixtures include patch 10000
 
 No assets are downloaded automatically by pytest. Keep writable data/results and pytest temporary directories separate from a working deployment. Environment paths must be exported before Python imports the application; several defaults are captured at import time.
 
-Docker validation in this migration is configuration-only. Health verifies startup and HTTP, not prediction quality. Later container smoke must submit a small analysis, poll until `done`, then validate overlay, pixel lookup and TIFF/CSV/GeoJSON/ZIP exports.
+Health verifies startup and HTTP, not prediction quality. Phase 2 additionally builds the AMD64 release image and uses a small fixture-backed real-inference smoke to poll until `done`, then validate overlay, pixel lookup and TIFF/CSV/GeoJSON/ZIP exports. Results and environment limits are recorded in [container validation](CONTAINER_VALIDATION.md).
 
 The supplied Postman collection selects a small PASTIS test patch. A `--live` bundle contains only external COG regions, so it requires a separate smoke profile; do not treat a failed PASTIS selection as failed inference.
+
+Phase 2 adds Compose host/container path-contract tests and a reusable real-inference HTTP smoke helper. See [container validation](CONTAINER_VALIDATION.md); original migration results remain historical.

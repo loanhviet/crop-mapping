@@ -60,6 +60,7 @@ def package(destination,predictions_only=False,live=False):
     if not catalog['patches'] and not cog_catalog['patches']:
         raise ValueError('Prepare local imagery first.')
     names = ['Dockerfile','compose.yaml','.dockerignore','.env.example','requirements.txt',
+             'requirements/locks/linux-amd64.txt','THIRD_PARTY_NOTICES.md',
              'app.py','inference.py','imagery.py','model.py','predictions.py','run.sh','prepare_data.py',
              'README.md','README_DEPLOY.md','README_GEODES.md','package_deploy.py',
              'README_COG.md','README_REGIONS.md','cog_data.py','prepare_cog.py','validate_cog.py',
@@ -69,7 +70,7 @@ def package(destination,predictions_only=False,live=False):
              'weights/best.pth','weights/config.yaml','weights/LICENSE.txt',
              'docs/ASSETS.md','docs/ARCHITECTURE.md','docs/TESTING.md','docs/VALIDATION.md',
              'docs/BRANCHING.md','docs/MIGRATION.md','deployment/README.md',
-             'assets/model-manifest.json','scripts/verify_assets.py','weights/README.md','data/README.md']
+             'assets/model-manifest.json','scripts/verify_assets.py','scripts/prepare_release_checkpoint.py','weights/README.md','data/README.md']
     names += [p.relative_to(ROOT).as_posix() for p in (ROOT/'web').rglob('*')
               if p.is_file() and 'benchmarks' not in p.relative_to(ROOT/'web').parts]
     names += [f"data/S2_{p['id']}.npy" for p in catalog['patches']]

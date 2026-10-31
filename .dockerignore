@@ -18,3 +18,16 @@ web/benchmarks/
 **/.venv
 **/__pycache__
 **/*.pyc
+
+# Hash-locked runtime dependencies and redistribution notices only.
+!requirements/
+!requirements/locks/
+!requirements/locks/linux-amd64.txt
+!weights/
+!weights/LICENSE.txt
+!THIRD_PARTY_NOTICES.md
+
+# Tracked release configuration only. best.pth is NEVER allowed in this context.
+!weights/config.yaml
+!assets/
+!assets/model-manifest.json

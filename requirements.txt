@@ -9,4 +9,3 @@ rasterio==1.5.2
 pyproj==3.8.0
 Pillow==12.3.0
 httpx==0.28.1
-pytest==9.1.1
