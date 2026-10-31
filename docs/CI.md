@@ -6,14 +6,38 @@
 
 ## Required owner setup
 
-1. Choose a trusted private artifact store holding the exact checkpoint in `assets/model-manifest.json`. No source URL is assumed by the repository. Options include a private object store with a short-lived HTTPS signed URL, or another private artifact service. The current implementation accepts a direct HTTPS download URL in the repository Actions secret `CHECKPOINT_URL`; refresh short-lived URLs before the manual run. A service requiring custom authentication or OIDC needs a reviewed provisioning step before use. Do not expose URLs or checkpoints in public storage, logs, workflow artifacts, or Git.
-2. Set Actions secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`. The username must be `loanhviet070105`; use a scoped Docker Hub token. Never post credentials in issues or chat.
-3. Configure Docker Hub to prevent overwriting commit tags where the account supports immutable-tag enforcement. The workflow also rejects an existing public tag, but that preflight check alone is not atomic and cannot guarantee registry immutability under concurrent external publishers. Restrict registry write access. Publishing requires permission to redistribute the model and application.
-4. Merge the reviewed workflow to `main` using the normal PR process. Run **Publish AMD64 image** from `main` only after completing these prerequisites. This change does not itself push a commit or image.
+1. Create a **private** GitHub repository for model artifacts (for example `loanhviet/crop-mapping-models`; this name is a suggestion, not a provisioned repository). Initialize its default branch. Create a release, for example `tsvit-v1`, and **manually attach** the trusted `best.pth` as a Release asset. Do not add the binary to that repository's Git history. Verify its local SHA256 against `assets/model-manifest.json` before uploading. This task uploads nothing.
+2. Obtain its numeric asset ID from the authenticated owner's terminal:
 
-The checkpoint URL is passed to curl through a temporary private config file and the download is removed after the context is prepared. `scripts/prepare_release_checkpoint.py` checks source size and SHA256, config hash, and the copied checkpoint before creating the minimal named build context; the release Dockerfile checks again. The runner and BuildKit cache contain the checkpoint during the job and must be trusted; do not export its layers to a public cache without redistribution approval.
+   ```bash
+   gh api repos/OWNER/PRIVATE_REPOSITORY/releases/tags/tsvit-v1 \
+     --jq '.assets[] | select(.name == "best.pth") | .id'
+   ```
 
-A release failure blocks subsequent steps. A public tag lookup that fails for reasons other than HTTP 404 also fails closed. No mutable `latest` tag is created. If a previous run already published the commit tag, verify the existing registry digest and investigate rather than overwrite it. Deploy by the registry digest recorded in the workflow summary and independently verify the pull. This workflow does not deploy to a VPS or build ARM64.
+   Replace OWNER/PRIVATE_REPOSITORY with the actual private artifact repository. The token used for this read must have access to it.
+3. Create a fine-grained personal access token: select only that private repository and grant **Contents: read**. In `loanhviet/crop-mapping` → Settings → Secrets and variables → Actions, configure:
+
+   | Kind | Name | Value |
+   | --- | --- | --- |
+   | Variable | `CHECKPOINT_REPOSITORY` | Actual `owner/private-repository` |
+   | Variable | `CHECKPOINT_ASSET_ID` | Numeric asset ID from step 2 |
+   | Secret | `CHECKPOINT_READ_TOKEN` | Fine-grained read-only artifact token |
+   | Secret | `DOCKERHUB_USERNAME` | `loanhviet070105` (existing) |
+   | Secret | `DOCKERHUB_TOKEN` | Scoped Docker Hub write token (existing) |
+
+   `CHECKPOINT_URL` is no longer used. A runner obtains a fresh download redirect via the GitHub API each run, so signed URLs need no manual renewal. Tokens can expire or be revoked: set a suitable lifetime under your policy and rotate the secret before expiry. The public repository's default `GITHUB_TOKEN` cannot read an unrelated private repository. Do not put credentials in variables or chat. A GitHub App installation token is a later option if PAT rotation becomes burdensome; it is not required here.
+4. Docker Hub → `loanhviet070105/crop-mapping` → Settings → General → Tag mutability settings: choose **Specific tags are immutable**, regex `^sha-[0-9a-f]{40}-amd64$`, then Save (or choose all tags immutable if appropriate). This registry policy is required to prevent overwrite races with other publishers. Verify the policy before the first run; the workflow cannot establish that policy from the public tag lookup. The workflow also checks tag absence before building and immediately before push; non-404 lookup errors fail closed. Keep registry write access restricted.
+5. Review and merge this follow-up via a PR, then Actions → **Publish AMD64 image** → Run workflow → select **main**. It waits for CI, downloads/verifies the pinned asset, builds and tests the AMD64 release, and pushes only a new commit tag. Inspect the workflow summary for the tag and digest. If the tag already exists, verify that release rather than rerun an overwrite. No `latest` tag is written.
+
+The downloader uses the documented [GitHub release asset API](https://docs.github.com/en/rest/releases/assets#get-a-release-asset), authenticated with Contents: read, requesting binary content. Repository/asset identifiers are validated before forming a fixed `api.github.com` URL. Credentials are in a mode-restricted temporary curl config; download is HTTPS-only, bounded to 7 MB and 180 seconds, and curl does not forward Authorization across redirect hosts. The download/config are removed after provisioning. The prepared context and Docker layers still contain the model on the ephemeral runner; do not export them as public caches or workflow artifacts.
+
+`scripts/prepare_release_checkpoint.py` checks byte count, SHA256, config hash and copied bytes before the existing named-context release build. The Dockerfile verifies again. No host weights mount is needed. Missing/unauthorized assets, wrong hashes, CI/build/model checks, or registry errors stop publication. After pushing, the workflow independently inspects the remote manifest and compares its digest to Docker's push result, then writes the exact `image@sha256:...` identity into the step summary. If that verification fails after a successful push, the release may already exist: investigate it without overwriting.
+
+Public release rights must cover the checkpoint and application. HTTP startup and real satellite inference still require external imagery and are not claimed by the model-initialization gate. Deploy by digest after independently checking the release. This phase does not deploy infrastructure.
+
+## Local verification of this follow-up
+
+PR #3 was confirmed merged at `c214999cc4ae34d06c49a9209f4937d85193e555`. Local regression, workflow lint/shell syntax, Compose, and Dockerfile checks are recorded in the task report. No new image was built or published. The existing public Phase 2 tag `sha-8a90dfd9b4b6-amd64` was inspected read-only and reported registry digest `sha256:5042c7f742c240531711ef9b86cf59373295ed67e1131b43b33c9a71fcca1372`. This is not evidence of a successful run of the new publishing workflow. Private artifact download and the first Actions publication remain unverified until owner setup and execution.
 
 ## Compose JSON compatibility
 

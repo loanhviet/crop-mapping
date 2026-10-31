@@ -109,31 +109,16 @@ docker pull loanhviet070105/crop-mapping@sha256:REPLACE_WITH_PUBLISHED_DIGEST
 - Slow whole-region inference: use a small AOI; one worker and prepared window-limit behavior are unchanged.
 - Health failure after update: preserve results, inspect this service's logs and restore a compatible image/model/data set. Automated recovery remains future work.
 
-## Future CI checkpoint provisioning (design only)
+## GitHub Actions checkpoint provisioning
 
-The GitHub Actions publishing workflow is described in [CI.md](CI.md). A trusted artifact store must supply the
-exact manifest-pinned checkpoint to an ephemeral runner directory. The artifact
-URL/object identity and access policy have not been established. Prefer scoped
-read-only credentials/OIDC for the approved store; never commit tokens, signed
-URLs or binary weights. Do not treat the source-reference GitHub URL as a verified
-direct download link.
+The implemented publishing workflow and private Release asset setup are described
+in [CI.md](CI.md). The owner supplies the actual private repository, asset ID and
+read-only token. Each run obtains a fresh download via the GitHub API and applies
+the same manifest verification and named-context release build as local builds.
+No personal path, expiring URL, binary weights, or credential is committed.
 
-After a trusted downloader places the artifact, the same local preparation/build
-path applies; no personal host path is required:
-
-```bash
-export CROP_CHECKPOINT_FILE="$RUNNER_TEMP/artifacts/best.pth"
-python3 scripts/prepare_release_checkpoint.py --source "$CROP_CHECKPOINT_FILE" --destination "$RUNNER_TEMP/checkpoint-context"
-docker buildx build --platform linux/amd64 --target release \
-  --build-context "checkpoint=$RUNNER_TEMP/checkpoint-context" \
-  --build-arg VCS_REF="$REVISION" --build-arg IMAGE_VERSION="sha-$SHORT_SHA" \
-  --tag "$IMAGE:sha-$SHORT_SHA-amd64" --load .
-```
-
-Test the packaged hash, model startup and a tiny real inference before any push.
-Only the verified checkpoint file enters the named context; root .dockerignore
-continues to exclude all .pth files. Use only trusted builders and do not export
-checkpoint-containing layers to a public cache before redistribution approval.
-A generic Apache license in the original directory is not treated as conclusive
-permission to redistribute the trained artifact; checkpoint and application/UI
-rights require explicit owner confirmation before public Docker Hub publication.
+Only the verified checkpoint enters the named context; root .dockerignore still
+excludes .pth files. Use trusted runners and do not export model layers as public
+caches without distribution rights. The workflow initializes the packaged model;
+real satellite inference additionally requires external imagery. Public model
+and application redistribution must be authorized by the owner.

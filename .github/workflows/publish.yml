@@ -22,22 +22,51 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - name: Obtain and verify checkpoint
+      - name: Reject an existing release tag before building
         env:
-          CHECKPOINT_URL: ${{ secrets.CHECKPOINT_URL }}
+          REVISION: ${{ github.sha }}
+        run: |
+          python3 - <<'PYCODE'
+          import os, urllib.error, urllib.request
+          tag = 'sha-' + os.environ['REVISION'] + '-amd64'
+          url = 'https://hub.docker.com/v2/repositories/loanhviet070105/crop-mapping/tags/' + tag
+          try:
+              urllib.request.urlopen(url, timeout=30)
+          except urllib.error.HTTPError as error:
+              if error.code == 404:
+                  raise SystemExit(0)
+              raise
+          raise SystemExit('Refusing to overwrite an existing commit tag')
+          PYCODE
+      - name: Obtain and verify private release checkpoint
+        env:
+          CHECKPOINT_REPOSITORY: ${{ vars.CHECKPOINT_REPOSITORY }}
+          CHECKPOINT_ASSET_ID: ${{ vars.CHECKPOINT_ASSET_ID }}
+          CHECKPOINT_READ_TOKEN: ${{ secrets.CHECKPOINT_READ_TOKEN }}
         run: |
           set -eu
           umask 077
-          python - <<'PY'
-          import os, pathlib
-          url = os.environ.get('CHECKPOINT_URL', '')
-          if not url or '\n' in url or '\r' in url or not url.startswith('https://'):
-              raise SystemExit('CHECKPOINT_URL must be a trusted HTTPS artifact URL')
+          python3 - <<'PYCODE'
+          import os, pathlib, re
+          repo = os.environ.get('CHECKPOINT_REPOSITORY', '')
+          asset = os.environ.get('CHECKPOINT_ASSET_ID', '')
+          token = os.environ.get('CHECKPOINT_READ_TOKEN', '')
+          if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo) or not asset.isdecimal():
+              raise SystemExit('Configure CHECKPOINT_REPOSITORY and CHECKPOINT_ASSET_ID variables')
+          if not token or any(c in token for c in '\r\n'):
+              raise SystemExit('Configure CHECKPOINT_READ_TOKEN with private repository Contents: read')
+          def quoted(value):
+              return '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
           config = pathlib.Path(os.environ['RUNNER_TEMP']) / 'checkpoint-curl.conf'
-          config.write_text('url = "' + url.replace('\\', '\\\\').replace('"', '\\"') + '"\n')
-          PY
+          config.write_text('url = ' + quoted(f'https://api.github.com/repos/{repo}/releases/assets/{asset}') + '\n'
+                            + 'header = ' + quoted('Authorization: Bearer ' + token) + '\n')
+          PYCODE
           trap 'rm -f "$RUNNER_TEMP/checkpoint-curl.conf" "$RUNNER_TEMP/best.pth"' EXIT
-          curl --config "$RUNNER_TEMP/checkpoint-curl.conf" --fail --silent --location --proto '=https' --proto-redir '=https' --max-time 180 --output "$RUNNER_TEMP/best.pth" || { echo 'Checkpoint download failed'; exit 1; }
+          # curl does not forward Authorization to a different redirect host.
+          curl --config "$RUNNER_TEMP/checkpoint-curl.conf" --header 'Accept: application/octet-stream' \
+            --header 'X-GitHub-Api-Version: 2022-11-28' --fail --silent --location \
+            --proto '=https' --proto-redir '=https' --max-time 180 --max-filesize 7000000 \
+            --output "$RUNNER_TEMP/best.pth" || { echo 'Private checkpoint download failed; check asset ID and token permissions'; exit 1; }
           python3 -B scripts/prepare_release_checkpoint.py --source "$RUNNER_TEMP/best.pth" --destination "$RUNNER_TEMP/checkpoint-context"
       - name: Build verified release locally
         env:
@@ -84,5 +113,12 @@ jobs:
           docker push "$image" | tee "$RUNNER_TEMP/push.log"
           digest=$(sed -n 's/.*digest: \(sha256:[0-9a-f]*\).*/\1/p' "$RUNNER_TEMP/push.log" | tail -n 1)
           printf '%s' "$digest" | grep -Eq '^sha256:[0-9a-f]{64}$'
+          docker buildx imagetools inspect "$image" --format '{{json .Manifest}}' > "$RUNNER_TEMP/registry-manifest.json"
+          REGISTRY_DIGEST="$digest" python3 - <<'PYCODE'
+          import json, os, pathlib
+          descriptor = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'registry-manifest.json').read_text())
+          if descriptor['digest'] != os.environ['REGISTRY_DIGEST']:
+              raise SystemExit('Registry digest differs from push result')
+          PYCODE
           printf 'Published image: `%s`\n\nRegistry digest: `%s`\n' "$image" "$digest" >> "$GITHUB_STEP_SUMMARY"
           printf 'Published %s@%s\n' "${image%:*}" "$digest"
