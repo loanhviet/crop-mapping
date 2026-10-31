@@ -1,15 +1,57 @@
+# Local environments and caches
 .venv/
-__pycache__/
+venv/
+**/__pycache__/
+*.py[cod]
 .pytest_cache/
-data/results/
-data/imagery/
-data/cog/
-data/predictions/
-data/benchmarks/
-web/benchmarks/
-data/S2_*.npy
-data/TARGET_*.npy
-weights/*.pth
+.ruff_cache/
+.ipynb_checkpoints/
+.validation/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+junit*.xml
+test-results/
+*.log
+*.tmp
+*.part
+.vscode/
+.idea/
+.DS_Store
+
+# Private configuration (templates remain trackable)
 .env
-deployment/bundles/
-deployment/qa/
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Provisioned satellite data and runtime outputs
+/data/*
+!/data/README.md
+
+# Provisioned model binaries
+/weights/*
+!/weights/config.yaml
+!/weights/LICENSE.txt
+!/weights/README.md
+
+# Research and generated outputs
+/preparation/dinov3/
+/experiments/
+/data_collection/outputs/
+/deployment/bundles/
+/deployment/qa/
+/web/benchmarks/
+
+# Generated documentation exports
+/docs/bao-cao/hinh/png/
+/docs/bao-cao/hinh/pdf/
+/docs/bao-cao/So-do-Crop-Map.pdf
+/docs/bao-cao/So-do-Crop-Map.docx
+/docs/bao-cao/Bo-so-do-Crop-Map.zip
+/docs/bao-cao/index.html
+/docs/bao-cao/kiem-chung.json
