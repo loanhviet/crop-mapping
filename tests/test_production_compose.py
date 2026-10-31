@@ -6,6 +6,7 @@ import shutil
 import subprocess
 
 import pytest
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 pytestmark = pytest.mark.skipif(shutil.which("docker") is None, reason="Docker Compose CLI is not installed")
@@ -37,7 +38,19 @@ def test_host_paths_and_legacy_weights_setting_do_not_hide_packaged_model(tmp_pa
     bind = {v["target"]: v for v in service["volumes"] if v["type"] == "bind"}
     assert bind["/app/data"]["source"] == str(tmp_path / "imagery")
     assert "/app/weights" not in bind
-    assert all(v["read_only"] and not v["bind"]["create_host_path"] for v in bind.values())
+    assert all(v["read_only"] is True for v in bind.values())
+    # Compose v2 omits false booleans from config JSON (omitempty); v5 retains
+    # them. Require the explicit safety setting in the source, not a default
+    # inferred from a missing serialized field.
+    declared = yaml.safe_load((ROOT / "compose.production.yaml").read_text())
+    declared_bind = {v["target"]: v for v in declared["services"]["crop-map"]["volumes"]
+                     if isinstance(v, dict) and v.get("type") == "bind"}
+    assert declared_bind.keys() == bind.keys()
+    assert all(v["read_only"] is True and v["bind"]["create_host_path"] is False
+               for v in declared_bind.values())
+    for volume in bind.values():
+        if "create_host_path" in volume.get("bind", {}):
+            assert volume["bind"]["create_host_path"] is False
     assert int(service["mem_limit"]) == 3 * 1024**3
     assert float(service["cpus"]) == 2
     assert int(service["ports"][0]["published"]) == 18088

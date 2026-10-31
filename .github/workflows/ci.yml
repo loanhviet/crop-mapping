@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: |
+            requirements/locks/linux-amd64.txt
+            requirements-dev.txt
+      - name: Install locked runtime and test dependencies
+        run: |
+          python -m pip install --only-binary=:all: --require-hashes -r requirements/locks/linux-amd64.txt
+          python -m pip install pytest==9.1.1
+          python -m pip check
+      - name: Run tests without external assets
+        run: python -m pytest -q -rs -m 'not external_assets'
+      - name: Validate Compose configurations
+        run: |
+          docker compose config --quiet
+          docker compose -f compose.production.yaml config --quiet
+      - name: Check development Dockerfile
+        run: docker buildx build --check --platform linux/amd64 --target development .

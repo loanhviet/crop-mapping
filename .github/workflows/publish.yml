@@ -1,0 +1,88 @@
+name: Publish AMD64 image
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-crop-mapping
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Obtain and verify checkpoint
+        env:
+          CHECKPOINT_URL: ${{ secrets.CHECKPOINT_URL }}
+        run: |
+          set -eu
+          umask 077
+          python - <<'PY'
+          import os, pathlib
+          url = os.environ.get('CHECKPOINT_URL', '')
+          if not url or '\n' in url or '\r' in url or not url.startswith('https://'):
+              raise SystemExit('CHECKPOINT_URL must be a trusted HTTPS artifact URL')
+          config = pathlib.Path(os.environ['RUNNER_TEMP']) / 'checkpoint-curl.conf'
+          config.write_text('url = "' + url.replace('\\', '\\\\').replace('"', '\\"') + '"\n')
+          PY
+          trap 'rm -f "$RUNNER_TEMP/checkpoint-curl.conf" "$RUNNER_TEMP/best.pth"' EXIT
+          curl --config "$RUNNER_TEMP/checkpoint-curl.conf" --fail --silent --location --proto '=https' --proto-redir '=https' --max-time 180 --output "$RUNNER_TEMP/best.pth" || { echo 'Checkpoint download failed'; exit 1; }
+          python3 -B scripts/prepare_release_checkpoint.py --source "$RUNNER_TEMP/best.pth" --destination "$RUNNER_TEMP/checkpoint-context"
+      - name: Build verified release locally
+        env:
+          REVISION: ${{ github.sha }}
+        run: |
+          set -eu
+          docker buildx build --platform linux/amd64 --target release --build-context "checkpoint=$RUNNER_TEMP/checkpoint-context" \
+            --build-arg "VCS_REF=$REVISION" --build-arg "IMAGE_VERSION=sha-$REVISION" \
+            --tag "loanhviet070105/crop-mapping:sha-$REVISION-amd64" --load .
+      - name: Verify image and checkpoint initialization
+        env:
+          REVISION: ${{ github.sha }}
+        run: |
+          set -eu
+          image="loanhviet070105/crop-mapping:sha-$REVISION-amd64"
+          test "$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$image")" = linux/amd64
+          docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=64m --entrypoint python "$image" -c \
+            "import json,hashlib,pathlib,torch; from inference import Engine; p=pathlib.Path('/app/weights/best.pth'); m=json.loads(pathlib.Path('/app/assets/model-manifest.json').read_text()); assert hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']; e=Engine(); assert e.sha256==m['sha256']; assert str(e.device)=='cpu'; assert torch.version.cuda is None; print('Checkpoint and model initialized on CPU')"
+      - name: Authenticate and publish tested image
+        shell: bash
+        env:
+          REVISION: ${{ github.sha }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          test "$DOCKERHUB_USERNAME" = loanhviet070105
+          test -n "$DOCKERHUB_TOKEN"
+          printf '%s' "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
+          image="loanhviet070105/crop-mapping:sha-$REVISION-amd64"
+          # Reject an existing tag; registry-side immutable tags are also required.
+          python3 - <<'PY'
+          import os, urllib.error, urllib.request
+          tag = 'sha-' + os.environ['REVISION'] + '-amd64'
+          url = 'https://hub.docker.com/v2/repositories/loanhviet070105/crop-mapping/tags/' + tag
+          try:
+              urllib.request.urlopen(url, timeout=30)
+          except urllib.error.HTTPError as error:
+              if error.code == 404:
+                  raise SystemExit(0)
+              raise
+          raise SystemExit('Refusing to overwrite an existing commit tag')
+          PY
+          docker push "$image" | tee "$RUNNER_TEMP/push.log"
+          digest=$(sed -n 's/.*digest: \(sha256:[0-9a-f]*\).*/\1/p' "$RUNNER_TEMP/push.log" | tail -n 1)
+          printf '%s' "$digest" | grep -Eq '^sha256:[0-9a-f]{64}$'
+          printf 'Published image: `%s`\n\nRegistry digest: `%s`\n' "$image" "$digest" >> "$GITHUB_STEP_SUMMARY"
+          printf 'Published %s@%s\n' "${image%:*}" "$digest"
