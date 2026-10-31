@@ -55,3 +55,6 @@ id_ed25519
 /docs/bao-cao/Bo-so-do-Crop-Map.zip
 /docs/bao-cao/index.html
 /docs/bao-cao/kiem-chung.json
+
+# Remote CD transaction state
+/.deployment/

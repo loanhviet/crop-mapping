@@ -13,3 +13,5 @@ Future Oracle ARM64 work belongs on the branches in [branch strategy](../docs/BR
 Portable pull-only configuration: `compose.production.yaml`, with `deployment/production.env.example`. No platform is forced. The default registry reference is deliberately unpublished until an approved release exists.
 
 Release target packages best.pth and model config, with hash checks before and inside Docker. Production no longer mounts host weights; only imagery and results are external. Local development Compose remains unchanged. Checkpoint redistribution is a publication gate, not an assumed right.
+
+Manual Phase 4 CD: see [EC2 deployment and rollback](../docs/CD.md). The workflow requires a verified digest, pinned SSH host key and existing production state; it does not deploy during local validation.
