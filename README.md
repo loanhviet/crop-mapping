@@ -23,16 +23,18 @@ app.py, inference.py, model.py, imagery.py, predictions.py  runtime modules
 web/                                                     frontend and licensed assets
 prepare_*.py, cog_data.py, precompute_regions.py           data tools
 scripts/benchmark_cog.py, scripts/validate_cog.py                         validation tools
-test_*.py, tests/, conftest.py, pytest.ini                 regressions and asset gates
+tests/, conftest.py, pytest.ini                          regressions and asset gates
 preparation/                                             configs and standalone notebooks
 assets/model-manifest.json, scripts/verify_assets.py      integrity metadata and verification
 weights/                                                 tracked config/license; external checkpoint
 data/                                                    external imagery; tracked README only
-docs/, deployment/                                       architecture, setup and migration notes
-Dockerfile, compose.yaml                                 existing CPU deployment
+docs/, deployment/                                       guides, architecture and deployment notes
+Dockerfile, compose*.yaml                                CPU deployment configurations
 ```
 
 Runtime modules stay at root to preserve import, CLI and notebook assumptions; regression tests are under `tests/`. `scripts/benchmark_cog.py` and `precompute_regions.py` are retained because original tests import them. Run the relocated tools from the repository root as `python -m scripts.benchmark_cog` and `python -m scripts.validate_cog`.
+
+Specialized guides: [COG preparation](docs/COG.md), [multi-block regions](docs/REGIONS.md), [GEODES acquisition](docs/GEODES.md), and [deployment bundles](docs/DEPLOYMENT.md).
 
 ## Prerequisites
 
