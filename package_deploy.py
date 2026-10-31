@@ -66,7 +66,10 @@ def package(destination,predictions_only=False,live=False):
              'prepare_regions.py','precompute_regions.py','preparation/regions_config.json','preparation/cog_config.json',
              'preparation/prepare_continuous_kaggle.ipynb',
              'preparation/prepare_regions_kaggle.ipynb',
-             'weights/best.pth','weights/config.yaml','weights/LICENSE.txt']
+             'weights/best.pth','weights/config.yaml','weights/LICENSE.txt',
+             'docs/ASSETS.md','docs/ARCHITECTURE.md','docs/TESTING.md','docs/VALIDATION.md',
+             'docs/BRANCHING.md','docs/MIGRATION.md','deployment/README.md',
+             'assets/model-manifest.json','scripts/verify_assets.py','weights/README.md','data/README.md']
     names += [p.relative_to(ROOT).as_posix() for p in (ROOT/'web').rglob('*')
               if p.is_file() and 'benchmarks' not in p.relative_to(ROOT/'web').parts]
     names += [f"data/S2_{p['id']}.npy" for p in catalog['patches']]
