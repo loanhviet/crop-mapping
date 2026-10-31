@@ -36,6 +36,7 @@ RUN --mount=type=cache,id=crop-mapping-pip-amd64,target=/root/.cache/pip \
 ARG VCS_REF
 ARG IMAGE_VERSION=local
 LABEL org.opencontainers.image.title="Crop Mapping" \
+      org.opencontainers.image.description="CPU TSViT crop mapping inference application with a verified packaged checkpoint and external imagery" \
       org.opencontainers.image.source="https://github.com/loanhviet/crop-mapping" \
       org.opencontainers.image.revision="${VCS_REF}" \
       org.opencontainers.image.version="${IMAGE_VERSION}"
