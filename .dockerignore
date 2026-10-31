@@ -9,3 +9,12 @@
 !web/
 !web/**
 web/benchmarks/
+# Defense in depth for future files inside the allowed web tree.
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/.git
+**/.venv
+**/__pycache__
+**/*.pyc

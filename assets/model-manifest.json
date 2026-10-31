@@ -1,0 +1,10 @@
+{
+  "model": "TSViT",
+  "filename": "best.pth",
+  "bytes": 6665903,
+  "sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+  "config_sha256": "5aacb1fdf7d231ea574b673f592e34ac4f43664e6a08864a9cf8f6df29740bbd",
+  "source_reference": "https://github.com/loanhviet/tsvit-crop-segmentation",
+  "download_url": null,
+  "note": "Obtain the exact checkpoint from a trusted maintainer or artifact store. The reference is not a verified direct download URL."
+}

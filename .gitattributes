@@ -1,0 +1,2 @@
+# Preserve imported vendor assets, including original CRLF, without formatting.
+web/assets/* -text -whitespace
