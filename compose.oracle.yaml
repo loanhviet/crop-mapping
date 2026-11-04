@@ -1,0 +1,28 @@
+# Overlay: docker compose --env-file .env.oracle -f compose.production.yaml -f compose.oracle.yaml ...
+# Requires Docker Compose >= 2.24.4 for !override. Does not manage Caddy or OpenDubber.
+# Normal operation: CD pulls a GHCR digest (CROP_IMAGE); `build` is only an emergency local fallback.
+name: crop-mapping-oracle
+services:
+  crop-map:
+    image: ${CROP_IMAGE:-crop-mapping:oracle-local}
+    build:
+      context: .
+      target: runtime
+    pull_policy: never
+    ports: !override
+      - "127.0.0.1:${CROP_PORT:-18080}:8000"
+    environment:
+      CROP_DEVICE: cpu
+      OMP_NUM_THREADS: "${CROP_THREADS:-2}"
+      OPENBLAS_NUM_THREADS: "${CROP_THREADS:-2}"
+      MKL_NUM_THREADS: "${CROP_THREADS:-2}"
+      GDAL_CACHEMAX: "128"
+    volumes:
+      - type: bind
+        source: ${CROP_WEIGHTS_DIR:-./weights}
+        target: /app/weights
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      start_period: 120s

@@ -1,0 +1,143 @@
+name: CD Oracle
+
+# push main -> CI -> native ARM64 build -> GHCR digest -> SSH deploy on Oracle VM
+# -> health/checkpoint verification -> automatic rollback on failure.
+# Auto-deploy stays OFF until the repository variable ORACLE_AUTO_DEPLOY is 'true'.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', '**/*.md']
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Also deploy the built image to the Oracle VM'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# One pipeline at a time, in push order. A newer pending run replaces an older
+# pending one; a running deployment is never cancelled mid-transaction.
+concurrency:
+  group: crop-mapping-oracle-cd
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    # Native ARM64 runner: no QEMU, and no build load on the shared Oracle VM.
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.image.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Log in to GHCR with the short-lived job token
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+        run: printf '%s' "$TOKEN" | docker login ghcr.io --username "$ACTOR" --password-stdin
+      - name: Build and push ARM64 runtime (no checkpoint, no data)
+        id: build
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          target: runtime
+          platforms: linux/arm64
+          build-args: |
+            VCS_REF=${{ github.sha }}
+            IMAGE_VERSION=sha-${{ github.sha }}
+          tags: ghcr.io/loanhviet/crop-mapping:sha-${{ github.sha }}
+          push: true
+          provenance: false
+          # Same scope as CI's arm64-runtime job, so this is mostly a cache hit.
+          cache-from: type=gha,scope=arm64-runtime
+          cache-to: type=gha,scope=arm64-runtime,mode=max
+      - name: Record immutable image reference
+        id: image
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -euo pipefail
+          [[ "$DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]
+          echo "image=ghcr.io/loanhviet/crop-mapping@$DIGEST" >> "$GITHUB_OUTPUT"
+          # shellcheck disable=SC2016 # backticks are Markdown, not expansion
+          printf 'Built `ghcr.io/loanhviet/crop-mapping@%s` (tag `sha-%s`)\n' "$DIGEST" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      ((github.event_name == 'push' && vars.ORACLE_AUTO_DEPLOY == 'true') ||
+       (github.event_name == 'workflow_dispatch' && inputs.deploy))
+    environment:
+      name: oracle
+      url: https://crop.loanhviet.dev
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Concurrency keeps runs in order, but a re-run of an old run (or a run
+      # overtaken by a newer push) must never put an older commit back in production.
+      # Newer docs-only commits do not trigger CD (paths-ignore), so they do not count.
+      # Roll back by reverting on main instead (see docs/CD.md).
+      - name: Refuse to deploy a commit superseded on main
+        id: fresh
+        run: |
+          set -euo pipefail
+          git fetch --quiet origin main
+          head=$(git rev-parse FETCH_HEAD)
+          newer=$(git diff --name-only "$GITHUB_SHA" "$head" -- . ':(exclude,glob)docs/**' ':(exclude,glob)**/*.md')
+          if git merge-base --is-ancestor "$GITHUB_SHA" "$head" && [[ -z "$newer" ]]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::main moved to $head with newer deployable changes; skipping $GITHUB_SHA."
+            echo "Skipped: superseded by \`$head\`." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Deploy digest over pinned SSH (health check + rollback on VM)
+        if: steps.fresh.outputs.deploy == 'true'
+        env:
+          IMAGE: ${{ needs.build.outputs.image }}
+          REVISION: ${{ github.sha }}
+          HOST: ${{ secrets.ORACLE_HOST }}
+          SSH_USER: ${{ secrets.ORACLE_USER }}
+          SSH_KEY: ${{ secrets.ORACLE_SSH_PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.ORACLE_KNOWN_HOSTS }}
+          SSH_PORT: ${{ vars.ORACLE_SSH_PORT || '22' }}
+          APP_DIR: ${{ vars.ORACLE_APP_DIR || '/home/ubuntu/crop-mapping' }}
+        run: |
+          set -euo pipefail
+          [[ "$IMAGE" =~ ^ghcr\.io/loanhviet/crop-mapping@sha256:[0-9a-f]{64}$ ]]
+          [[ "$HOST" =~ ^[A-Za-z0-9][A-Za-z0-9.-]*$ ]]
+          [[ "$SSH_USER" =~ ^[a-z_][a-z0-9_-]*$ ]]
+          [[ "$SSH_PORT" =~ ^[0-9]{1,5}$ ]]
+          [[ "$APP_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]]
+          test -n "$SSH_KEY" && test -n "$KNOWN_HOSTS"
+          umask 077
+          ssh_dir=$(mktemp -d "$RUNNER_TEMP/oracle-ssh.XXXXXXXX")
+          trap 'rm -rf -- "$ssh_dir"' EXIT
+          printf '%s\n' "$SSH_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          compose_sha=$(cat compose.production.yaml compose.oracle.yaml | sha256sum | cut -d ' ' -f 1)
+          checkpoint_sha=$(python3 -c 'import json; print(json.load(open("assets/model-manifest.json"))["sha256"])')
+          [[ "$checkpoint_sha" =~ ^[0-9a-f]{64}$ ]]
+          # deploy.py is streamed over stdin: nothing is copied to or left on the VM.
+          ssh -i "$ssh_dir/key" -p "$SSH_PORT" -o BatchMode=yes -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$ssh_dir/known_hosts" \
+            -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=4 \
+            "$SSH_USER@$HOST" \
+            "python3 - --directory '$APP_DIR' --image '$IMAGE' --revision '$REVISION' --compose-sha '$compose_sha' --checkpoint-sha '$checkpoint_sha'" \
+            < deployment/deploy.py
+          # shellcheck disable=SC2016 # backticks are Markdown, not expansion
+          printf 'Oracle VM verified: `%s`\n\nCheckpoint: `%s`\n' "$IMAGE" "$checkpoint_sha" >> "$GITHUB_STEP_SUMMARY"

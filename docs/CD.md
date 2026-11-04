@@ -1,181 +1,182 @@
-# Manual production CD to EC2
+# CD: automatic update of the Oracle A1 deployment
 
-`deploy.yml` deploys a verified public Docker Hub AMD64 digest to the existing
-EC2 Compose project. It is manually triggered from `main` and uses the existing
-GitHub `production` environment. No SSH/deployment was executed while implementing
-this workflow. Local tests use simulated Docker/SSH-independent transactions.
-
-## One-time setup by the owner
-
-In GitHub Settings → Environments → production, restrict deployment branches to
-**main**; review any environment approval rules. The workflow also checks the Git
-ref. Give this environment the following secrets (not repository variables):
-
-| Secret | Meaning |
-| --- | --- |
-| `EC2_HOST` | Reachable EC2 public DNS name or IPv4 address |
-| `EC2_USER` | `ubuntu` |
-| `EC2_SSH_PRIVATE_KEY` | Dedicated deployment SSH private key, including its multiline header/footer |
-| `EC2_KNOWN_HOSTS` | Verified OpenSSH known_hosts entry for this server/port |
-
-Optional environment variable: `EC2_SSH_PORT` (default `22`). Verify the SSH host
-key fingerprint through your existing trusted SSH session or AWS console before
-saving known_hosts. Do not trust a key solely because ssh-keyscan returned it.
-For a non-default port use `[host]:port` known_hosts syntax. Password-protected
-interactive keys are not supported by this noninteractive workflow.
-
-Install the public key in ubuntu's authorized_keys yourself. A dedicated key can
-use `restrict` to disable forwarding and PTY while retaining command/SFTP access.
-The account must have noninteractive `sudo -n docker ...` permission. Docker sudo
-access is effectively root access: protect the production environment/key and
-review workflow changes. No sudo password is requested or stored by this workflow.
-### SSH access for this academic project
-
-The verified Security Group currently permits only the laptop IP. A standard
-GitHub-hosted runner has a different outbound IP, so the existing rule will block
-it. For the initial manual CD runs, the simplest option is a temporary rule for
-**only the current runner IPv4 /32**. This requires an owner action for each run;
-it is not unattended network automation. Keep the laptop rule in place.
-
-The workflow prints its IPv4 via `https://checkip.amazonaws.com` in the step log
-and summary, then waits up to seven minutes for TCP SSH reachability. While that
-step waits, use the AWS console: EC2 → instance → Security → attached Security
-Group → Edit inbound rules → Add rule: SSH (or the configured TCP port), source
-**Custom**, copy the exact runner IPv4 followed by `/32`, description identifying
-this workflow run. Save. Do not select My IP (that is the laptop) or Anywhere.
-After success, failure or cancellation, delete only this temporary runner rule
-and retain the laptop rule. Removal is manual; do not leave stale entries behind.
-If the wait expires, remove the rule and rerun with the new runner IP.
-
-The workflow has no AWS credentials and makes no Security Group changes. TCP
-reachability does not establish identity: SSH still requires the pinned host key
-and dedicated private key. Port 8000 stays localhost. Do not allow 0.0.0.0/0 or
-whole GitHub runner IP ranges. [GitHub documents the large changing runner IP
-ranges](https://docs.github.com/en/actions/reference/runners/github-hosted-runners#ip-addresses).
-For repeated unattended deployments, use a static-egress runner or a separately
-reviewed private access design later; neither is needed for this manual exercise.
-
-On EC2, use `/home/ubuntu/crop-mapping` with:
-
-- Existing Docker Engine/Compose v2 supporting `--wait` and multiple `--env-file`.
-- Python 3, readable Compose file, writable `.env` and repository directory.
-- `compose.production.yaml` byte-for-byte matching the reviewed workflow revision.
-  The workflow checks its hash and refuses drift; reconcile a deliberate difference
-  before deploying. It does not run git pull or replace server configuration.
-- `.env` containing the actual current deployment settings. Set
-  `CROP_DATA_DIR=/home/ubuntu/crop-map/data`, `CROP_BIND=127.0.0.1`,
-  `CROP_PORT=8000`, and `CROP_RESULTS_VOLUME` to the **existing actual volume name**.
-  Preserve CPU/thread/memory settings and pin the current CROP_IMAGE by digest.
-  Confirm project `crop-mapping-production`, service `crop-map`, and its mount IDs.
-
-Read-only preflight examples in your existing SSH session:
-
-```bash
-cd /home/ubuntu/crop-mapping
-sudo -n docker compose version
-sudo -n docker compose -p crop-mapping-production --env-file .env \
-  -f compose.production.yaml ps
-sudo -n docker inspect "$(sudo -n docker compose -p crop-mapping-production \
-  --env-file .env -f compose.production.yaml ps -q crop-map)" \
-  --format '{{json .Mounts}}'
-curl --fail http://127.0.0.1:8000/api/health
-```
-
-Do not guess a new results-volume name. Script preflight compares resolved Compose
-mounts to the running container, including the volume name and imagery path. It
-refuses first-time bootstrap, missing imagery, unhealthy baseline, absent previous
-registry digest, changed mounts or changed localhost binding. This protects the
-existing project rather than creating a parallel deployment accidentally.
-
-## Verified baseline supplied by the owner
-
-The owner verified Ubuntu 24.04 AMD64, working `sudo -n docker`, and healthy
-`crop-mapping-production-crop-map-1` under `/home/ubuntu/crop-mapping` using `.env`.
-The baseline image is:
+`.github/workflows/cd.yml` turns every push to `main` into:
 
 ```text
-loanhviet070105/crop-mapping@sha256:e4001dc8787c610981c08e1cd52bd14a9afd5e8606dc6aaacf9eaa56b6945d71
+push main ─► CI (ci.yml: pytest, Compose, Dockerfile, native ARM64 build+smoke)
+          ─► build: native ubuntu-24.04-arm runner, Dockerfile target `runtime`
+                     push ghcr.io/loanhviet/crop-mapping:sha-<commit>  (deployed by @sha256 digest)
+          ─► deploy: SSH (pinned host key) → deployment/deploy.py on the VM
+                     pull digest → verify arm64 + revision label → compose up --wait
+                     → container healthy + /api/health checkpoint SHA256 + mounts unchanged
+                     → on any failure: restore previous digest and verify it
 ```
 
-Imagery is `/home/ubuntu/crop-map/data`; the persistent results volume is
-`crop-mapping-results`. API is `127.0.0.1:8000/api/health`, with checkpoint SHA256
-`92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733`.
-These are owner-provided observations, not a connection made during this change.
-Do not create or migrate to `.env.production`. The helper reads/updates `.env`.
-For a same-digest deployment it verifies identity and health and skips Compose up,
-so the current container is not recreated. Other env settings and mount identities
-remain intact; successful writes normalize only CROP_IMAGE to the pinned digest.
+The VM never builds anything, so OpenDubber only sees a layer pull and a
+single-container recreate. The image contains no checkpoint, imagery, results
+or secrets: weights and data stay on the VM as read-only binds.
 
-## First workflow test
+**Auto-deploy is off by default.** The `deploy` job runs only when the
+repository variable `ORACLE_AUTO_DEPLOY` is `true`, or for a manual
+*Run workflow* with **deploy** ticked. Until then a push to `main` runs CI and
+publishes the GHCR image only. Docs-only pushes (`docs/**`, `*.md`) skip CD.
 
-After review/merge, select Actions → Deploy production digest → Run workflow →
-**main**. Use the full `sha256:...` digest and full 40-character source revision
-from a successful Phase 3 publishing run. Start with the currently running verified
-digest for a low-impact idempotency check, then test a new verified release.
-For the owner-verified baseline, image_digest is
-`sha256:e4001dc8787c610981c08e1cd52bd14a9afd5e8606dc6aaacf9eaa56b6945d71`.
-Obtain its full source revision from the successful publishing run or, in your
-existing trusted EC2 SSH session, inspect the current container label:
+## What was removed and why
+
+| Removed | Reason |
+| --- | --- |
+| `publish.yml` (Docker Hub AMD64 release with baked checkpoint) | Publishing is now one step inside CD; Oracle is ARM64 and mounts weights |
+| `deploy.yml` (manual EC2 deploy, manual Security Group /32 per run) | Replaced by `cd.yml`; the manual allowlist step made unattended CD impossible |
+| CI on `push` to `main` | `cd.yml` calls `ci.yml` itself; avoids running CI twice per push |
+
+`deployment/deploy.py` keeps its tested transaction (lock, pull-before-swap,
+pending/last-success state, rollback) and was retargeted to Oracle:
+GHCR digest, `arm64`, project `crop-mapping-oracle`, `.env.oracle`, both
+Compose files, read-only data **and** weights binds, loopback port from Compose.
+The Dockerfile `release` target and `scripts/build_image.sh` remain for local
+AMD64 builds; no workflow uses them.
+
+## Safety properties
+
+- **Concurrency:** one workflow-level group, `cancel-in-progress: false`.
+  Runs execute in push order; a newer pending run replaces older pending ones;
+  a running deployment is never cancelled. On the VM, `deploy.py` also takes an
+  exclusive `flock` and refuses to overlap a deployment already in progress.
+- **No old-over-new:** right before SSH, the deploy job refuses (skips with a
+  warning) if `main` has moved on with newer *deployable* changes, or if the commit
+  is no longer an ancestor of `main`. This covers re-runs of old runs. Newer
+  docs-only commits do not count, because they never trigger CD.
+- **Only after CI passes:** `build` needs the reusable `ci` job and `deploy` needs
+  `build`; both have the implicit `success()` condition, so any CI failure stops CD.
+- **Immutability:** deploy uses the digest returned by the build job, never a tag.
+- **Fail closed before changing anything:** Compose files on the VM must hash to
+  the commit's `compose.production.yaml` + `compose.oracle.yaml`; mounts, results
+  volume name and loopback port must match the running container; candidate must
+  be `linux/arm64` with the commit's `org.opencontainers.image.revision` label.
+- **Rollback:** if `up --wait` (180 s), health, image identity, mounts or the
+  checkpoint SHA256 check fails, the previous digest is restarted and verified.
+  If rollback itself fails the job reports `ROLLBACK FAILED` and leaves
+  `.deployment/pending.json` with the previous digest for manual recovery.
+  Rollback runs even if the SSH session dropped (the job was cancelled or timed out):
+  output happens only after the restore.
+  *Rehearsed with real Docker/Compose (local AMD64, separate project/volume):*
+  v0→v1 succeeded in 8 s; a release whose container exits was detected by
+  `up --wait` and v1 was restored and re-verified (`.env.oracle` unchanged);
+  a wrong-architecture image was refused before any change.
+- **Secrets:** SSH material lives only in the `oracle` environment (restricted to
+  `main`); the key file is mode 600 in `$RUNNER_TEMP` and deleted on exit. GHCR
+  push uses the job's short-lived `GITHUB_TOKEN` (`packages: write` only on the
+  build job). No registry credential exists on the VM if the package is public.
+- **Supply chain:** third-party Docker actions are pinned to commit SHAs.
+- **Isolation from OpenDubber:** separate Compose project/network/volume; only
+  service `crop-map` of project `crop-mapping-oracle` is touched; no `prune`,
+  no `down -v`, no daemon or Caddy change; loopback-only port; 2 CPU / 2 GiB /
+  256 PID caps; no build on the VM; pull refused if the Docker filesystem has
+  < 5 GiB free.
+
+Known limits: a deploy recreates the single container, so the site is briefly
+down while it starts (8 s in the local rehearsal; not yet measured on A1).
+The first pull and any dependency-lock change download ~1–2 GB once, which
+briefly uses VM bandwidth/IO next to OpenDubber. Two instances must
+not share the results volume, so no blue/green. Old images are kept for
+rollback; delete only `ghcr.io/loanhviet/crop-mapping` images you no longer need.
+
+## One-time setup (owner)
+
+### 1. GitHub environment `oracle`
+
+Settings → Environments → **New environment** `oracle`. Create it *before* the
+first deploy: if a deploy job runs first, GitHub auto-creates the environment
+without any branch restriction.
+
+- Deployment branches and tags → **Selected branches** → `main`.
+- Optional: *Required reviewers* = yourself, if every deploy should wait for a click.
+- **Environment secrets:**
+
+| Secret | Value |
+| --- | --- |
+| `ORACLE_HOST` | VM public IPv4 or DNS name used for SSH (not behind a proxy) |
+| `ORACLE_USER` | `ubuntu` |
+| `ORACLE_SSH_PRIVATE_KEY` | The *dedicated* CD private key (full text incl. header/footer, no passphrase) |
+| `ORACLE_KNOWN_HOSTS` | Verified known_hosts line(s) for the VM, e.g. from your existing `~/.ssh/known_hosts` |
+
+- **Environment variables (optional):** `ORACLE_SSH_PORT` (default `22`),
+  `ORACLE_APP_DIR` (default `/home/ubuntu/crop-mapping`).
+
+Create the key locally, never reuse your personal Oracle key:
 
 ```bash
-sudo -n docker inspect crop-mapping-production-crop-map-1 \
-  --format '{{index .Config.Labels "org.opencontainers.image.revision"}}'
+ssh-keygen -t ed25519 -N '' -C crop-mapping-oracle-cd -f ~/.ssh/crop-mapping-oracle-cd
+# On the VM, append the PUBLIC key to ~ubuntu/.ssh/authorized_keys with restrictions:
+#   restrict ssh-ed25519 AAAA... crop-mapping-oracle-cd
+# Known hosts (verify the fingerprint against the OCI console / your trusted session):
+ssh-keygen -F <VM_IP> -f ~/.ssh/known_hosts      # copy the matching line(s)
 ```
 
-The workflow verifies this source revision against its immutable published tag;
-do not use the CD workflow's own commit as the image source unless it was built
-and published. Watch the runner-IP step and add the temporary /32 rule as above.
+`restrict` disables forwarding/PTY. The key can still run commands as `ubuntu`,
+which has `sudo -n docker` (root-equivalent): treat it as a production root key,
+rotate it if leaked, and review workflow changes on `main`.
 
-The workflow verifies that the source commit is an ancestor of checked-out main and
-that its public `sha-<full-commit>-amd64` tag resolves to the exact supplied digest.
-The digest must come from the successful publishing run; tag association is not a
-cryptographic CI attestation. SSH uses a pinned known_hosts file, strict checking,
-a noninteractive key, and no agent forwarding. Only the reviewed deployment helper
-is copied into a private temporary directory; model/data/credentials are not copied.
+### 2. Repository variable (activation switch)
 
-The helper takes a nonblocking host lock, validates current service/volume/bind
-identities, and saves the old image digest/checkpoint. It pulls the new digest
-before changing containers and confirms linux/amd64 plus the image's source label.
-It updates only `crop-map` using Compose `up --no-build --pull never --wait` with a
-180-second health timeout. It then checks the running image ID, unchanged mounts,
-healthy state, and localhost `/api/health` for `status=ok`, `model=TSViT`, `device=cpu`
-and the SHA256 in the checked-out model manifest. Success atomically updates only
-CROP_IMAGE in `.env` and writes `.deployment/last-success.json`.
+Settings → Secrets and variables → Actions → **Variables** →
+`ORACLE_AUTO_DEPLOY` = `true` **only after the bootstrap below is verified.**
+Delete it (or set `false`) to pause auto-deploy instantly.
 
-Evidence: keep the successful workflow summary (digest/checkpoint), service `ps`,
-health JSON, and existing SSH-tunnel API confirmation. This is a health/model
-identity deployment gate, not a new real-satellite inference or accuracy test.
+### 3. Network
 
-## Rollback and recovery
+GitHub-hosted runner IPs change, so OCI must allow TCP 22 from the internet for
+unattended deploys (the default OCI security list does). Keep SSH key-only
+(`PasswordAuthentication no`, default on Oracle Ubuntu images); app port 18080
+stays loopback-only behind Caddy. If you want SSH closed to the internet later,
+put the runner on a private network (e.g. Tailscale action) — not needed now.
 
-If update/verification fails after switching, the helper runs the same Compose
-update with the previous **cached digest**, waits for health and verifies the old
-checkpoint/mounts. It restores the original env file and leaves the job failed even
-when rollback succeeds. It never runs down, removes volumes, prunes images, rebuilds
-images or modifies imagery. Old/new containers use the same writable results
-volume; rollback does not undo application writes. Back up important results using
-your established procedure and review format compatibility before future changes.
+### 4. Old secrets no longer used by any workflow
 
-A pull or preflight failure leaves the running deployment alone. If automatic
-rollback fails, inspect `.deployment/pending.json` for the exact previous digest
-and checkpoint, plus `docker compose logs`. For an interrupted/failed transaction,
-use a temporary image override, retaining the original project/env/volume:
+`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, `CHECKPOINT_READ_TOKEN`,
+`CHECKPOINT_REPOSITORY`, `CHECKPOINT_ASSET_ID` and the `production`
+environment's `EC2_*` secrets. Remove them once the EC2 host is retired.
 
-```bash
-cd /home/ubuntu/crop-mapping
-# Read previous from pending.json; do not guess or substitute a mutable tag.
-python3 -c 'import json; print("CROP_IMAGE=" + json.load(open(".deployment/pending.json"))["previous"])' \
-  > .deployment/recovery.env
-sudo -n docker compose -p crop-mapping-production --env-file .env \
-  --env-file .deployment/recovery.env -f compose.production.yaml \
-  up -d --no-build --pull never --wait --wait-timeout 180 crop-map
-curl --fail http://127.0.0.1:8000/api/health
-```
+## Bootstrap the VM (manual, once, needs approval)
 
-Verify the pending file's previous checkpoint and running image/mounts, then pin
-CROP_IMAGE in `.env` to that restored digest. Remove recovery.env only
-after verification. Do not remove lock/state during an active deployment. Host
-lock plus Actions concurrency serialize updates. Signal handling attempts rollback
-on interruption, but host power loss, SIGKILL or network loss can prevent completion;
-pending.json supports manual recovery. There is no zero-downtime guarantee for this
-single-container service, and no background auto-deployment trigger is enabled.
+CD updates an existing deployment; it refuses to create the first container.
+
+1. On the VM, create `/home/ubuntu/crop-mapping/` containing the commit's
+   `compose.production.yaml` and `compose.oracle.yaml`, `.env.oracle` (from
+   `deployment/oracle.env.example`, `chmod 600`, absolute `CROP_DATA_DIR` /
+   `CROP_WEIGHTS_DIR`), `data/` and `weights/` (`best.pth`, `config.yaml`,
+   `LICENSE.txt`). See [ORACLE_ARM64_DEPLOYMENT.md](ORACLE_ARM64_DEPLOYMENT.md)
+   for asset checks, port/volume preflight and Caddy.
+2. Actions → **CD Oracle** → Run workflow on `main`, *deploy* unticked. The
+   summary shows `ghcr.io/loanhviet/crop-mapping@sha256:…`.
+3. GitHub → Packages → `crop-mapping` → Package settings → **Change visibility →
+   Public** (contains no checkpoint/data/secret), so the VM pulls anonymously.
+4. On the VM:
+
+   ```bash
+   cd /home/ubuntu/crop-mapping
+   C="sudo docker compose -p crop-mapping-oracle --env-file .env.oracle -f compose.production.yaml -f compose.oracle.yaml"
+   sudo docker pull ghcr.io/loanhviet/crop-mapping@sha256:<digest>
+   sed -i 's#^CROP_IMAGE=.*#CROP_IMAGE=ghcr.io/loanhviet/crop-mapping@sha256:<digest>#' .env.oracle
+   $C run --rm --no-deps crop-map python scripts/verify_assets.py --profile model
+   $C up -d --no-build --wait --wait-timeout 180 crop-map
+   curl -fsS http://127.0.0.1:18080/api/health
+   ```
+
+5. Test CD without auto-deploy: Run workflow with *deploy* ticked. Same digest is
+   an idempotent verify; a new commit exercises the full swap.
+6. Set `ORACLE_AUTO_DEPLOY=true`.
+
+## Operating
+
+- **Compose change in a commit:** deploy fails closed (`Remote Compose differs`)
+  until you copy both Compose files from that commit to the VM. Intentional:
+  infrastructure changes are applied by a human.
+- **Manual rollback to an older version:** `git revert` the bad commit on `main`
+  (goes through CI and CD like any change). Re-running an old run does **not**
+  deploy it (freshness guard). Emergency on the VM: set `CROP_IMAGE` in
+  `.env.oracle` to the previous digest from `.deployment/last-success.json` and
+  run `$C up -d --no-build --wait crop-map`.
+- **State on the VM:** `.deployment/last-success.json`, `.deployment/pending.json`
+  (present only during or after a failed rollback), `.deployment/lock`.
+- **Logs:** `$C logs --tail=100 crop-map`.

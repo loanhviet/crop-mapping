@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
 # Pinned base index: CPython 3.13.18, Debian Bookworm (glibc 2.36).
-# This phase validates CPU linux/amd64 only.
+# Runtime supports linux/amd64 and linux/arm64 with architecture-specific locks.
 FROM python:3.13.18-slim-bookworm@sha256:281d39ff02e3b389401586134ff9e6572954687822a58055ec07a60ded4e0b7f AS runtime
 
 ARG TARGETARCH
@@ -25,11 +25,11 @@ RUN apt-get update \
     && mkdir -p /app/data /app/weights /app/results /app/licenses \
     && chown cropmap:cropmap /app/results
 
-COPY requirements/locks/linux-amd64.txt ./requirements/locks/linux-amd64.txt
-RUN --mount=type=cache,id=crop-mapping-pip-amd64,target=/root/.cache/pip \
-    test "$TARGETARCH" = amd64 \
+COPY requirements/locks/ ./requirements/locks/
+RUN --mount=type=cache,id=crop-mapping-pip-${TARGETARCH},target=/root/.cache/pip \
+    case "$TARGETARCH" in amd64|arm64) ;; *) exit 1 ;; esac \
     && python -m pip install --only-binary=:all: --require-hashes \
-       -r requirements/locks/linux-amd64.txt \
+       -r "requirements/locks/linux-${TARGETARCH}.txt" \
     && python -m pip check \
     && python -c "import torch, rasterio, pyproj; assert torch.version.cuda is None, 'CPU-only PyTorch required'"
 
@@ -43,6 +43,9 @@ LABEL org.opencontainers.image.title="Crop Mapping" \
 
 COPY app.py inference.py imagery.py model.py predictions.py ./
 COPY web/ ./web/
+COPY scripts/verify_assets.py ./scripts/verify_assets.py
+COPY assets/model-manifest.json ./assets/model-manifest.json
+COPY weights/config.yaml ./weights/config.yaml
 COPY weights/LICENSE.txt ./licenses/TSViT-APACHE-2.0.txt
 COPY THIRD_PARTY_NOTICES.md ./licenses/THIRD_PARTY_NOTICES.md
 USER cropmap

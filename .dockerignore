@@ -31,3 +31,8 @@ web/benchmarks/
 !weights/config.yaml
 !assets/
 !assets/model-manifest.json
+
+# ARM64 lock and the shared startup integrity verifier.
+!requirements/locks/linux-arm64.txt
+!scripts/
+!scripts/verify_assets.py

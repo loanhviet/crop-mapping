@@ -301,19 +301,18 @@ From the native environment in section 3:
 
 ### GitHub Actions
 
-| Workflow | Trigger | Automated checks/actions |
+| Workflow | Trigger | What it does |
 | --- | --- | --- |
-| `ci.yml` | Push, pull request, or reusable workflow call | Lightweight pytest, both Compose configurations, Dockerfile build checks |
-| `publish.yml` | Manual dispatch on `main` | CI gate, private checkpoint download, SHA256/config verification, AMD64 release build, CPU model initialization, Docker Hub push and registry digest comparison |
-| `deploy.yml` | Manual dispatch on `main`, using the `production` environment | Verify source/tag/digest, SSH to the existing EC2 host, Compose update, health/checkpoint verification, and attempted rollback on deployment failure |
+| `ci.yml` | Pull request, push to non-`main` branches, called by `cd.yml` | Lightweight pytest, all Compose configurations, Dockerfile check, native ARM64 runtime build and CPU smoke |
+| `cd.yml` | Push to `main` (code changes), or manual dispatch | CI gate → native ARM64 build → `ghcr.io/loanhviet/crop-mapping:sha-<commit>` → SSH deploy to the Oracle VM by digest → health/checkpoint verification → automatic rollback |
 
-Publishing uses `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, and read-only access to the private GitHub Release checkpoint asset. Tags use `sha-<full-commit>-amd64`; deployment uses an exact `@sha256:...` reference. The workflows reject existing release tags, while registry-side immutability must be managed separately.
-
-CI, publishing, and an actual change to a new image digest have succeeded: [PR #6](https://github.com/loanhviet/crop-mapping/pull/6), [publish run](https://github.com/loanhviet/crop-mapping/actions/runs/41193793743), and [CD run](https://github.com/loanhviet/crop-mapping/actions/runs/41193983425). Real EC2 inference before and after that metadata-only release completed with 36 valid pixels, 0.36 ha, and all five export formats; this is a recorded functional result, not an accuracy claim or a live uptime guarantee.
-
-EC2, Docker, imagery, Secrets, and initial SSH access are provisioned manually. CD requires manually allowing the current GitHub runner's SSH source `/32` and removing that temporary rule afterward. Publish verifies model initialization; CD verifies health/model identity. Neither workflow currently performs the real satellite HTTP smoke test automatically. Rollback is covered by simulated tests and has not been exercised on EC2.
-
-See [CI.md](docs/CI.md) for artifact access and registry setup, [CD.md](docs/CD.md) for deployment requirements and recovery, and [BRANCHING.md](docs/BRANCHING.md) for the contribution workflow. Some detailed guides retain historical phase-specific validation notes; the successful runs above identify the verified release.
+The deploy stage is **disabled until** the repository variable
+`ORACLE_AUTO_DEPLOY=true` is set (manual dispatch with *deploy* ticked works
+earlier). Secrets live in the `oracle` GitHub environment. See [CI.md](docs/CI.md),
+[CD.md](docs/CD.md) for setup, Secrets and rollback, and
+[ORACLE_ARM64_DEPLOYMENT.md](docs/ORACLE_ARM64_DEPLOYMENT.md) for the VM runbook.
+The earlier Docker Hub/EC2 workflows were removed; their recorded runs remain
+in the Actions history.
 
 ## 10. Troubleshooting and Limitations
 
