@@ -75,7 +75,7 @@ AMD64 builds; no workflow uses them.
   < 5 GiB free.
 
 Known limits: a deploy recreates the single container, so the site is briefly
-down while it starts (8 s in the local rehearsal; not yet measured on A1).
+down while it starts (measured on A1: healthy 6 s after start; the whole CD deploy job took 11 s).
 The first pull and any dependency-lock change download ~1–2 GB once, which
 briefly uses VM bandwidth/IO next to OpenDubber. Two instances must
 not share the results volume, so no blue/green. Old images are kept for
