@@ -25,6 +25,7 @@ import torch
 import yaml
 
 from model import TSViT
+from scripts.verify_assets import verify_model
 
 ROOT = Path(__file__).resolve().parent
 DATA = Path(os.getenv('CROP_DATA_DIR', ROOT / 'data'))
@@ -201,6 +202,11 @@ def preprocess(image, doy):
 
 class Engine:
     def __init__(self):
+        try:
+            manifest = json.loads((ROOT / "assets/model-manifest.json").read_text())
+            verify_model(WEIGHTS, manifest)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            raise RuntimeError(f"Model asset verification failed: {error}") from error
         torch.set_num_threads(int(os.getenv('CROP_THREADS', '4')))
         requested = os.getenv('CROP_DEVICE', 'cpu')
         if requested.startswith('cuda') and not torch.cuda.is_available():

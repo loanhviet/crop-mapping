@@ -1,0 +1,8 @@
+# Example for a HOST-installed Caddy; merge only after reviewing the live configuration.
+# Do not replace the existing Caddyfile or OpenDubber routes with this file.
+crop.loanhviet.dev {
+    request_body {
+        max_size 1MB
+    }
+    reverse_proxy 127.0.0.1:18080
+}

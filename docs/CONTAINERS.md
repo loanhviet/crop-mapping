@@ -29,7 +29,11 @@ The CI profile needs PASTIS patches 10000/10003 and metadata. Full Normandy is u
 
 ## Pull and run after approved publication
 
-`compose.yaml` remains unchanged for local builds. `compose.production.yaml` has no build step. Its `unpublished` image default is intentionally not a real release claim: replace it before pulling.
+`compose.yaml` supports local builds. Both Compose files honor `CROP_RESULTS_VOLUME`
+(default `crop-mapping-results`); preserve the actual existing volume name in local
+configuration when changing checkout or Compose project name.
+`compose.production.yaml` has no build step. Its `unpublished` image default is
+intentionally not a real release claim: replace it before pulling.
 
 ```bash
 cp deployment/production.env.example .env.production
