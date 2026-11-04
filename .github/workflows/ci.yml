@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    # main is gated by cd.yml, which calls this workflow before building/deploying.
+    branches-ignore: [main]
   pull_request:
   workflow_call:
 
@@ -32,5 +34,28 @@ jobs:
         run: |
           docker compose config --quiet
           docker compose -f compose.production.yaml config --quiet
+          docker compose --env-file deployment/oracle.env.example -f compose.production.yaml -f compose.oracle.yaml config --quiet
       - name: Check development Dockerfile
         run: docker buildx build --check --platform linux/amd64 --target development .
+
+  arm64-runtime:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Build native ARM64 runtime without external assets
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          target: runtime
+          platforms: linux/arm64
+          load: true
+          tags: crop-mapping:arm64-ci
+          # Shared with cd.yml so the deploy build reuses these layers.
+          cache-from: type=gha,scope=arm64-runtime
+          cache-to: type=gha,scope=arm64-runtime,mode=max
+      - name: Check native libraries and CPU tensor execution
+        run: |
+          docker run --rm --network none --entrypoint python crop-mapping:arm64-ci -c \
+            "import platform,torch,rasterio,pyproj; assert platform.machine()=='aarch64'; assert torch.version.cuda is None; assert (torch.ones(2,2) @ torch.ones(2,2)).sum().item()==8; print(torch.__version__, rasterio.__version__, pyproj.__version__)"

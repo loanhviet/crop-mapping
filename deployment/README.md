@@ -1,4 +1,12 @@
-# Deployment compatibility and future work
+# Deployment entry points
+
+For Oracle A1 ARM64, use [the OCI guide](../docs/ORACLE_ARM64_DEPLOYMENT.md)
+and [CD](../docs/CD.md). `cd.yml` builds the ARM64 runtime image on a GitHub
+runner, pushes it to GHCR and runs `deploy.py` on the VM over SSH (health check
+and rollback). The OCI Compose overlay mounts verified weights outside the image.
+The former Docker Hub publish and EC2 deploy workflows were removed.
+
+## Historical EC2 deployment context
 
 The local Compose is preserved. Phase 2 pins the Docker base/frontend and installs hash-locked runtime wheels for CPU AMD64; see [container workflow](../docs/CONTAINERS.md). Local image tag: `crop-map:prepared`; build context: repository root. CPU inference only in the supplied image. Health calls `/api/health`; actual Phase 2 execution status is recorded in [container validation](../docs/CONTAINER_VALIDATION.md).
 
