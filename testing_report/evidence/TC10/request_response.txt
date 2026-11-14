@@ -1,0 +1,43 @@
+>>> POST /api/analyses
+    body: {"season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.35949729186176166, 49.30719581531416], [-0.3597279180746521, 49.302882738106625], [-0.366323586584366, 49.303033345123495], [-0.36609353487300544, 49.30734644511522]]]}}
+<<< HTTP 202  (27.5 ms)
+    {'id': '32693864-b462-4254-8357-e36cfee04990', 'cached': False}
+
+>>> GET /api/analyses/32693864-b462-4254-8357-e36cfee04990
+<<< HTTP 200  (- ms)
+    {'status': 'error', 'message': 'Analysis failed. Please retry or check the server log.', 'progress': 10}
+
+>>> GET /api/analyses/32693864-b462-4254-8357-e36cfee04990/download/tif
+<<< HTTP 409  (2.7 ms)
+    {'detail': 'This analysis has no completed results yet.'}
+
+>>> POST /api/analyses
+    body: {"season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.35949729186176166, 49.30719581531416], [-0.3597279180746521, 49.302882738106625], [-0.366323586584366, 49.303033345123495], [-0.36609353487300544, 49.30734644511522]]]}}
+<<< HTTP 202  (17.4 ms)
+    {'id': 'c80c2dbb-5cd4-40ed-b999-a1026855c632', 'cached': False}
+
+>>> GET /api/analyses/c80c2dbb-5cd4-40ed-b999-a1026855c632
+<<< HTTP 200  (- ms)
+    {'status': 'error', 'message': 'Analysis failed. Please retry or check the server log.', 'progress': 0}
+
+>>> POST /api/analyses
+    body: {"season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.35949729186176166, 49.30719581531416], [-0.3597279180746521, 49.302882738106625], [-0.366323586584366, 49.303033345123495], [-0.36609353487300544, 49.30734644511522]]]}}
+<<< HTTP 202  (30.2 ms)
+    {'id': 'd40f32b7-7b4f-4d7a-822f-350c6afa681a', 'cached': False}
+
+>>> GET /api/analyses/d40f32b7-7b4f-4d7a-822f-350c6afa681a
+<<< HTTP 200  (- ms)
+    {'status': 'error', 'message': 'Analysis failed. Please retry or check the server log.', 'progress': 0}
+
+>>> POST /api/analyses
+    body: {"season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.35949729186176166, 49.30719581531416], [-0.3597279180746521, 49.302882738106625], [-0.366323586584366, 49.303033345123495], [-0.36609353487300544, 49.30734644511522]]]}}
+<<< HTTP 202  (17.4 ms)
+    {'id': '86268197-cd61-4471-9d00-f216af8af8ce', 'cached': False}
+
+>>> GET /api/analyses/86268197-cd61-4471-9d00-f216af8af8ce
+<<< HTTP 200  (- ms)
+    {'status': 'done', 'message': 'All selected pixels labeled', 'progress': 100}
+
+>>> GET /api/health
+<<< HTTP 200  (4.0 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}

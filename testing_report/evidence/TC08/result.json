@@ -1,0 +1,46 @@
+{
+  "id": "TC08",
+  "name": "Out-of-Distribution Behavior",
+  "type": "AI Test",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Mô hình chạy ổn định trên dữ liệu ngoài phân phối huấn luyện và thể hiện độ bất định cao hơn (mean confidence thấp hơn ít nhất 0.05 so với in-distribution).",
+  "actual": "Mean confidence ID=0.8782, Normandy=0.9417; tỉ lệ pixel confidence<0.5: ID=0.0289, Normandy=0.0115.",
+  "notes": "Normandy là dữ liệu THEIA L2A do hệ thống tự chuẩn bị (pipeline khác PASTIS) nên được coi là domain shift; không có ground truth nên KHÔNG đánh giá độ chính xác, chỉ đánh giá hành vi (confidence, phân bố lớp). Đây là quan sát thực nghiệm, không phải kết luận về độ chính xác.",
+  "metrics": {
+    "in_distribution": {
+      "source": "8 patch PASTIS split test: [10003, 10010, 20000, 20004, 30001, 30004, 40002, 40005]",
+      "windows": 200,
+      "pixels": 115200,
+      "mean_confidence": 0.8782,
+      "median_confidence": 0.9595,
+      "share_conf_below_0_5": 0.0289,
+      "share_conf_below_0_7": 0.1648
+    },
+    "domain_shift": {
+      "source": "Region 900010: 100 cửa sổ 24x24 chọn ngẫu nhiên (seed 0) trong 7665 cửa sổ hợp lệ",
+      "windows": 100,
+      "pixels": 57600,
+      "mean_confidence": 0.9417,
+      "median_confidence": 0.9983,
+      "share_conf_below_0_5": 0.0115,
+      "share_conf_below_0_7": 0.0782
+    }
+  },
+  "checks": [
+    {
+      "check": "Suy luận trên dữ liệu domain shift không lỗi",
+      "expected": "không exception",
+      "actual": "57600 pixel",
+      "passed": true
+    },
+    {
+      "check": "Mô hình thể hiện độ bất định cao hơn trên domain shift (mean confidence thấp hơn ít nhất 0.05)",
+      "expected": ">= 0.05",
+      "actual": -0.0635,
+      "passed": false
+    }
+  ],
+  "duration_seconds": 118.82,
+  "finished_at": "2026-11-14T20:42:07"
+}

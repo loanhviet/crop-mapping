@@ -1,0 +1,18 @@
+{
+  "patch_id": 10003,
+  "windows": 25,
+  "variants": [
+    "clean",
+    "reverse_images",
+    "shuffle_images",
+    "reverse_pairs",
+    "doy_-60",
+    "doy_-30",
+    "doy_30",
+    "doy_60",
+    "duplicate_first"
+  ],
+  "seed": 20261114,
+  "checkpoint": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+  "ground_truth": "TARGET channel 0, top-left 120x120; void=19; giữ background"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "TC07",
+  "name": "Temporal Data Consistency",
+  "type": "AI Test",
+  "environment": "Local",
+  "status": "PASS",
+  "expected": "Kết quả tất định; mất 25% mốc thời gian làm OA giảm <= 5 điểm %, mất 50% giảm <= 15 điểm %.",
+  "actual": "Tất định: True; OA đầy đủ=0.8734, mất 25% → 0.8826, 50% → 0.8439, 75% → 0.763. mất mùa hè (DOY 152–243): 0.6231; mất mùa xuân (DOY 60–151): 0.8628; mất mùa đông (DOY 1–59 & 335–365): 0.8752; chỉ giữ nửa đầu năm (DOY <= 182): 0.7456",
+  "notes": "Thiếu mốc thời gian mô phỏng mây che/mất ảnh. Các mốc bị loại được bỏ cùng DOY tương ứng (pipeline tự pad về 60). Kết quả theo mùa cho thấy giai đoạn nào quan trọng với mô hình.",
+  "metrics": {
+    "acquisitions": 43,
+    "clean_oa": 0.8734,
+    "mean_oa_random_drop": {
+      "0.1": 0.8751,
+      "0.25": 0.8826,
+      "0.5": 0.8439,
+      "0.75": 0.763
+    },
+    "seasonal": {
+      "mất mùa hè (DOY 152–243)": 0.6231,
+      "mất mùa xuân (DOY 60–151)": 0.8628,
+      "mất mùa đông (DOY 1–59 & 335–365)": 0.8752,
+      "chỉ giữ nửa đầu năm (DOY <= 182)": 0.7456
+    }
+  },
+  "checks": [
+    {
+      "check": "Tính tất định: 2 lần suy luận cùng input cho kết quả giống hệt",
+      "expected": "identical",
+      "actual": "0 pixel khác",
+      "passed": true
+    },
+    {
+      "check": "Mất ngẫu nhiên 25% mốc: OA giảm <= 0.05",
+      "expected": "<= 0.05",
+      "actual": -0.0092,
+      "passed": true
+    },
+    {
+      "check": "Mất ngẫu nhiên 50% mốc: OA giảm <= 0.15",
+      "expected": "<= 0.15",
+      "actual": 0.0295,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 93.49,
+  "finished_at": "2026-11-14T20:38:02"
+}

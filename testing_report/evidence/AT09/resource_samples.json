@@ -1,0 +1,145 @@
+[
+  {
+    "seconds": 0.024485469002684113,
+    "rss_mb": 319.48046875,
+    "cpu_percent": 158.53541180516376,
+    "health_status": 200,
+    "health_latency_ms": 3.691,
+    "job_status": "queued",
+    "progress": 0,
+    "completed_windows": 0,
+    "message": "Waiting to start analysis"
+  },
+  {
+    "seconds": 5.03256605000206,
+    "rss_mb": 469.70703125,
+    "cpu_percent": 244.40501309899997,
+    "health_status": 200,
+    "health_latency_ms": 4.023,
+    "job_status": "running",
+    "progress": 0,
+    "completed_windows": 6,
+    "message": "Identifying crops · 6 / 9216 windows"
+  },
+  {
+    "seconds": 10.039398345001246,
+    "rss_mb": 426.1015625,
+    "cpu_percent": 396.2585289668312,
+    "health_status": 200,
+    "health_latency_ms": 3.296,
+    "job_status": "running",
+    "progress": 0,
+    "completed_windows": 20,
+    "message": "Identifying crops · 20 / 9216 windows"
+  },
+  {
+    "seconds": 15.045940858002723,
+    "rss_mb": 464.55859375,
+    "cpu_percent": 397.47989652183594,
+    "health_status": 200,
+    "health_latency_ms": 2.792,
+    "job_status": "running",
+    "progress": 0,
+    "completed_windows": 36,
+    "message": "Identifying crops · 36 / 9216 windows"
+  },
+  {
+    "seconds": 20.051985183003126,
+    "rss_mb": 464.2578125,
+    "cpu_percent": 397.1199356090082,
+    "health_status": 200,
+    "health_latency_ms": 3.239,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 52,
+    "message": "Identifying crops · 52 / 9216 windows"
+  },
+  {
+    "seconds": 25.060445347000496,
+    "rss_mb": 475.06640625,
+    "cpu_percent": 396.7287219898995,
+    "health_status": 200,
+    "health_latency_ms": 3.168,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 69,
+    "message": "Identifying crops · 69 / 9216 windows"
+  },
+  {
+    "seconds": 30.068619504003436,
+    "rss_mb": 478.04296875,
+    "cpu_percent": 397.3503990905304,
+    "health_status": 200,
+    "health_latency_ms": 3.883,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 84,
+    "message": "Identifying crops · 84 / 9216 windows"
+  },
+  {
+    "seconds": 35.07575547900342,
+    "rss_mb": 447.79296875,
+    "cpu_percent": 398.23164578629337,
+    "health_status": 200,
+    "health_latency_ms": 3.072,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 104,
+    "message": "Identifying crops · 104 / 9216 windows"
+  },
+  {
+    "seconds": 40.08126095100306,
+    "rss_mb": 461.41015625,
+    "cpu_percent": 398.76092657683625,
+    "health_status": 200,
+    "health_latency_ms": 2.626,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 124,
+    "message": "Identifying crops · 124 / 9216 windows"
+  },
+  {
+    "seconds": 45.08635731400136,
+    "rss_mb": 448.01953125,
+    "cpu_percent": 399.3929097505928,
+    "health_status": 200,
+    "health_latency_ms": 2.697,
+    "job_status": "running",
+    "progress": 1,
+    "completed_windows": 147,
+    "message": "Identifying crops · 147 / 9216 windows"
+  },
+  {
+    "seconds": 50.091508637000516,
+    "rss_mb": 431.84375,
+    "cpu_percent": 398.1897591870939,
+    "health_status": 200,
+    "health_latency_ms": 2.613,
+    "job_status": "running",
+    "progress": 2,
+    "completed_windows": 170,
+    "message": "Identifying crops · 170 / 9216 windows"
+  },
+  {
+    "seconds": 55.09733232200233,
+    "rss_mb": 468.40625,
+    "cpu_percent": 392.94232553444226,
+    "health_status": 200,
+    "health_latency_ms": 2.892,
+    "job_status": "running",
+    "progress": 2,
+    "completed_windows": 193,
+    "message": "Identifying crops · 193 / 9216 windows"
+  },
+  {
+    "seconds": 60.00559108200105,
+    "rss_mb": 464.7421875,
+    "cpu_percent": 398.51199695113644,
+    "health_status": 200,
+    "health_latency_ms": 2.979,
+    "job_status": "running",
+    "progress": 2,
+    "completed_windows": 218,
+    "message": "Identifying crops · 218 / 9216 windows"
+  }
+]

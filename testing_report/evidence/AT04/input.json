@@ -1,0 +1,26 @@
+{
+  "patch_id": 10003,
+  "positions": [
+    [
+      0,
+      0
+    ],
+    [
+      48,
+      48
+    ],
+    [
+      96,
+      96
+    ]
+  ],
+  "epsilons": [
+    0.01,
+    0.05,
+    0.1
+  ],
+  "pgd_steps": 3,
+  "seed": 20261114,
+  "ground_truth": "TARGET_10003.npy channel 0, top-left 120x120; void=19; background=0 included",
+  "checkpoint": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733"
+}

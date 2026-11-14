@@ -1,0 +1,24 @@
+{
+  "expected": "Ba đầu vào rác zero/cloud/noise có confidence softmax trung bình <=0.60 và tỷ lệ pixel confidence >=0.90 <=10%; ghi nhận riêng ảnh scale và đổi band.",
+  "type": "robustness",
+  "metrics": {
+    "objective": "Kiểm tra mô hình có đưa dự đoán tự tin trên ảnh vô nghĩa khi không có cổng OOD.",
+    "component": "preprocess và Engine.predict",
+    "method": "3 cửa sổ thật 10003 làm đối chứng; tạo zeros, 10000, uniform[0,10000], nhân 3, đảo thứ tự 10 band.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at06_ood_input",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Tensor ảnh tổng hợp cùng hình dạng và lịch thật; seed 20261114.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Bổ sung QA mây/reflectance, OOD detector, hiệu chuẩn confidence và quyền từ chối suy luận.",
+    "limits": {
+      "max_windows": 3,
+      "max_model_forwards": 18,
+      "max_seconds": 120,
+      "seed": 20261114
+    }
+  }
+}

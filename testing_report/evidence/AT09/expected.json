@@ -1,0 +1,25 @@
+{
+  "expected": "Kế hoạch vùng Normandy có >1000 cửa sổ; job được nhận; trong 60 giây health luôn 200 và p95 <1000 ms, RSS tăng <1024 MiB; hủy chuyển cancelled trong 15 giây.",
+  "type": "security/availability",
+  "metrics": {
+    "objective": "Đo chi phí một job lớn và khả năng phản hồi/hủy trong lúc CPU suy luận.",
+    "component": "imagery-plan, worker TSViT, health và DELETE analyses",
+    "method": "Lập kế hoạch toàn mosaic 900010; chạy thật tối đa 60 giây với 13 mẫu RSS/CPU/health; hủy và thăm dò tối đa 30 lần.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at09_resource_exhaustion",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Polygon 2304x2304 px từ catalog thật; một job duy nhất, không gọi production.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Áp quota cửa sổ/diện tích/thời gian theo người dùng; giới hạn mỗi job và lập lịch công bằng ngoài giới hạn 4 pending.",
+    "limits": {
+      "max_requests": 65,
+      "max_concurrency": 1,
+      "job_run_seconds": 60,
+      "max_seconds": 110,
+      "max_jobs": 1
+    }
+  }
+}

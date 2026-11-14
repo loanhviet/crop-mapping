@@ -1,0 +1,23 @@
+{
+  "expected": "Mọi hình học sai hoặc không hỗ trợ bị 422 trên cả imagery-plan và analyses, không 500, không tạo job.",
+  "type": "security",
+  "metrics": {
+    "objective": "Kiểm tra cấu trúc, tính hữu hạn, topology và giới hạn phủ của polygon.",
+    "component": "AnalysisRequest.validate_polygon và selection_mask",
+    "method": "Gửi 13 biến thể trên 2 endpoint; chụp mã HTTP và thư mục job; hủy mọi job ngoài dự kiến.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at07_malformed_geojson",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Ring hở/3 điểm, MultiPolygon, lỗ, NaN/±Infinity, tọa độ ngoài miền/3D, bow-tie, diện tích 0, ngoài phủ, nửa địa cầu.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Kiểm tra topology bằng thư viện hình học; từ chối số không hữu hạn trước bước serialize lỗi; chuẩn hóa HTTP 422.",
+    "limits": {
+      "max_requests": 60,
+      "max_concurrency": 1,
+      "max_seconds": 90
+    }
+  }
+}

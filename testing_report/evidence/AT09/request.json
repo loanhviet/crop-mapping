@@ -1,0 +1,222 @@
+[
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "patch_id": 900010,
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.5147067138444833,
+              49.33978835304554
+            ],
+            [
+              -0.19790336193221075,
+              49.33253721560301
+            ],
+            [
+              -0.20959504568684403,
+              49.12553354261756
+            ],
+            [
+              -0.5250800509368184,
+              49.13273223975904
+            ],
+            [
+              -0.5147067138444833,
+              49.33978835304554
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "patch_id": 900010,
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.5147067138444833,
+              49.33978835304554
+            ],
+            [
+              -0.19790336193221075,
+              49.33253721560301
+            ],
+            [
+              -0.20959504568684403,
+              49.12553354261756
+            ],
+            [
+              -0.5250800509368184,
+              49.13273223975904
+            ],
+            [
+              -0.5147067138444833,
+              49.33978835304554
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "DELETE",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  }
+]

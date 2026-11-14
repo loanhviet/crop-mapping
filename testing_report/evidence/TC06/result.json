@@ -1,0 +1,74 @@
+{
+  "id": "TC06",
+  "name": "Model Robustness to Noise",
+  "type": "AI Test",
+  "environment": "Local",
+  "status": "PASS",
+  "expected": "Nhiễu nhỏ (σ=0.1·STD) làm OA giảm không quá 5 điểm %, σ=0.2·STD không quá 10 điểm %; mô hình không lỗi ở mọi mức nhiễu.",
+  "actual": "OA sạch=0.8734; σ=0.1 → 0.8779 (giảm -0.0045); σ=0.2 → 0.8567 (giảm 0.0167); σ=1.0 → 0.2287.",
+  "notes": "Nhiễu Gauss ngẫu nhiên mô phỏng sai số cảm biến/khí quyển; đây là kiểm thử robustness, không phải tấn công đối kháng (xem AT04).",
+  "metrics": {
+    "clean_oa": 0.8734,
+    "clean_miou": 0.7089,
+    "mean_by_level": {
+      "0.0": {
+        "overall_accuracy": 0.8734,
+        "miou": 0.7089,
+        "agreement_with_clean": 1.0,
+        "mean_confidence": 0.9247
+      },
+      "0.05": {
+        "overall_accuracy": 0.8735,
+        "miou": 0.6833,
+        "agreement_with_clean": 0.9736,
+        "mean_confidence": 0.9196
+      },
+      "0.1": {
+        "overall_accuracy": 0.8779,
+        "miou": 0.6245,
+        "agreement_with_clean": 0.9517,
+        "mean_confidence": 0.9079
+      },
+      "0.2": {
+        "overall_accuracy": 0.8567,
+        "miou": 0.4657,
+        "agreement_with_clean": 0.8846,
+        "mean_confidence": 0.8459
+      },
+      "0.5": {
+        "overall_accuracy": 0.2623,
+        "miou": 0.0371,
+        "agreement_with_clean": 0.2519,
+        "mean_confidence": 0.8392
+      },
+      "1.0": {
+        "overall_accuracy": 0.2287,
+        "miou": 0.0175,
+        "agreement_with_clean": 0.2196,
+        "mean_confidence": 0.9319
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "σ=0.1·STD: OA giảm <= 0.05",
+      "expected": "<= 0.05",
+      "actual": -0.0045,
+      "passed": true
+    },
+    {
+      "check": "σ=0.2·STD: OA giảm <= 0.10",
+      "expected": "<= 0.10",
+      "actual": 0.0167,
+      "passed": true
+    },
+    {
+      "check": "Mọi mức nhiễu: suy luận không lỗi, nhãn 0..18",
+      "expected": "không exception",
+      "actual": "16 lượt chạy thành công",
+      "passed": true
+    }
+  ],
+  "duration_seconds": 95.87,
+  "finished_at": "2026-11-14T20:39:44"
+}

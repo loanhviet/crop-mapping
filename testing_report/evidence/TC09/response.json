@@ -1,0 +1,348 @@
+[
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 502,
+    "elapsed_ms": 22.3,
+    "response": {
+      "detail": "The GEODES catalogue is temporarily unavailable. Please retry."
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 502,
+    "elapsed_ms": 3.8,
+    "response": {
+      "detail": "The GEODES catalogue is temporarily unavailable. Please retry."
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 502,
+    "elapsed_ms": 3.0,
+    "response": {
+      "detail": "The GEODES catalogue is temporarily unavailable. Please retry."
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 503,
+    "elapsed_ms": 5.0,
+    "response": {
+      "detail": "Connect THEIA / GEODES first: add GEODES_API_KEY to crop-map/.env, then retry. Create a key at geodes-portal.cnes.fr → My information → Generate."
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 5.1,
+    "response": {
+      "id": "3ca554f2-4a04-44cd-a31e-b4021c37dee1",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/3ca554f2-4a04-44cd-a31e-b4021c37dee1",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "id": "3ca554f2-4a04-44cd-a31e-b4021c37dee1",
+      "status": "error",
+      "progress": 0,
+      "started_at": 1794663838.6770465,
+      "cache_key": null,
+      "message": "No usable Sentinel-2 scenes for this season (mocked).",
+      "request": {
+        "patch_id": null,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1.4,
+                49.1
+              ],
+              [
+                1.405,
+                49.1
+              ],
+              [
+                1.405,
+                49.097
+              ],
+              [
+                1.4,
+                49.097
+              ],
+              [
+                1.4,
+                49.1
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 3.4,
+    "response": {
+      "id": "ff6da779-1951-4d9d-9059-ff5b819d4771",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/ff6da779-1951-4d9d-9059-ff5b819d4771",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "id": "ff6da779-1951-4d9d-9059-ff5b819d4771",
+      "status": "error",
+      "progress": 0,
+      "started_at": 1794663838.6891184,
+      "cache_key": null,
+      "message": "Analysis failed. Please retry or check the server log.",
+      "request": {
+        "patch_id": null,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1.4,
+                49.1
+              ],
+              [
+                1.405,
+                49.1
+              ],
+              [
+                1.405,
+                49.097
+              ],
+              [
+                1.4,
+                49.097
+              ],
+              [
+                1.4,
+                49.1
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null,
+    "status": 200,
+    "elapsed_ms": 1.3,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "geodes",
+      "imagery": {
+        "name": "THEIA / GEODES",
+        "configured": true,
+        "setup_url": "https://geodes.cnes.fr/support/api/"
+      }
+    }
+  }
+]

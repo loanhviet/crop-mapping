@@ -1,0 +1,174 @@
+{
+  "clean": {
+    "overall_accuracy": 0.8734,
+    "miou": 0.7089
+  },
+  "runs": [
+    {
+      "sigma_fraction_of_std": 0.0,
+      "seed": 0,
+      "overall_accuracy": 0.8734,
+      "miou": 0.7089,
+      "agreement_with_clean": 1.0,
+      "mean_confidence": 0.9247
+    },
+    {
+      "sigma_fraction_of_std": 0.05,
+      "seed": 0,
+      "overall_accuracy": 0.8726,
+      "miou": 0.7077,
+      "agreement_with_clean": 0.9732,
+      "mean_confidence": 0.9219
+    },
+    {
+      "sigma_fraction_of_std": 0.05,
+      "seed": 1,
+      "overall_accuracy": 0.8734,
+      "miou": 0.7089,
+      "agreement_with_clean": 0.9699,
+      "mean_confidence": 0.9182
+    },
+    {
+      "sigma_fraction_of_std": 0.05,
+      "seed": 2,
+      "overall_accuracy": 0.8744,
+      "miou": 0.6334,
+      "agreement_with_clean": 0.9777,
+      "mean_confidence": 0.9188
+    },
+    {
+      "sigma_fraction_of_std": 0.1,
+      "seed": 0,
+      "overall_accuracy": 0.8792,
+      "miou": 0.5785,
+      "agreement_with_clean": 0.957,
+      "mean_confidence": 0.9105
+    },
+    {
+      "sigma_fraction_of_std": 0.1,
+      "seed": 1,
+      "overall_accuracy": 0.8778,
+      "miou": 0.5856,
+      "agreement_with_clean": 0.9428,
+      "mean_confidence": 0.9062
+    },
+    {
+      "sigma_fraction_of_std": 0.1,
+      "seed": 2,
+      "overall_accuracy": 0.8768,
+      "miou": 0.7093,
+      "agreement_with_clean": 0.9552,
+      "mean_confidence": 0.907
+    },
+    {
+      "sigma_fraction_of_std": 0.2,
+      "seed": 0,
+      "overall_accuracy": 0.8628,
+      "miou": 0.4775,
+      "agreement_with_clean": 0.8882,
+      "mean_confidence": 0.8487
+    },
+    {
+      "sigma_fraction_of_std": 0.2,
+      "seed": 1,
+      "overall_accuracy": 0.867,
+      "miou": 0.4617,
+      "agreement_with_clean": 0.8956,
+      "mean_confidence": 0.8471
+    },
+    {
+      "sigma_fraction_of_std": 0.2,
+      "seed": 2,
+      "overall_accuracy": 0.8402,
+      "miou": 0.4578,
+      "agreement_with_clean": 0.8701,
+      "mean_confidence": 0.8419
+    },
+    {
+      "sigma_fraction_of_std": 0.5,
+      "seed": 0,
+      "overall_accuracy": 0.2519,
+      "miou": 0.0275,
+      "agreement_with_clean": 0.2377,
+      "mean_confidence": 0.8446
+    },
+    {
+      "sigma_fraction_of_std": 0.5,
+      "seed": 1,
+      "overall_accuracy": 0.2739,
+      "miou": 0.0411,
+      "agreement_with_clean": 0.2667,
+      "mean_confidence": 0.8273
+    },
+    {
+      "sigma_fraction_of_std": 0.5,
+      "seed": 2,
+      "overall_accuracy": 0.261,
+      "miou": 0.0428,
+      "agreement_with_clean": 0.2512,
+      "mean_confidence": 0.8456
+    },
+    {
+      "sigma_fraction_of_std": 1.0,
+      "seed": 0,
+      "overall_accuracy": 0.2285,
+      "miou": 0.0176,
+      "agreement_with_clean": 0.2204,
+      "mean_confidence": 0.9351
+    },
+    {
+      "sigma_fraction_of_std": 1.0,
+      "seed": 1,
+      "overall_accuracy": 0.2301,
+      "miou": 0.0185,
+      "agreement_with_clean": 0.2193,
+      "mean_confidence": 0.9243
+    },
+    {
+      "sigma_fraction_of_std": 1.0,
+      "seed": 2,
+      "overall_accuracy": 0.2276,
+      "miou": 0.0164,
+      "agreement_with_clean": 0.219,
+      "mean_confidence": 0.9363
+    }
+  ],
+  "mean_by_level": {
+    "0.0": {
+      "overall_accuracy": 0.8734,
+      "miou": 0.7089,
+      "agreement_with_clean": 1.0,
+      "mean_confidence": 0.9247
+    },
+    "0.05": {
+      "overall_accuracy": 0.8735,
+      "miou": 0.6833,
+      "agreement_with_clean": 0.9736,
+      "mean_confidence": 0.9196
+    },
+    "0.1": {
+      "overall_accuracy": 0.8779,
+      "miou": 0.6245,
+      "agreement_with_clean": 0.9517,
+      "mean_confidence": 0.9079
+    },
+    "0.2": {
+      "overall_accuracy": 0.8567,
+      "miou": 0.4657,
+      "agreement_with_clean": 0.8846,
+      "mean_confidence": 0.8459
+    },
+    "0.5": {
+      "overall_accuracy": 0.2623,
+      "miou": 0.0371,
+      "agreement_with_clean": 0.2519,
+      "mean_confidence": 0.8392
+    },
+    "1.0": {
+      "overall_accuracy": 0.2287,
+      "miou": 0.0175,
+      "agreement_with_clean": 0.2196,
+      "mean_confidence": 0.9319
+    }
+  }
+}

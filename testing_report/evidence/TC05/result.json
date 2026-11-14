@@ -1,0 +1,110 @@
+{
+  "id": "TC05",
+  "name": "Model Prediction Quality",
+  "type": "AI Test",
+  "environment": "Local",
+  "status": "PASS",
+  "expected": "Trên patch held-out 10003: OA >= 0.70 và mIoU >= 0.40; nhãn hợp lệ 0..18.",
+  "actual": "10003: OA=0.8734, mIoU=0.7089, macro-F1=0.7835; 10000 (training, tham khảo): OA=0.9166, mIoU=0.6581",
+  "notes": "Chỉ có 1 patch held-out có ground truth tại local (14.400 pixel) nên kết quả mang tính chỉ báo, không thay thế đánh giá trên toàn bộ fold test PASTIS. mIoU tính trên các lớp xuất hiện trong GT hoặc dự đoán, bỏ void (19).",
+  "metrics": {
+    "test_10003": {
+      "role": "test (Fold 5, held-out)",
+      "overall_accuracy": 0.8734,
+      "miou": 0.7089,
+      "macro_f1": 0.7835,
+      "miou_gt_classes": 0.7976,
+      "evaluated_pixels": 12941,
+      "void_pixels": 1459,
+      "per_class": {
+        "Background": {
+          "iou": 0.5512,
+          "f1": 0.7107,
+          "gt_pixels": 2958,
+          "pred_pixels": 1885
+        },
+        "Meadow": {
+          "iou": 0.0,
+          "f1": 0.0,
+          "gt_pixels": 0,
+          "pred_pixels": 288
+        },
+        "Soft winter wheat": {
+          "iou": 0.8962,
+          "f1": 0.9453,
+          "gt_pixels": 5284,
+          "pred_pixels": 5604
+        },
+        "Winter barley": {
+          "iou": 0.8494,
+          "f1": 0.9186,
+          "gt_pixels": 216,
+          "pred_pixels": 226
+        },
+        "Winter rapeseed": {
+          "iou": 0.871,
+          "f1": 0.931,
+          "gt_pixels": 191,
+          "pred_pixels": 215
+        },
+        "Spring barley": {
+          "iou": 0.8427,
+          "f1": 0.9146,
+          "gt_pixels": 234,
+          "pred_pixels": 258
+        },
+        "Beet": {
+          "iou": 0.9363,
+          "f1": 0.9671,
+          "gt_pixels": 1707,
+          "pred_pixels": 1759
+        },
+        "Fruits, vegetables, flowers": {
+          "iou": 0.6334,
+          "f1": 0.7756,
+          "gt_pixels": 793,
+          "pred_pixels": 1056
+        },
+        "Potatoes": {
+          "iou": 0.8002,
+          "f1": 0.889,
+          "gt_pixels": 1558,
+          "pred_pixels": 1650
+        }
+      },
+      "mean_confidence": 0.9247
+    },
+    "train_10000": {
+      "role": "training (Fold 1, NOT held-out)",
+      "overall_accuracy": 0.9166,
+      "miou": 0.6581,
+      "macro_f1": 0.7177,
+      "miou_gt_classes": 0.8226,
+      "evaluated_pixels": 14253,
+      "void_pixels": 147,
+      "mean_confidence": 0.9084
+    }
+  },
+  "checks": [
+    {
+      "check": "OA trên patch held-out 10003 >= 0.70",
+      "expected": ">= 0.7",
+      "actual": 0.8734,
+      "passed": true
+    },
+    {
+      "check": "mIoU trên patch held-out 10003 >= 0.40",
+      "expected": ">= 0.4",
+      "actual": 0.7089,
+      "passed": true
+    },
+    {
+      "check": "Nhãn dự đoán trong khoảng 0..18",
+      "expected": "<= 18",
+      "actual": 13,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 9.79,
+  "finished_at": "2026-11-14T20:35:30"
+}

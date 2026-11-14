@@ -1,0 +1,176 @@
+{
+  "id": "TC04",
+  "name": "Output Format & Data Integrity",
+  "type": "Automation",
+  "environment": "Local + Production (artifacts TC03)",
+  "status": "PASS",
+  "expected": "GeoTIFF đúng kiểu/CRS/nodata/độ phân giải và có metadata checkpoint; CSV khớp GeoTIFF; GeoJSON hợp lệ và diện tích khớp; ZIP đủ file; Local và Production trùng từng pixel.",
+  "actual": "Mọi kiểm tra định dạng đạt ở cả hai môi trường; GeoTIFF khác 0 pixel; toạ độ GeoJSON lệch tối đa 7.105427357601002e-15 độ.",
+  "notes": "GeoJSON production dài hơn vài byte do cách in số thực của PROJ/Python trên ARM64; được kiểm tra bằng sai lệch toạ độ thay vì so sánh byte.",
+  "metrics": {
+    "pixel_diff": 0,
+    "geojson_max_coordinate_deviation_deg": 7.105427357601002e-15,
+    "report": {
+      "local": {
+        "geojson_features": 5,
+        "geojson_area_ha": 5.7594
+      },
+      "production": {
+        "geojson_features": 5,
+        "geojson_area_ha": 5.7594
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "[local] GeoTIFF uint8, nodata=255, pixel 10 m, CRS UTM khớp result.json",
+      "expected": "uint8/255/10m/EPSG:32630",
+      "actual": "uint8/255.0/(10.0, 10.0)/EPSG:32630",
+      "passed": true
+    },
+    {
+      "check": "[local] Nhãn trong vùng chọn thuộc 0..18, ngoài vùng = 255",
+      "expected": "0..18, 576 pixel",
+      "actual": "max=12, 576 pixel",
+      "passed": true
+    },
+    {
+      "check": "[local] Tag GeoTIFF ghi checkpoint_sha256 và model",
+      "expected": "92a83d0d94e5",
+      "actual": "92a83d0d94e5",
+      "passed": true
+    },
+    {
+      "check": "[local] summary.csv: số pixel từng lớp = đếm từ GeoTIFF",
+      "expected": {
+        "0": 250,
+        "1": 5,
+        "12": 321
+      },
+      "actual": {
+        "12": 321,
+        "0": 250,
+        "1": 5
+      },
+      "passed": true
+    },
+    {
+      "check": "[local] summary.csv: tổng diện tích = area_ha, tổng % = 100",
+      "expected": "5.76 ha / 100 %",
+      "actual": "5.76 ha / 100.0 %",
+      "passed": true
+    },
+    {
+      "check": "[local] GeoJSON FeatureCollection hợp lệ, class_id 0..18, ring khép kín",
+      "expected": "valid",
+      "actual": "5 features",
+      "passed": true
+    },
+    {
+      "check": "[local] Diện tích GeoJSON (geodesic) lệch area_ha < 1%",
+      "expected": "5.76 ha ±1%",
+      "actual": 5.759,
+      "passed": true
+    },
+    {
+      "check": "[local] ZIP chứa đủ 4 định dạng + result.json",
+      "expected": 5,
+      "actual": [
+        "classification.geojson",
+        "classification.png",
+        "classification.tif",
+        "result.json",
+        "summary.csv"
+      ],
+      "passed": true
+    },
+    {
+      "check": "[local] mean_confidence trong [0,1]",
+      "expected": "[0,1]",
+      "actual": 0.9321,
+      "passed": true
+    },
+    {
+      "check": "[production] GeoTIFF uint8, nodata=255, pixel 10 m, CRS UTM khớp result.json",
+      "expected": "uint8/255/10m/EPSG:32630",
+      "actual": "uint8/255.0/(10.0, 10.0)/EPSG:32630",
+      "passed": true
+    },
+    {
+      "check": "[production] Nhãn trong vùng chọn thuộc 0..18, ngoài vùng = 255",
+      "expected": "0..18, 576 pixel",
+      "actual": "max=12, 576 pixel",
+      "passed": true
+    },
+    {
+      "check": "[production] Tag GeoTIFF ghi checkpoint_sha256 và model",
+      "expected": "92a83d0d94e5",
+      "actual": "92a83d0d94e5",
+      "passed": true
+    },
+    {
+      "check": "[production] summary.csv: số pixel từng lớp = đếm từ GeoTIFF",
+      "expected": {
+        "0": 250,
+        "1": 5,
+        "12": 321
+      },
+      "actual": {
+        "12": 321,
+        "0": 250,
+        "1": 5
+      },
+      "passed": true
+    },
+    {
+      "check": "[production] summary.csv: tổng diện tích = area_ha, tổng % = 100",
+      "expected": "5.76 ha / 100 %",
+      "actual": "5.76 ha / 100.0 %",
+      "passed": true
+    },
+    {
+      "check": "[production] GeoJSON FeatureCollection hợp lệ, class_id 0..18, ring khép kín",
+      "expected": "valid",
+      "actual": "5 features",
+      "passed": true
+    },
+    {
+      "check": "[production] Diện tích GeoJSON (geodesic) lệch area_ha < 1%",
+      "expected": "5.76 ha ±1%",
+      "actual": 5.759,
+      "passed": true
+    },
+    {
+      "check": "[production] ZIP chứa đủ 4 định dạng + result.json",
+      "expected": 5,
+      "actual": [
+        "classification.geojson",
+        "classification.png",
+        "classification.tif",
+        "result.json",
+        "summary.csv"
+      ],
+      "passed": true
+    },
+    {
+      "check": "[production] mean_confidence trong [0,1]",
+      "expected": "[0,1]",
+      "actual": 0.9321,
+      "passed": true
+    },
+    {
+      "check": "GeoTIFF Local và Production giống hệt từng pixel",
+      "expected": "0 pixel khác",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "Toạ độ GeoJSON Local vs Production lệch < 1e-9 độ (~0.1 mm)",
+      "expected": "< 1e-9",
+      "actual": 7.105427357601002e-15,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 1.0,
+  "finished_at": "2026-11-14T20:47:00"
+}

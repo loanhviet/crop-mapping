@@ -1,0 +1,129 @@
+>>> POST /api/imagery-plan
+    body: {"patch_id": 900010, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.339788353045
+<<< HTTP 200  (43.995 ms)
+    {'source': 'Sentinel-2 COG', 'patch_id': 900010, 'scenes': 36, 'model_observations': 36, 'cached_scenes': 36, 'estimated_download_gb': 0, 'exceeds_download_limit': False, 'selected_area_ha': 53084.16, 'preview_date': 'Per block', 'first_date': '2018-10-01', 'last_date': '2019-09-21', 'split': 'external', 'windows': 9216, 'valid_area_ha': 52198.08, 'prediction_ready': False, 'blocks': 9, 'observation_range': [36, 40], 'max_analysis_windows': None, 'exceeds_analysis_limit': False}
+
+>>> POST /api/analyses
+    body: {"patch_id": 900010, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.339788353045
+<<< HTTP 202  (18.091 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'cached': False}
+
+>>> GET /api/health
+<<< HTTP 200  (3.691 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.58 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (4.023 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (3.508 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 0, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 6 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.296 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (3.225 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 0, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 20 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.792 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (3.29 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 0, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 36 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.239 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.482 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 52 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.168 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (5.06 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 69 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.883 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (3.797 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 84 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.072 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (3.511 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 104 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.626 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.527 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 124 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.697 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.042 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 1, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 147 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.613 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.256 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 2, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 170 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.892 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.605 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 2, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 193 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.979 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.289 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 2, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 218 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> DELETE /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.358 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'cancellation_requested': True}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (2.163 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'running', 'progress': 2, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Identifying crops · 218 / 9216 windows', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/analyses/f82efca1-5ea0-4a0f-ad58-e7d15e5a690c
+<<< HTTP 200  (6.075 ms)
+    {'id': 'f82efca1-5ea0-4a0f-ad58-e7d15e5a690c', 'status': 'cancelled', 'progress': 2, 'started_at': 1794663894.4768493, 'cache_key': '3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4', 'message': 'Analysis cancelled', 'phase': 'inference', 'request': {'patch_id': 900010, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.5147067138444833, 49.33978835304554], [-0.19790336193221075, 49.33253721560301], [-0.20959504568684403, 49.12553354261756], [-0.5250800509368184, 49.13273223975904], [-0.5147067138444833, 49.33978835304554]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (3.413 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}

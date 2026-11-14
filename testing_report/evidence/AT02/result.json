@@ -1,0 +1,107 @@
+{
+  "id": "AT02",
+  "name": "Tấn công payload quá lớn",
+  "type": "security",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Payload 101/100000 đỉnh, JSON 6 MiB và JSON sâu 1100 mức bị từ chối bằng 422/413; dịch vụ còn phản hồi.",
+  "actual": "HTTP từng payload: [422, 422, 200, 500].",
+  "notes": "RSS đo trong cùng tiến trình TestClient gồm cả client và server; không phải RSS server độc lập. Không xác minh Caddy hoặc production; giới hạn proxy chỉ là khả năng lý thuyết.",
+  "metrics": {
+    "objective": "Đo khả năng chặn tiêu thụ tài nguyên ở tầng body và cấu trúc.",
+    "component": "HTTP parser, Pydantic, imagery-plan",
+    "method": "Gửi tuần tự 4 yêu cầu có giới hạn, đo thời gian và RSS trước/sau.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at02_oversized_payload",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "101 đỉnh, 100000 đỉnh, trường thừa chứa 6 MiB ký tự, JSON lồng sâu 1100.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Giới hạn byte body tại ứng dụng/proxy; chặn trường thừa và độ sâu JSON; trả 413/422 nhất quán.",
+    "limits": {
+      "max_requests": 5,
+      "max_concurrency": 1,
+      "max_body_bytes": 20971520,
+      "max_seconds": 60
+    },
+    "cases": [
+      {
+        "case": "101 đỉnh",
+        "bytes": 4090,
+        "sha256": "421b60fb7b4f338f7e9e3d77c5ca93512785b0171f2a166a0a9e4c9a951bdca3",
+        "status": 422,
+        "latency_ms": 3.911,
+        "rss_before_mb": 326.8125,
+        "rss_after_mb": 326.9765625,
+        "rss_delta_mb": 0.1640625
+      },
+      {
+        "case": "100000 đỉnh",
+        "bytes": 4083923,
+        "sha256": "a71eaed81f6a3d23b3bf4a933234e29039e7efeeb149d706277594d178b31adb",
+        "status": 422,
+        "latency_ms": 462.416,
+        "rss_before_mb": 326.9765625,
+        "rss_after_mb": 371.328125,
+        "rss_delta_mb": 44.3515625
+      },
+      {
+        "case": "6 MiB JSON hợp lệ + trường thừa",
+        "bytes": 6291782,
+        "sha256": "ff58d48448fab95a915f456f82039e42c1a66751ade58ccf555a2333ac2dd429",
+        "status": 200,
+        "latency_ms": 33.677,
+        "rss_before_mb": 371.328125,
+        "rss_after_mb": 406.07421875,
+        "rss_delta_mb": 34.74609375
+      },
+      {
+        "case": "JSON sâu 1100 mức",
+        "bytes": 2214,
+        "sha256": "aa8011fcc589bf377d50457f833a292a7719b1fdafb6c6287efcb6211360ef8f",
+        "status": 500,
+        "latency_ms": 3.389,
+        "rss_before_mb": 406.07421875,
+        "rss_after_mb": 406.35546875,
+        "rss_delta_mb": 0.28125
+      }
+    ],
+    "body_size_limit_observed": false
+  },
+  "checks": [
+    {
+      "check": "101 đỉnh bị từ chối",
+      "expected": "422/413",
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "100000 đỉnh bị từ chối",
+      "expected": "422/413",
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "6 MiB JSON hợp lệ + trường thừa bị từ chối",
+      "expected": "422/413",
+      "actual": 200,
+      "passed": false
+    },
+    {
+      "check": "JSON sâu 1100 mức bị từ chối",
+      "expected": "422/413",
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "dịch vụ còn sống",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 2.8,
+  "finished_at": "2026-11-14T20:40:20"
+}

@@ -1,0 +1,168 @@
+{
+  "clean": {
+    "overall_accuracy": 0.8734,
+    "miou": 0.7089
+  },
+  "runs": [
+    {
+      "scenario": "random drop 10%",
+      "fraction": 0.1,
+      "seed": 0,
+      "frames": 39,
+      "overall_accuracy": 0.8698,
+      "miou": 0.6374,
+      "mean_confidence": 0.915,
+      "agreement_with_clean": 0.9657
+    },
+    {
+      "scenario": "random drop 10%",
+      "fraction": 0.1,
+      "seed": 1,
+      "frames": 39,
+      "overall_accuracy": 0.8789,
+      "miou": 0.712,
+      "mean_confidence": 0.9242,
+      "agreement_with_clean": 0.9803
+    },
+    {
+      "scenario": "random drop 10%",
+      "fraction": 0.1,
+      "seed": 2,
+      "frames": 39,
+      "overall_accuracy": 0.8766,
+      "miou": 0.7047,
+      "mean_confidence": 0.9168,
+      "agreement_with_clean": 0.9697
+    },
+    {
+      "scenario": "random drop 25%",
+      "fraction": 0.25,
+      "seed": 0,
+      "frames": 32,
+      "overall_accuracy": 0.8799,
+      "miou": 0.635,
+      "mean_confidence": 0.9183,
+      "agreement_with_clean": 0.966
+    },
+    {
+      "scenario": "random drop 25%",
+      "fraction": 0.25,
+      "seed": 1,
+      "frames": 32,
+      "overall_accuracy": 0.8808,
+      "miou": 0.6508,
+      "mean_confidence": 0.9246,
+      "agreement_with_clean": 0.9301
+    },
+    {
+      "scenario": "random drop 25%",
+      "fraction": 0.25,
+      "seed": 2,
+      "frames": 32,
+      "overall_accuracy": 0.8872,
+      "miou": 0.722,
+      "mean_confidence": 0.9188,
+      "agreement_with_clean": 0.9653
+    },
+    {
+      "scenario": "random drop 50%",
+      "fraction": 0.5,
+      "seed": 0,
+      "frames": 21,
+      "overall_accuracy": 0.8515,
+      "miou": 0.532,
+      "mean_confidence": 0.9176,
+      "agreement_with_clean": 0.9135
+    },
+    {
+      "scenario": "random drop 50%",
+      "fraction": 0.5,
+      "seed": 1,
+      "frames": 21,
+      "overall_accuracy": 0.8821,
+      "miou": 0.6459,
+      "mean_confidence": 0.9304,
+      "agreement_with_clean": 0.8989
+    },
+    {
+      "scenario": "random drop 50%",
+      "fraction": 0.5,
+      "seed": 2,
+      "frames": 21,
+      "overall_accuracy": 0.7981,
+      "miou": 0.3775,
+      "mean_confidence": 0.8977,
+      "agreement_with_clean": 0.8363
+    },
+    {
+      "scenario": "random drop 75%",
+      "fraction": 0.75,
+      "seed": 0,
+      "frames": 11,
+      "overall_accuracy": 0.7434,
+      "miou": 0.249,
+      "mean_confidence": 0.8359,
+      "agreement_with_clean": 0.717
+    },
+    {
+      "scenario": "random drop 75%",
+      "fraction": 0.75,
+      "seed": 1,
+      "frames": 11,
+      "overall_accuracy": 0.7186,
+      "miou": 0.4194,
+      "mean_confidence": 0.9045,
+      "agreement_with_clean": 0.6687
+    },
+    {
+      "scenario": "random drop 75%",
+      "fraction": 0.75,
+      "seed": 2,
+      "frames": 11,
+      "overall_accuracy": 0.827,
+      "miou": 0.5187,
+      "mean_confidence": 0.8952,
+      "agreement_with_clean": 0.8015
+    },
+    {
+      "scenario": "mất mùa hè (DOY 152–243)",
+      "fraction": 0.326,
+      "seed": null,
+      "frames": 29,
+      "overall_accuracy": 0.6231,
+      "miou": 0.1318,
+      "mean_confidence": 0.8414,
+      "agreement_with_clean": 0.6177
+    },
+    {
+      "scenario": "mất mùa xuân (DOY 60–151)",
+      "fraction": 0.163,
+      "seed": null,
+      "frames": 36,
+      "overall_accuracy": 0.8628,
+      "miou": 0.5708,
+      "mean_confidence": 0.9049,
+      "agreement_with_clean": 0.9039
+    },
+    {
+      "scenario": "mất mùa đông (DOY 1–59 & 335–365)",
+      "fraction": 0.116,
+      "seed": null,
+      "frames": 38,
+      "overall_accuracy": 0.8752,
+      "miou": 0.6972,
+      "mean_confidence": 0.923,
+      "agreement_with_clean": 0.9831
+    },
+    {
+      "scenario": "chỉ giữ nửa đầu năm (DOY <= 182)",
+      "fraction": 0.605,
+      "seed": null,
+      "frames": 17,
+      "overall_accuracy": 0.7456,
+      "miou": 0.3553,
+      "mean_confidence": 0.8823,
+      "agreement_with_clean": 0.7127
+    }
+  ]
+}

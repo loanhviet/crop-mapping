@@ -1,0 +1,24 @@
+{
+  "expected": "Accuracy mỗi biến thể thay thời gian không giảm quá 5 điểm phần trăm; đảo cả ảnh và DOY là đối chứng bất biến; DOY 0/366 bị ValueError.",
+  "type": "adversarial/robustness",
+  "metrics": {
+    "objective": "Đánh giá ảnh hưởng việc ghép sai ảnh-ngày và thiếu đa dạng thời gian trên toàn patch test.",
+    "component": "PreparedProvider, preprocess, TSViT",
+    "method": "Chạy đủ 25 cửa sổ 24x24 trên 10003, đảo/shuffle ảnh, đảo cặp, dịch DOY ±30/±60 theo modulo 365 và lặp frame đầu.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at05_temporal_manipulation",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Ảnh thật cùng GT, thay đổi trật tự hoặc ngày; seed 20261114.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Kiểm tra lịch thu nhận và provenance; cảnh báo chuỗi lặp; kiểm tra tính nhất quán ảnh-ngày.",
+    "limits": {
+      "max_windows": 25,
+      "max_model_forwards": 225,
+      "max_seconds": 540,
+      "seed": 20261114
+    }
+  }
+}

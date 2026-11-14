@@ -1,0 +1,23 @@
+{
+  "expected": "Mọi đầu vào sai trả 422, không lộ stack trace và không tạo thư mục job.",
+  "type": "security",
+  "metrics": {
+    "objective": "Đánh giá ranh giới kiểm tra kiểu và cấu trúc yêu cầu.",
+    "component": "AnalysisRequest và POST /api/analyses",
+    "method": "Gửi từng payload sai với TestClient thật và so sánh thư mục kết quả trước/sau.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at01_malformed_input",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "JSON hỏng, content-type sai, sai kiểu, thiếu trường, trường thừa.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Bật strict cho kiểu dữ liệu và extra=forbid; chuẩn hóa lỗi JSON trước khi xử lý.",
+    "limits": {
+      "max_requests": 60,
+      "max_concurrency": 1,
+      "max_seconds": 60
+    }
+  }
+}

@@ -1,0 +1,992 @@
+[
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 200,
+    "elapsed_ms": 38.3,
+    "response": {
+      "source": "Sentinel-2 COG",
+      "patch_id": 900010,
+      "scenes": 40,
+      "model_observations": 40,
+      "cached_scenes": 40,
+      "estimated_download_gb": 0,
+      "exceeds_download_limit": false,
+      "selected_area_ha": 5.76,
+      "preview_date": "Per block",
+      "first_date": "2018-10-04",
+      "last_date": "2019-09-21",
+      "split": "external",
+      "windows": 4,
+      "valid_area_ha": 5.76,
+      "prediction_ready": false,
+      "blocks": 1,
+      "observation_range": [
+        40,
+        40
+      ],
+      "max_analysis_windows": null,
+      "exceeds_analysis_limit": false
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019"
+    },
+    "status": 422,
+    "elapsed_ms": 2.2,
+    "response": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Field required",
+          "input": {
+            "season": "2018–2019"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.36609353487300544,
+          49.30734644511522
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 1.0,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Point",
+            "coordinates": [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 1.1,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 0.8,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2,
+              95
+            ],
+            [
+              3,
+              95
+            ],
+            [
+              3,
+              94
+            ],
+            [
+              2,
+              95
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 0.8,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2,
+                  95
+                ],
+                [
+                  3,
+                  95
+                ],
+                [
+                  3,
+                  94
+                ],
+                [
+                  2,
+                  95
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2025–2026",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 1.0,
+    "response": {
+      "detail": "No prepared imagery is available for that season. Choose 2018–2019."
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.8,
+              21.02
+            ],
+            [
+              105.81,
+              21.02
+            ],
+            [
+              105.81,
+              21.01
+            ],
+            [
+              105.8,
+              21.01
+            ],
+            [
+              105.8,
+              21.02
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 2.5,
+    "response": {
+      "detail": "Select an area inside one outlined region. Choose another available region to move the map."
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "patch_id": 999999,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 0.9,
+    "response": {
+      "detail": "This area has no prepared imagery. Choose an available region."
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "patch_id": "abc",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 0.7,
+    "response": {
+      "detail": [
+        {
+          "type": "int_parsing",
+          "loc": [
+            "body",
+            "patch_id"
+          ],
+          "msg": "Input should be a valid integer, unable to parse string as an integer",
+          "input": "abc"
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 200,
+    "elapsed_ms": 675.5,
+    "response": {
+      "source": "Sentinel-2 COG",
+      "patch_id": 900010,
+      "scenes": 40,
+      "model_observations": 40,
+      "cached_scenes": 40,
+      "estimated_download_gb": 0,
+      "exceeds_download_limit": false,
+      "selected_area_ha": 5.76,
+      "preview_date": "Per block",
+      "first_date": "2018-10-04",
+      "last_date": "2019-09-21",
+      "split": "external",
+      "windows": 4,
+      "valid_area_ha": 5.76,
+      "prediction_ready": false,
+      "blocks": 1,
+      "observation_range": [
+        40,
+        40
+      ],
+      "max_analysis_windows": null,
+      "exceeds_analysis_limit": false
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019"
+    },
+    "status": 422,
+    "elapsed_ms": 191.5,
+    "response": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Field required",
+          "input": {
+            "season": "2018–2019"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.36609353487300544,
+          49.30734644511522
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 112.1,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Point",
+            "coordinates": [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 80.4,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 138.3,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2,
+              95
+            ],
+            [
+              3,
+              95
+            ],
+            [
+              3,
+              94
+            ],
+            [
+              2,
+              95
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 109.8,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2,
+                  95
+                ],
+                [
+                  3,
+                  95
+                ],
+                [
+                  3,
+                  94
+                ],
+                [
+                  2,
+                  95
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2025–2026",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 108.9,
+    "response": {
+      "detail": "No prepared imagery is available for that season. Choose 2018–2019."
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.8,
+              21.02
+            ],
+            [
+              105.81,
+              21.02
+            ],
+            [
+              105.81,
+              21.01
+            ],
+            [
+              105.8,
+              21.01
+            ],
+            [
+              105.8,
+              21.02
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 109.3,
+    "response": {
+      "detail": "Select an area inside one outlined region. Choose another available region to move the map."
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "patch_id": 999999,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 108.8,
+    "response": {
+      "detail": "This area has no prepared imagery. Choose an available region."
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "patch_id": "abc",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 422,
+    "elapsed_ms": 109.0,
+    "response": {
+      "detail": [
+        {
+          "type": "int_parsing",
+          "loc": [
+            "body",
+            "patch_id"
+          ],
+          "msg": "Input should be a valid integer, unable to parse string as an integer",
+          "input": "abc"
+        }
+      ]
+    }
+  }
+]

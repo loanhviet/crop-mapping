@@ -1,0 +1,94 @@
+>>> GET /api/catalog
+<<< HTTP 200  (3.945 ms)
+    {'mode': 'prepared', 'source': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}, 'classes': [{'id': 0, 'name': 'Background', 'color': '#89969b'}, {'id': 1, 'name': 'Meadow', 'color': '#78a754'}, {'id': 2, 'name': 'Soft winter wheat', 'color': '#f6ce42'}, {'id': 3, 'name': 'Corn', 'color': '#56af69'}, {'id': 4, 'name': 'Winter barley', 'color': '#69afe4'}, {'id': 5, 'name': 'Winter rapeseed', 'color': '#ddd85a'}, {'id': 6, 'name': 'Spring barley', 'color': '#a4cee8'}, {'id': 7, 'name': 'Sunflower', 'color': '#f3974b'}, {'id': 8, 'name': 'Grape
+
+>>> POST /api/analyses
+    body: {"patch_id": 10000, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-1.270332050595563, 49.635309725184904], [-1.267009827658728, 49.63526003111685], [-1.267086409801156, 49.63310230977367], [-1.2704084861050506, 49.63315200007427], [-1.270332050595563, 49.635309725184904]]]
+<<< HTTP 202  (14.407 ms)
+    {'id': 'fa4a6cb4-851c-4746-8e6a-531919bf1f77', 'cached': False}
+
+>>> DELETE /api/analyses/fa4a6cb4-851c-4746-8e6a-531919bf1f77
+<<< HTTP 200  (2.25 ms)
+    {'id': 'fa4a6cb4-851c-4746-8e6a-531919bf1f77', 'cancellation_requested': True}
+
+>>> POST /api/analyses
+    body: {"patch_id": 999999999, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.307346445
+<<< HTTP 422  (1.651 ms)
+    {'detail': 'This area has no prepared imagery. Choose an available region.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": -1, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]
+<<< HTTP 422  (1.847 ms)
+    {'detail': 'This area has no prepared imagery. Choose an available region.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "../../weights/best.pth", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.
+<<< HTTP 422  (2.345 ms)
+    {'detail': 'No local PASTIS imagery is available for that season. Choose 2018–2019.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2099–2100", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 422  (2.904 ms)
+    {'detail': 'No local PASTIS imagery is available for that season. Choose 2018–2019.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (4.625 ms)
+    {'id': 'a5946a75-85c1-4140-a398-2d484146c8a8', 'cached': False}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8
+<<< HTTP 200  (3.095 ms)
+    {'id': 'a5946a75-85c1-4140-a398-2d484146c8a8', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8
+<<< HTTP 200  (7.261 ms)
+    {'id': 'a5946a75-85c1-4140-a398-2d484146c8a8', 'status': 'running', 'progress': 0, 'started_at': 1794663753.859021, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'Preparing satellite time series', 'phase': 'inference', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8
+<<< HTTP 200  (7.389 ms)
+    {'id': 'a5946a75-85c1-4140-a398-2d484146c8a8', 'status': 'done', 'progress': 100, 'started_at': 1794663753.859021, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'All selected pixels labeled', 'phase': 'done', 'result': {'source': 'PASTIS', 'observations': 43, 'available_observations': 43, 'dates': ['2018-09-24', '2018-09-29', '2018-10-04', '2018-10-09', '2018-10-19', '2018-10-24', '2018-10-29', '2018-11-08', '2018-11-13', '2018-11-18', '2018-11-23', '2019-01-17', '2019-01-22', '2019-02-16', '2019-02-21', '2019-02-26', '2019-03-13', '2019-03-28', '2
+
+>>> GET /api/analyses/../weights/best.pth
+<<< HTTP 404  (6.974 ms)
+    {'detail': 'Not Found'}
+
+>>> GET /api/analyses/%2e%2e%2fweights%2fbest.pth
+<<< HTTP 404  (3.994 ms)
+    {'detail': 'Not Found'}
+
+>>> GET /api/analyses/A5946A75-85C1-4140-A398-2D484146C8A8
+<<< HTTP 404  (4.32 ms)
+    {'detail': 'Analysis not found.'}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/..%2F..%2Fweights%2Fbest.pth
+<<< HTTP 404  (4.759 ms)
+    {'detail': 'Not Found'}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=../../weights/best.pth
+<<< HTTP 422  (6.023 ms)
+    {'detail': 'Choose known export formats: tif, csv, png, geojson.'}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=tif,secret
+<<< HTTP 422  (5.324 ms)
+    {'detail': 'Choose known export formats: tif, csv, png, geojson.'}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=91&lng=181
+<<< HTTP 422  (10.179 ms)
+    {'detail': [{'type': 'less_than_equal', 'loc': ['query', 'lat'], 'msg': 'Input should be less than or equal to 90', 'input': '91', 'ctx': {'le': 90.0}}, {'type': 'less_than_equal', 'loc': ['query', 'lng'], 'msg': 'Input should be less than or equal to 180', 'input': '181', 'ctx': {'le': 180.0}}]}
+
+>>> GET /api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=-91&lng=-181
+<<< HTTP 422  (5.795 ms)
+    {'detail': [{'type': 'greater_than_equal', 'loc': ['query', 'lat'], 'msg': 'Input should be greater than or equal to -90', 'input': '-91', 'ctx': {'ge': -90.0}}, {'type': 'greater_than_equal', 'loc': ['query', 'lng'], 'msg': 'Input should be greater than or equal to -180', 'input': '-181', 'ctx': {'ge': -180.0}}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.34960303088466366, 49.30696916532709], [-0.35018164687271375, 49.29618655043731], [-0.36666856094865324, 49.29656368757674], [-0.36609353487300544, 49.3073464451
+<<< HTTP 202  (4.13 ms)
+    {'id': '7e5ac0f3-076d-49c2-a4ed-3134ae86109a', 'cached': False}
+
+>>> DELETE /api/analyses/7e5ac0f3-076d-49c2-a4ed-3134ae86109a
+<<< HTTP 200  (3.661 ms)
+    {'id': '7e5ac0f3-076d-49c2-a4ed-3134ae86109a', 'cancellation_requested': True}
+
+>>> DELETE /api/analyses/7e5ac0f3-076d-49c2-a4ed-3134ae86109a
+<<< HTTP 200  (1.656 ms)
+    {'id': '7e5ac0f3-076d-49c2-a4ed-3134ae86109a', 'cancellation_requested': True}

@@ -1,0 +1,162 @@
+[
+  {
+    "env": "Local",
+    "case": "V1 hợp lệ: ô 24x24 trong patch 10003",
+    "expected": 200,
+    "actual": 200,
+    "message": "",
+    "ms": 38.3
+  },
+  {
+    "env": "Local",
+    "case": "I1 thiếu geometry",
+    "expected": 422,
+    "actual": 422,
+    "message": "Field required",
+    "ms": 2.2
+  },
+  {
+    "env": "Local",
+    "case": "I2 geometry là Point",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 1.0
+  },
+  {
+    "env": "Local",
+    "case": "I3 ring không khép kín",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 1.1
+  },
+  {
+    "env": "Local",
+    "case": "I4 chỉ 3 điểm",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 0.8
+  },
+  {
+    "env": "Local",
+    "case": "I5 vĩ độ 95° (ngoài WGS84)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 0.8
+  },
+  {
+    "env": "Local",
+    "case": "I6 mùa không có dữ liệu 2025–2026",
+    "expected": 422,
+    "actual": 422,
+    "message": "No prepared imagery is available for that season. Choose 2018–2019.",
+    "ms": 1.0
+  },
+  {
+    "env": "Local",
+    "case": "I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Select an area inside one outlined region. Choose another available region to move the map.",
+    "ms": 2.5
+  },
+  {
+    "env": "Local",
+    "case": "I8 patch_id không tồn tại",
+    "expected": 422,
+    "actual": 422,
+    "message": "This area has no prepared imagery. Choose an available region.",
+    "ms": 0.9
+  },
+  {
+    "env": "Local",
+    "case": "I9 patch_id sai kiểu (chuỗi)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Input should be a valid integer, unable to parse string as an integer",
+    "ms": 0.7
+  },
+  {
+    "env": "Production",
+    "case": "V1 hợp lệ: ô 24x24 trong patch 10003",
+    "expected": 200,
+    "actual": 200,
+    "message": "",
+    "ms": 675.5
+  },
+  {
+    "env": "Production",
+    "case": "I1 thiếu geometry",
+    "expected": 422,
+    "actual": 422,
+    "message": "Field required",
+    "ms": 191.5
+  },
+  {
+    "env": "Production",
+    "case": "I2 geometry là Point",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 112.1
+  },
+  {
+    "env": "Production",
+    "case": "I3 ring không khép kín",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 80.4
+  },
+  {
+    "env": "Production",
+    "case": "I4 chỉ 3 điểm",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 138.3
+  },
+  {
+    "env": "Production",
+    "case": "I5 vĩ độ 95° (ngoài WGS84)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+    "ms": 109.8
+  },
+  {
+    "env": "Production",
+    "case": "I6 mùa không có dữ liệu 2025–2026",
+    "expected": 422,
+    "actual": 422,
+    "message": "No prepared imagery is available for that season. Choose 2018–2019.",
+    "ms": 108.9
+  },
+  {
+    "env": "Production",
+    "case": "I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Select an area inside one outlined region. Choose another available region to move the map.",
+    "ms": 109.3
+  },
+  {
+    "env": "Production",
+    "case": "I8 patch_id không tồn tại",
+    "expected": 422,
+    "actual": 422,
+    "message": "This area has no prepared imagery. Choose an available region.",
+    "ms": 108.8
+  },
+  {
+    "env": "Production",
+    "case": "I9 patch_id sai kiểu (chuỗi)",
+    "expected": 422,
+    "actual": 422,
+    "message": "Input should be a valid integer, unable to parse string as an integer",
+    "ms": 109.0
+  }
+]

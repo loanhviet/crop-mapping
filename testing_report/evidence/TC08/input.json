@@ -1,0 +1,10 @@
+{
+  "PASTIS test (in-distribution)": {
+    "source": "8 patch PASTIS split test: [10003, 10010, 20000, 20004, 30001, 30004, 40002, 40005]",
+    "windows": 200
+  },
+  "Normandy THEIA COG (domain shift)": {
+    "source": "Region 900010: 100 cửa sổ 24x24 chọn ngẫu nhiên (seed 0) trong 7665 cửa sổ hợp lệ",
+    "windows": 100
+  }
+}

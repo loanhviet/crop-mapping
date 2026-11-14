@@ -1,0 +1,228 @@
+{
+  "id": "AT06",
+  "name": "Đầu vào ngoài phân bố",
+  "type": "robustness",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Ba đầu vào rác zero/cloud/noise có confidence softmax trung bình <=0.60 và tỷ lệ pixel confidence >=0.90 <=10%; ghi nhận riêng ảnh scale và đổi band.",
+  "actual": "Confidence trung bình: real=0.936, zeros=1.000, cloud10000=1.000, uniform_noise=0.997, scaled_x3=0.795, band_reversed=1.000.",
+  "notes": "Ảnh tổng hợp KHÔNG có ground truth; không gọi confidence là accuracy. Không có nhánh từ chối OOD trong Engine.predict; kết quả chỉ chứng minh hành vi checkpoint trên các đầu vào đã thử.",
+  "metrics": {
+    "objective": "Kiểm tra mô hình có đưa dự đoán tự tin trên ảnh vô nghĩa khi không có cổng OOD.",
+    "component": "preprocess và Engine.predict",
+    "method": "3 cửa sổ thật 10003 làm đối chứng; tạo zeros, 10000, uniform[0,10000], nhân 3, đảo thứ tự 10 band.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at06_ood_input",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Tensor ảnh tổng hợp cùng hình dạng và lịch thật; seed 20261114.",
+    "impact": "Trung bình: ảnh rác có thể nhận nhãn cây trồng tự tin và gây hiểu nhầm nếu dữ liệu đầu vào vượt qua QA.",
+    "remediation": "Bổ sung QA mây/reflectance, OOD detector, hiệu chuẩn confidence và quyền từ chối suy luận.",
+    "limits": {
+      "max_windows": 3,
+      "max_model_forwards": 18,
+      "max_seconds": 120,
+      "seed": 20261114
+    },
+    "results": {
+      "real": {
+        "mean_confidence": 0.9359646439552307,
+        "high_confidence_fraction": 0.8252314814814815,
+        "distribution": [
+          0.1579861111111111,
+          0.0005787037037037037,
+          0.3258101851851852,
+          0.0,
+          0.0,
+          0.005208333333333333,
+          0.09143518518518519,
+          0.0,
+          0.0,
+          0.06886574074074074,
+          0.0,
+          0.0,
+          0.2511574074074074,
+          0.09895833333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 2
+      },
+      "zeros": {
+        "mean_confidence": 0.9999969601631165,
+        "high_confidence_fraction": 1.0,
+        "distribution": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 0
+      },
+      "cloud10000": {
+        "mean_confidence": 0.9999918937683105,
+        "high_confidence_fraction": 1.0,
+        "distribution": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 0
+      },
+      "uniform_noise": {
+        "mean_confidence": 0.9971962571144104,
+        "high_confidence_fraction": 1.0,
+        "distribution": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 0
+      },
+      "scaled_x3": {
+        "mean_confidence": 0.7949252724647522,
+        "high_confidence_fraction": 0.4253472222222222,
+        "distribution": [
+          0.5653935185185185,
+          0.19444444444444445,
+          0.0,
+          0.0,
+          0.0,
+          0.003472222222222222,
+          0.1087962962962963,
+          0.0,
+          0.0,
+          0.07407407407407407,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.05381944444444445,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 0
+      },
+      "band_reversed": {
+        "mean_confidence": 0.9999953508377075,
+        "high_confidence_fraction": 1.0,
+        "distribution": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "dominant_class": 0
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "zeros confidence thấp",
+      "expected": "<=0.60",
+      "actual": 0.9999969601631165,
+      "passed": false
+    },
+    {
+      "check": "zeros ít pixel quá tự tin",
+      "expected": "<=0.10",
+      "actual": 1.0,
+      "passed": false
+    },
+    {
+      "check": "cloud10000 confidence thấp",
+      "expected": "<=0.60",
+      "actual": 0.9999918937683105,
+      "passed": false
+    },
+    {
+      "check": "cloud10000 ít pixel quá tự tin",
+      "expected": "<=0.10",
+      "actual": 1.0,
+      "passed": false
+    },
+    {
+      "check": "uniform_noise confidence thấp",
+      "expected": "<=0.60",
+      "actual": 0.9971962571144104,
+      "passed": false
+    },
+    {
+      "check": "uniform_noise ít pixel quá tự tin",
+      "expected": "<=0.10",
+      "actual": 1.0,
+      "passed": false
+    }
+  ],
+  "duration_seconds": 5.37,
+  "finished_at": "2026-11-14T20:42:29"
+}

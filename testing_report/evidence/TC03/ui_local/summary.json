@@ -1,0 +1,8 @@
+{
+ "base": "http://127.0.0.1:8765",
+ "results_visible": true,
+ "seconds_click_to_result": 12.7,
+ "analyses_posts": 1,
+ "api_calls": 37,
+ "panel": "Classification Results\nBackground\n119.77 ha\nSoft winter wheat\n101.93 ha\nWinter rapeseed\n65.87 ha\nBeet\n46.83 ha\nCorn\n23.21 ha\nMeadow\n3.40 ha\nFruits, vegetables, flowers\n3.31 ha\nWinter triticale\n2.65 ha\nWinter barley\n1.44 ha\nPotatoes\n0.12 ha\nWinter durum wheat\n0.04 ha\nSpring barley\n0.01 ha\nSoybeans\n0.01 ha\nAnalyzed area\n368.59 ha\n\nTSViT predictions · 10 m pixels · 40 observations · 0.05 ha excluded: insufficient valid imagery\n\n↓  Download results"
+}

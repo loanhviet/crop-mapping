@@ -1,0 +1,71 @@
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"geometry\":", "bytes": 12}
+<<< HTTP 422  (3.572 ms)
+    {'detail': [{'type': 'json_invalid', 'loc': ['body', 12], 'msg': 'JSON decode error', 'input': {}, 'ctx': {'error': 'Expecting value'}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 422  (13.071 ms)
+    {'detail': [{'type': 'model_attributes_type', 'loc': ['body'], 'msg': 'Input should be a valid dictionary or object to extract fields from', 'input': '{"patch_id": 10003, "season": "2018\\u20132019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}'}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003}
+<<< HTTP 422  (4.321 ms)
+    {'detail': [{'type': 'missing', 'loc': ['body', 'geometry'], 'msg': 'Field required', 'input': {'patch_id': 10003}}]}
+
+>>> POST /api/analyses
+    body: {}
+<<< HTTP 422  (1.968 ms)
+    {'detail': [{'type': 'missing', 'loc': ['body', 'geometry'], 'msg': 'Field required', 'input': {}}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": "polygon"}
+<<< HTTP 422  (2.867 ms)
+    {'detail': [{'type': 'dict_type', 'loc': ['body', 'geometry'], 'msg': 'Input should be a valid dictionary', 'input': 'polygon'}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": []}
+<<< HTTP 422  (2.477 ms)
+    {'detail': [{'type': 'dict_type', 'loc': ['body', 'geometry'], 'msg': 'Input should be a valid dictionary', 'input': []}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": 42}
+<<< HTTP 422  (1.734 ms)
+    {'detail': [{'type': 'dict_type', 'loc': ['body', 'geometry'], 'msg': 'Input should be a valid dictionary', 'input': 42}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": 2019, "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}
+<<< HTTP 422  (2.686 ms)
+    {'detail': [{'type': 'string_type', 'loc': ['body', 'season'], 'msg': 'Input should be a valid string', 'input': 2019}]}
+
+>>> POST /api/analyses
+    body: {"patch_id": "10003", "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511
+<<< HTTP 202  (19.724 ms)
+    {'id': '9e93991b-6356-46d0-a9f2-ecd8f754bfc0', 'cached': False}
+
+>>> DELETE /api/analyses/9e93991b-6356-46d0-a9f2-ecd8f754bfc0
+<<< HTTP 200  (3.074 ms)
+    {'id': '9e93991b-6356-46d0-a9f2-ecd8f754bfc0', 'cancellation_requested': True}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003.0, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511
+<<< HTTP 202  (7.546 ms)
+    {'id': '33e22ca6-013b-4e74-88bd-6254862eac23', 'cached': False}
+
+>>> DELETE /api/analyses/33e22ca6-013b-4e74-88bd-6254862eac23
+<<< HTTP 200  (2.677 ms)
+    {'id': '33e22ca6-013b-4e74-88bd-6254862eac23', 'cancellation_requested': True}
+
+>>> POST /api/analyses
+    body: {"patch_id": 1180591620717411303424, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544,
+<<< HTTP 422  (3.071 ms)
+    {'detail': 'This area has no prepared imagery. Choose an available region.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (8.955 ms)
+    {'id': '5020d6b6-eaca-40e8-94f5-f39cd07cf567', 'cached': False}
+
+>>> DELETE /api/analyses/5020d6b6-eaca-40e8-94f5-f39cd07cf567
+<<< HTTP 200  (13.89 ms)
+    {'id': '5020d6b6-eaca-40e8-94f5-f39cd07cf567', 'cancellation_requested': True}

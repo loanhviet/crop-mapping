@@ -1,0 +1,109 @@
+{
+  "patch_id": 10003,
+  "window": [
+    0,
+    0
+  ],
+  "checkpoint": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+  "cases": [
+    {
+      "name": "NaN",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "+Inf",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "-Inf",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "int16_min",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "int16_max",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "negative",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "shape_23x24",
+      "shape": [
+        43,
+        10,
+        23,
+        24
+      ],
+      "doy_len": 43
+    },
+    {
+      "name": "T_zero",
+      "shape": [
+        0,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 0
+    },
+    {
+      "name": "DOY_length_mismatch",
+      "shape": [
+        43,
+        10,
+        24,
+        24
+      ],
+      "doy_len": 42
+    }
+  ],
+  "long_sequence_frames": 200,
+  "invalid_values": [
+    "NaN",
+    "+Inf",
+    "-Inf",
+    -32768,
+    32767,
+    -1
+  ]
+}

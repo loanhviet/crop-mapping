@@ -1,0 +1,242 @@
+{
+  "id": "AT09",
+  "name": "Tiêu thụ tài nguyên vùng Normandy có giới hạn",
+  "type": "security/availability",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Kế hoạch vùng Normandy có >1000 cửa sổ; job được nhận; trong 60 giây health luôn 200 và p95 <1000 ms, RSS tăng <1024 MiB; hủy chuyển cancelled trong 15 giây.",
+  "actual": "9216 cửa sổ; đã xử lý 138 trong 40.1s; trạng thái cuối error; hủy 0.009s.",
+  "notes": "Thời gian toàn vùng là NGOẠI SUY tuyến tính từ số cửa sổ trong message, gồm overhead khởi tạo; không phải lần chạy hoàn chỉnh. RSS/CPU là cả tiến trình TestClient, CPU 100% tương ứng một lõi. Hàng đợi giới hạn 4 nhưng không có quota cửa sổ mỗi job.",
+  "metrics": {
+    "objective": "Đo chi phí một job lớn và khả năng phản hồi/hủy trong lúc CPU suy luận.",
+    "component": "imagery-plan, worker TSViT, health và DELETE analyses",
+    "method": "Lập kế hoạch toàn mosaic 900010; chạy thật tối đa 60 giây với 13 mẫu RSS/CPU/health; hủy và thăm dò tối đa 30 lần.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at09_resource_exhaustion",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Polygon 2304x2304 px từ catalog thật; một job duy nhất, không gọi production.",
+    "impact": "Cao: một yêu cầu hợp lệ có thể chiếm worker duy nhất hàng chục phút; phép thử cho thấy phản hồi health/hủy trong khoảng đo, không chứng minh chống DoS dài hạn.",
+    "remediation": "Áp quota cửa sổ/diện tích/thời gian theo người dùng; giới hạn mỗi job và lập lịch công bằng ngoài giới hạn 4 pending.",
+    "limits": {
+      "max_requests": 65,
+      "max_concurrency": 1,
+      "job_run_seconds": 60,
+      "max_seconds": 110,
+      "max_jobs": 1
+    },
+    "windows": 9216,
+    "completed_windows": 138,
+    "observed_seconds": 40.07220361400323,
+    "estimated_full_run_seconds_extrapolated": 2676.1262935264763,
+    "health_p95_ms": 6.349399999999998,
+    "rss_baseline_mb": 316.9296875,
+    "rss_peak_sampled_mb": 486.75,
+    "cancel_latency_seconds": 0.008746584000618896,
+    "final_job": {
+      "id": "35d00ed3-0ae5-4eab-8787-ebb63d05a1b7",
+      "status": "error",
+      "progress": 2,
+      "started_at": 1794663756.8718889,
+      "cache_key": "3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4",
+      "message": "Analysis interrupted by a server restart. Please retry.",
+      "phase": "inference",
+      "request": {
+        "patch_id": 900010,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.5147067138444833,
+                49.33978835304554
+              ],
+              [
+                -0.19790336193221075,
+                49.33253721560301
+              ],
+              [
+                -0.20959504568684403,
+                49.12553354261756
+              ],
+              [
+                -0.5250800509368184,
+                49.13273223975904
+              ],
+              [
+                -0.5147067138444833,
+                49.33978835304554
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "samples": [
+      {
+        "seconds": 0.014796363000641577,
+        "rss_mb": 317.16015625,
+        "cpu_percent": 0.0,
+        "health_status": 200,
+        "health_latency_ms": 2.509,
+        "job_status": "queued",
+        "progress": 0,
+        "completed_windows": 0,
+        "message": "Waiting to start analysis"
+      },
+      {
+        "seconds": 5.020760446001077,
+        "rss_mb": 420.03515625,
+        "cpu_percent": 244.3085846646682,
+        "health_status": 200,
+        "health_latency_ms": 3.041,
+        "job_status": "running",
+        "progress": 0,
+        "completed_windows": 9,
+        "message": "Identifying crops · 9 / 9216 windows"
+      },
+      {
+        "seconds": 10.026560289999907,
+        "rss_mb": 463.60546875,
+        "cpu_percent": 398.3379404173528,
+        "health_status": 200,
+        "health_latency_ms": 2.773,
+        "job_status": "running",
+        "progress": 0,
+        "completed_windows": 30,
+        "message": "Identifying crops · 30 / 9216 windows"
+      },
+      {
+        "seconds": 15.034899387999758,
+        "rss_mb": 420.10546875,
+        "cpu_percent": 394.14264117785956,
+        "health_status": 200,
+        "health_latency_ms": 3.207,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 50,
+        "message": "Identifying crops · 50 / 9216 windows"
+      },
+      {
+        "seconds": 20.04127234200132,
+        "rss_mb": 420.15625,
+        "cpu_percent": 398.89157646631384,
+        "health_status": 200,
+        "health_latency_ms": 2.96,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 69,
+        "message": "Identifying crops · 69 / 9216 windows"
+      },
+      {
+        "seconds": 25.047983079002734,
+        "rss_mb": 459.265625,
+        "cpu_percent": 398.664932896729,
+        "health_status": 200,
+        "health_latency_ms": 3.596,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 92,
+        "message": "Identifying crops · 92 / 9216 windows"
+      },
+      {
+        "seconds": 30.052689766002004,
+        "rss_mb": 486.75,
+        "cpu_percent": 398.2251357861224,
+        "health_status": 200,
+        "health_latency_ms": 2.302,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 115,
+        "message": "Identifying crops · 115 / 9216 windows"
+      },
+      {
+        "seconds": 35.05887345300289,
+        "rss_mb": 464.53125,
+        "cpu_percent": 390.3172800218618,
+        "health_status": 200,
+        "health_latency_ms": 3.192,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 138,
+        "message": "Identifying crops · 138 / 9216 windows"
+      },
+      {
+        "seconds": 40.07220361400323,
+        "rss_mb": 420.22265625,
+        "cpu_percent": 398.3380180174542,
+        "health_status": 200,
+        "health_latency_ms": 8.185,
+        "job_status": "error",
+        "progress": 2,
+        "completed_windows": 0,
+        "message": "Analysis interrupted by a server restart. Please retry."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "plan thành công",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "check": "vùng có >1000 cửa sổ",
+      "expected": ">1000",
+      "actual": 9216,
+      "passed": true
+    },
+    {
+      "check": "job lớn được nhận",
+      "expected": 202,
+      "actual": 202,
+      "passed": true
+    },
+    {
+      "check": "health luôn 200",
+      "expected": "tất cả 200",
+      "actual": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "check": "health p95 <1000 ms",
+      "expected": "<1000",
+      "actual": 6.349399999999998,
+      "passed": true
+    },
+    {
+      "check": "RSS tăng <1024 MiB",
+      "expected": "<1024",
+      "actual": 169.8203125,
+      "passed": true
+    },
+    {
+      "check": "job chuyển cancelled",
+      "expected": "cancelled",
+      "actual": "error",
+      "passed": false
+    },
+    {
+      "check": "hủy trong 15 giây",
+      "expected": "<15",
+      "actual": 0.008746584000618896,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 41.89,
+  "finished_at": "2026-11-14T20:43:17"
+}

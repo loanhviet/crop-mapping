@@ -1,0 +1,73 @@
+{
+  "id": "TC10",
+  "name": "Model Inference Failure",
+  "type": "Mock Test",
+  "environment": "Local (mock)",
+  "status": "PASS",
+  "expected": "Lỗi suy luận/đọc dữ liệu làm job chuyển status=error với thông báo chung, không lộ chi tiết nội bộ, không ghi kết quả dở dang; worker phục hồi để chạy job kế tiếp; checkpoint bị sửa đổi bị từ chối ngay khi khởi động.",
+  "actual": "S1=OK; S1=OK; S1=OK; S2=OK; S3=OK; S4=OK; S4=OK; S5=OK; S5=OK",
+  "notes": "Mock test: lỗi được tiêm bằng unittest.mock (S1–S3) và checkpoint bản sao bị lật 1 byte (S5). S4 là suy luận thật với checkpoint thật. Checkpoint gốc không bị chỉnh sửa.",
+  "metrics": {},
+  "checks": [
+    {
+      "check": "S1 Exception trong forward pass: job=error, thông báo chung, không lộ stack/đường dẫn",
+      "expected": "error, không lộ chi tiết",
+      "actual": "error: Analysis failed. Please retry or check the server log.",
+      "passed": true
+    },
+    {
+      "check": "S1 Không ghi file kết quả dở dang (classification.tif)",
+      "expected": "không có classification.tif",
+      "actual": [
+        "preview.png",
+        "request.json",
+        "status.json"
+      ],
+      "passed": true
+    },
+    {
+      "check": "S1 Tải kết quả của job lỗi bị từ chối 409",
+      "expected": "409",
+      "actual": 409,
+      "passed": true
+    },
+    {
+      "check": "S2 Mô hình trả output hỏng: job=error, worker không chết",
+      "expected": "error",
+      "actual": "error",
+      "passed": true
+    },
+    {
+      "check": "S3 Lỗi đọc dữ liệu ảnh: job=error",
+      "expected": "error, thông báo chung",
+      "actual": "error: Analysis failed. Please retry or check the server log.",
+      "passed": true
+    },
+    {
+      "check": "S4 Phục hồi: job thật tiếp theo hoàn tất (done) không cần khởi động lại",
+      "expected": "done",
+      "actual": "done sau 3.3s",
+      "passed": true
+    },
+    {
+      "check": "S4 /api/health 200, hàng đợi rỗng",
+      "expected": "200, pending=0",
+      "actual": "200, pending=0",
+      "passed": true
+    },
+    {
+      "check": "S5 Checkpoint bị sửa 1 byte: Engine từ chối nạp (RuntimeError xác minh SHA-256)",
+      "expected": "RuntimeError verification failed",
+      "actual": "Model asset verification failed: Checkpoint integrity mismatch; refuse to use this artifact.",
+      "passed": true
+    },
+    {
+      "check": "S5 Ứng dụng không khởi động với checkpoint giả mạo",
+      "expected": "startup bị hủy",
+      "actual": "bị hủy",
+      "passed": true
+    }
+  ],
+  "duration_seconds": 7.53,
+  "finished_at": "2026-11-14T20:44:08"
+}

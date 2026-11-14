@@ -1,0 +1,310 @@
+[
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "env": "Local",
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/download/tif",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/download/csv",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/download/geojson",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/download/png",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/overlay.png",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/analyses/bb3bf88a-056c-4352-973e-fcc1e4907347/download/zip?include=tif,csv,png,geojson",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "env": "Production",
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.36279540647615505,
+              49.30727117723436
+            ],
+            [
+              -0.362910582848446,
+              49.3051146334352
+            ],
+            [
+              -0.3662085676102853,
+              49.305189895623315
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/download/tif",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/download/csv",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/download/geojson",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/download/png",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/overlay.png",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/analyses/4926e95e-aab6-420f-9058-cf0515b18d7f/download/zip?include=tif,csv,png,geojson",
+    "body": null
+  }
+]

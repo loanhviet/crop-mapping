@@ -1,0 +1,154 @@
+{
+  "id": "TC01",
+  "name": "API Health & Availability",
+  "type": "Automation",
+  "environment": "Local + Production",
+  "status": "PASS",
+  "expected": "Mọi endpoint public trả 200; health báo ok/TSViT với checkpoint đúng manifest; catalog đủ 19 lớp; median /api/health < 3 s; Local và Production cùng checkpoint.",
+  "actual": "Local median health=4.7 ms; Production median health=105.9 ms, max=5536.1 ms; số request production=15.",
+  "notes": "Production chỉ dùng GET, tuần tự, giãn cách 0.3 s; tổng 15 request + 2 lượt chụp màn hình.",
+  "metrics": {
+    "Local": {
+      "requests": 15,
+      "all_200": true,
+      "health": {
+        "status": "ok",
+        "model": "TSViT",
+        "device": "cpu",
+        "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+        "available_patches": 19,
+        "source_mode": "prepared",
+        "imagery": {
+          "name": "Prepared Sentinel‑2",
+          "configured": true,
+          "available_regions": 9,
+          "offline_imagery": true
+        }
+      },
+      "classes": 19,
+      "regions": 9,
+      "median_ms": {
+        "/api/health": 4.7,
+        "/api/catalog": 3.2,
+        "/": 13.4,
+        "/openapi.json": 2.6,
+        "/docs": 1.7
+      },
+      "max_ms": {
+        "/api/health": 6.1,
+        "/api/catalog": 10.1,
+        "/": 17.5,
+        "/openapi.json": 18.8,
+        "/docs": 7.7
+      }
+    },
+    "Production": {
+      "requests": 15,
+      "all_200": true,
+      "health": {
+        "status": "ok",
+        "model": "TSViT",
+        "device": "cpu",
+        "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+        "available_patches": 19,
+        "source_mode": "prepared",
+        "imagery": {
+          "name": "Prepared Sentinel‑2",
+          "configured": true,
+          "available_regions": 9,
+          "offline_imagery": true
+        }
+      },
+      "classes": 19,
+      "regions": 9,
+      "median_ms": {
+        "/api/health": 105.9,
+        "/api/catalog": 110.0,
+        "/": 108.0,
+        "/openapi.json": 109.7,
+        "/docs": 112.7
+      },
+      "max_ms": {
+        "/api/health": 5536.1,
+        "/api/catalog": 115.1,
+        "/": 108.3,
+        "/openapi.json": 109.7,
+        "/docs": 112.9
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "[Local] Tất cả 15 request trả 200",
+      "expected": "HTTP 200",
+      "actual": [
+        200
+      ],
+      "passed": true
+    },
+    {
+      "check": "[Local] health: status=ok, model=TSViT",
+      "expected": "ok/TSViT",
+      "actual": "ok/TSViT",
+      "passed": true
+    },
+    {
+      "check": "[Local] checkpoint_sha256 khớp model-manifest.json của repository",
+      "expected": "hash trong manifest",
+      "actual": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "passed": true
+    },
+    {
+      "check": "[Local] catalog có 19 lớp cây trồng",
+      "expected": 19,
+      "actual": 19,
+      "passed": true
+    },
+    {
+      "check": "[Local] median /api/health < 3000 ms",
+      "expected": "< 3000 ms",
+      "actual": 4.7,
+      "passed": true
+    },
+    {
+      "check": "[Production] Tất cả 15 request trả 200",
+      "expected": "HTTP 200",
+      "actual": [
+        200
+      ],
+      "passed": true
+    },
+    {
+      "check": "[Production] health: status=ok, model=TSViT",
+      "expected": "ok/TSViT",
+      "actual": "ok/TSViT",
+      "passed": true
+    },
+    {
+      "check": "[Production] checkpoint_sha256 khớp model-manifest.json của repository",
+      "expected": "hash trong manifest",
+      "actual": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "passed": true
+    },
+    {
+      "check": "[Production] catalog có 19 lớp cây trồng",
+      "expected": 19,
+      "actual": 19,
+      "passed": true
+    },
+    {
+      "check": "[Production] median /api/health < 3000 ms",
+      "expected": "< 3000 ms",
+      "actual": 105.9,
+      "passed": true
+    },
+    {
+      "check": "Local và Production dùng cùng checkpoint",
+      "expected": "giống nhau",
+      "actual": "92a83d0d94e529e7…",
+      "passed": true
+    }
+  ],
+  "duration_seconds": 20.69,
+  "finished_at": "2026-11-14T20:45:04"
+}

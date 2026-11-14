@@ -1,0 +1,317 @@
+{
+  "id": "AT01",
+  "name": "Tấn công đầu vào sai cấu trúc",
+  "type": "security",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Mọi đầu vào sai trả 422, không lộ stack trace và không tạo thư mục job.",
+  "actual": "Có 3 / 12 payload sai được chấp nhận hoặc xử lý khác 422.",
+  "notes": "Không gửi yêu cầu ra mạng; các job chấp nhận ngoài dự kiến đều được yêu cầu hủy.",
+  "metrics": {
+    "objective": "Đánh giá ranh giới kiểm tra kiểu và cấu trúc yêu cầu.",
+    "component": "AnalysisRequest và POST /api/analyses",
+    "method": "Gửi từng payload sai với TestClient thật và so sánh thư mục kết quả trước/sau.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at01_malformed_input",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "JSON hỏng, content-type sai, sai kiểu, thiếu trường, trường thừa.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Bật strict cho kiểu dữ liệu và extra=forbid; chuẩn hóa lỗi JSON trước khi xử lý.",
+    "limits": {
+      "max_requests": 60,
+      "max_concurrency": 1,
+      "max_seconds": 60
+    },
+    "cases": [
+      {
+        "case": "JSON hỏng",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "content-type sai",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "thiếu geometry",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "thiếu toàn bộ",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "geometry str",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "geometry list",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "geometry int",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "season số",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "patch_id 10003",
+        "status": 202,
+        "created_job_ids": [
+          "9e93991b-6356-46d0-a9f2-ecd8f754bfc0"
+        ]
+      },
+      {
+        "case": "patch_id 10003.0",
+        "status": 202,
+        "created_job_ids": [
+          "33e22ca6-013b-4e74-88bd-6254862eac23"
+        ]
+      },
+      {
+        "case": "patch_id 1180591620717411303424",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "trường thừa",
+        "status": 202,
+        "created_job_ids": [
+          "5020d6b6-eaca-40e8-94f5-f39cd07cf567"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "JSON hỏng trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "JSON hỏng không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "JSON hỏng không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "content-type sai trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "content-type sai không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "content-type sai không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "thiếu geometry trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "thiếu geometry không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "thiếu geometry không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "thiếu toàn bộ trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "thiếu toàn bộ không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "thiếu toàn bộ không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "geometry str trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "geometry str không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "geometry str không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "geometry list trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "geometry list không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "geometry list không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "geometry int trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "geometry int không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "geometry int không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "season số trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "season số không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "season số không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "patch_id 10003 trả 422",
+      "expected": 422,
+      "actual": 202,
+      "passed": false
+    },
+    {
+      "check": "patch_id 10003 không tạo job",
+      "expected": 0,
+      "actual": 1,
+      "passed": false
+    },
+    {
+      "check": "patch_id 10003 không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "patch_id 10003.0 trả 422",
+      "expected": 422,
+      "actual": 202,
+      "passed": false
+    },
+    {
+      "check": "patch_id 10003.0 không tạo job",
+      "expected": 0,
+      "actual": 1,
+      "passed": false
+    },
+    {
+      "check": "patch_id 10003.0 không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "patch_id 1180591620717411303424 trả 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "patch_id 1180591620717411303424 không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "patch_id 1180591620717411303424 không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "trường thừa trả 422",
+      "expected": 422,
+      "actual": 202,
+      "passed": false
+    },
+    {
+      "check": "trường thừa không tạo job",
+      "expected": 0,
+      "actual": 1,
+      "passed": false
+    },
+    {
+      "check": "trường thừa không lộ trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 2.58,
+  "finished_at": "2026-11-14T20:40:16"
+}

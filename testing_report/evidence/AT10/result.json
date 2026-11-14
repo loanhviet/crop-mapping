@@ -1,0 +1,487 @@
+{
+  "id": "AT10",
+  "name": "Giá trị số và kích thước tensor không hợp lệ",
+  "type": "security/robustness",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "NaN/±Inf, int16 cực trị, reflectance âm, kích thước sai, T=0 và DOY lệch độ dài bị ValueError sạch; T=200 được cắt đúng 60; job chứa NaN kết thúc error với thông báo chung.",
+  "actual": "10/18 phép thử tensor bị ValueError; T=200 cắt đúng=True; job NaN=error.",
+  "notes": "NaN imagery được mock tại provider của job cục bộ; các phần còn lại gồm model thật. Reflectance âm/cực trị hữu hạn không được kiểm tra miền ở preprocess hiện tại; tiêu chí từ chối đã đặt trước để phát hiện khoảng trống này. API không cho client gửi tensor trực tiếp.",
+  "metrics": {
+    "objective": "Kiểm tra ranh giới số học từ preprocess đến job API và hành vi cắt chuỗi.",
+    "component": "preprocess, Engine.predict, run_analysis exception handler",
+    "method": "Chạy từng tensor qua preprocess và Engine.predict; đối chiếu T=200 với 60 frame đầu; mock riêng provider.window bằng NaN trong một job thật.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at10_invalid_numerics",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "NaN, +Inf, -Inf, -32768/32767, -1; 23x24, 0/200 frame, DOY lệch độ dài.",
+    "impact": "Trung bình: tensor hữu hạn nhưng vô nghĩa và chuỗi rỗng có thể tạo dự đoán; NaN/Inf cần bị chặn và lỗi job không được lộ chi tiết.",
+    "remediation": "Thêm kiểm tra T>=1 và miền reflectance theo hợp đồng dữ liệu/QA; giữ kiểm tra hữu hạn và thông báo lỗi job chung.",
+    "limits": {
+      "max_model_calls": 24,
+      "max_api_requests": 65,
+      "max_concurrency": 1,
+      "max_seconds": 120
+    },
+    "cases": [
+      {
+        "case": "NaN",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "NaN",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "+Inf",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "+Inf",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "-Inf",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "-Inf",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      {
+        "case": "int16_min",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "int16_min",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "int16_max",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "int16_max",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "negative",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "negative",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "shape_23x24",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      {
+        "case": "shape_23x24",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      {
+        "case": "T_zero",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "T_zero",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      {
+        "case": "DOY_length_mismatch",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      {
+        "case": "DOY_length_mismatch",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      }
+    ],
+    "truncation_equal": true,
+    "api_nan_job": {
+      "id": "d8b8071d-34ed-4752-982e-ee9e6f2e0ee2",
+      "status": "error",
+      "progress": 0,
+      "started_at": 1794663801.5458097,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis failed. Please retry or check the server log.",
+      "phase": "inference",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "NaN preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "NaN",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "NaN Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "NaN",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "+Inf preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "+Inf",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "+Inf Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "+Inf",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "-Inf preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "-Inf",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "-Inf Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "-Inf",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Invalid reflectance values or dates for this checkpoint."
+      },
+      "passed": true
+    },
+    {
+      "check": "int16_min preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "int16_min",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "int16_min preprocess hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "int16_min Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "int16_min",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "int16_min Engine.predict hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "int16_max preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "int16_max",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "int16_max preprocess hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "int16_max Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "int16_max",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "int16_max Engine.predict hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "negative preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "negative",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "negative preprocess hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "negative Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "negative",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "negative Engine.predict hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "shape_23x24 preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "shape_23x24",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      "passed": true
+    },
+    {
+      "check": "shape_23x24 Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "shape_23x24",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      "passed": true
+    },
+    {
+      "check": "T_zero preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "T_zero",
+        "component": "preprocess",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "T_zero preprocess hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "T_zero Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "T_zero",
+        "component": "Engine.predict",
+        "rejected": false,
+        "output_finite": true
+      },
+      "passed": false
+    },
+    {
+      "check": "T_zero Engine.predict hữu hạn",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "DOY_length_mismatch preprocess ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "DOY_length_mismatch",
+        "component": "preprocess",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      "passed": true
+    },
+    {
+      "check": "DOY_length_mismatch Engine.predict ValueError",
+      "expected": "ValueError",
+      "actual": {
+        "case": "DOY_length_mismatch",
+        "component": "Engine.predict",
+        "rejected": true,
+        "exception": "ValueError",
+        "message": "Expected [T, 10, 24, 24] imagery and one DOY per frame."
+      },
+      "passed": true
+    },
+    {
+      "check": "T=200 cắt đúng 60 ở preprocess",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "T=200 predict như 60 đầu",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "check": "job NaN chuyển error",
+      "expected": "error",
+      "actual": "error",
+      "passed": true
+    },
+    {
+      "check": "job NaN dùng thông báo chung",
+      "expected": "Analysis failed. Please retry or check the server log.",
+      "actual": "Analysis failed. Please retry or check the server log.",
+      "passed": true
+    },
+    {
+      "check": "job không lộ stack trace",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "health sau lỗi",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 2.78,
+  "finished_at": "2026-11-14T20:43:22"
+}

@@ -1,0 +1,266 @@
+{
+  "id": "AT03",
+  "name": "Dồn yêu cầu API có giới hạn",
+  "type": "security",
+  "environment": "Local",
+  "status": "PASS",
+  "expected": "200 GET health đều 200 với p95 dưới 1000 ms; đợt 12 POST có 429 khi hàng đợi đủ 4; mọi job được hủy và dịch vụ còn sống.",
+  "actual": "Health lỗi=0; POST nhận=4, từ chối 429=8.",
+  "notes": "Tải ngắn trong cùng tiến trình, không suy ra thông lượng mạng/production. Đối chiếu mã nguồn giới hạn pending >=4 trước khi tạo job.",
+  "metrics": {
+    "objective": "Kiểm tra tính sẵn sàng và giới hạn hàng đợi khi có đợt tải ngắn.",
+    "component": "health, analyses, hàng đợi ThreadPoolExecutor",
+    "method": "8 luồng gửi tối đa 200 GET rồi 12 POST cửa sổ thật; DELETE và kiểm tra trạng thái tối đa 80 lần.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at03_api_flooding",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Đợt tải health và yêu cầu suy luận 24x24 px hợp lệ.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Giữ giới hạn hàng đợi, bổ sung rate limit theo người dùng/IP và giới hạn khối lượng mỗi job.",
+    "limits": {
+      "max_requests": 310,
+      "max_concurrency": 8,
+      "max_seconds": 120,
+      "health_requests": 200,
+      "analysis_requests": 12
+    },
+    "health_p50_ms": 14.1375,
+    "health_p95_ms": 23.321099999999998,
+    "health_errors": 0,
+    "post_statuses": [
+      202,
+      202,
+      202,
+      429,
+      202,
+      429,
+      429,
+      429,
+      429,
+      429,
+      429,
+      429
+    ],
+    "final_jobs": {
+      "48a9bc90-f559-41b0-a8a1-5ac877832b67": {
+        "id": "48a9bc90-f559-41b0-a8a1-5ac877832b67",
+        "status": "cancelled",
+        "progress": 0,
+        "started_at": 1794663623.741554,
+        "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+        "message": "Analysis cancelled",
+        "request": {
+          "patch_id": 10003,
+          "season": "2018–2019",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "0976ccb1-72bd-453f-b787-e0081ee82898": {
+        "id": "0976ccb1-72bd-453f-b787-e0081ee82898",
+        "status": "cancelled",
+        "progress": 0,
+        "started_at": 1794663623.6466885,
+        "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+        "message": "Analysis cancelled",
+        "phase": "inference",
+        "request": {
+          "patch_id": 10003,
+          "season": "2018–2019",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "e9cb7bc4-8e76-4e9a-8b15-b074413dd907": {
+        "id": "e9cb7bc4-8e76-4e9a-8b15-b074413dd907",
+        "status": "cancelled",
+        "progress": 0,
+        "started_at": 1794663623.7419872,
+        "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+        "message": "Analysis cancelled",
+        "request": {
+          "patch_id": 10003,
+          "season": "2018–2019",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "ebcbe302-a423-4983-b3cd-78aedd84f072": {
+        "id": "ebcbe302-a423-4983-b3cd-78aedd84f072",
+        "status": "cancelled",
+        "progress": 0,
+        "started_at": 1794663623.7422743,
+        "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+        "message": "Analysis cancelled",
+        "request": {
+          "patch_id": 10003,
+          "season": "2018–2019",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "total_requests": 225
+  },
+  "checks": [
+    {
+      "check": "200 health thành công",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "check": "p95 dưới 1000 ms",
+      "expected": "<1000",
+      "actual": 23.321099999999998,
+      "passed": true
+    },
+    {
+      "check": "hàng đợi trả 429",
+      "expected": ">=1",
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "check": "POST chỉ trả 202/429",
+      "expected": "202/429",
+      "actual": [
+        202,
+        202,
+        202,
+        429,
+        202,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429
+      ],
+      "passed": true
+    },
+    {
+      "check": "job đã kết thúc sau hủy",
+      "expected": "done/cancelled",
+      "actual": [
+        "cancelled",
+        "cancelled",
+        "cancelled",
+        "cancelled"
+      ],
+      "passed": true
+    },
+    {
+      "check": "health sau tải",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 3.46,
+  "finished_at": "2026-11-14T20:40:24"
+}

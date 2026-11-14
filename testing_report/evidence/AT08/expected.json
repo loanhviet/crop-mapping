@@ -1,0 +1,23 @@
+{
+  "expected": "Patch training ẩn bị từ chối 422 theo chính sách cách ly tập test; patch sai/season sai bị 422; traversal/UUID không chuẩn bị 404; include sai 422; tọa độ sai 422; client khác không được hủy job (401/403).",
+  "type": "security",
+  "metrics": {
+    "objective": "Đánh giá kiểm tra định danh, truy cập dữ liệu ẩn và ranh giới quyền sở hữu job.",
+    "component": "resolve, job_directory, download, pixel, DELETE analyses",
+    "method": "Dùng một job hoàn tất để tránh nhầm 409 với validation download; tạo job khác và thử DELETE từ client B không có cookie/token.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at08_parameter_tampering",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "ID training/nonexistent/negative, season giả, traversal, UUID viết hoa, format/include giả, lat/lng sai.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Nếu cần cách ly training thì kiểm tra split khi resolve explicit ID; thêm xác thực và quyền sở hữu job nếu triển khai đa người dùng; giữ UUID/path validation.",
+    "limits": {
+      "max_requests": 120,
+      "max_concurrency": 1,
+      "max_seconds": 120
+    }
+  }
+}

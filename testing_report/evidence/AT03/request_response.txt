@@ -1,0 +1,911 @@
+>>> GET /api/health
+<<< HTTP 200  (17.837 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.978 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (27.997 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (32.789 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (26.507 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.506 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.899 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.965 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (23.314 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (22.113 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.728 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.267 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.64 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.759 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.561 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.595 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.237 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.871 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.024 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.432 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.985 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.887 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.724 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.048 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.006 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.499 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.97 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.88 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.745 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.476 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.503 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.542 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.684 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.062 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.862 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.402 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.715 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.158 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.793 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.228 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.86 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.255 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.55 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.351 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.889 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.603 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (22.963 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.576 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.882 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (22.935 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (24.679 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (22.47 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (21.395 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (23.456 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.488 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.351 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.293 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.553 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.234 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.849 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.926 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.061 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.194 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.01 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.124 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.302 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.226 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.737 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.714 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.072 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.396 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.048 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.172 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.772 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.638 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.528 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.036 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.075 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.668 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.521 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.092 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.554 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.378 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.479 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.771 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.549 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.702 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.622 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.136 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.193 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.61 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.631 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.22 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.341 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.06 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.96 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.916 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.66 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.104 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.615 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.979 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.33 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.566 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.903 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.861 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.382 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.842 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.744 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.118 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.999 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.447 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.749 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.451 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.474 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.951 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.566 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.682 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.801 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.746 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.155 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.143 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.423 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.876 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.71 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.296 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.112 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.363 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.453 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.555 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.342 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.781 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.224 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.723 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.824 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.362 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.617 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.124 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.331 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.157 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.863 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.494 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.344 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.053 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.48 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.69 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.291 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.879 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.3 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.35 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.129 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.158 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.065 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.78 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.146 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.645 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.613 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.838 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.919 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.231 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.722 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.646 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (21.316 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.865 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.052 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (19.736 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (17.082 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.273 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.583 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.247 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.097 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.999 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.175 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.642 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.119 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.945 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.676 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.063 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.227 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.168 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.257 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (20.206 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (13.892 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.472 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.447 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.683 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.296 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (18.278 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (16.821 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.552 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.01 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.996 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (15.608 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (14.604 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.643 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (12.706 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.767 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.577 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (11.537 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (10.921 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> GET /api/health
+<<< HTTP 200  (9.229 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (57.522 ms)
+    {'id': '48a9bc90-f559-41b0-a8a1-5ac877832b67', 'cached': False}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (52.679 ms)
+    {'id': '0976ccb1-72bd-453f-b787-e0081ee82898', 'cached': False}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (61.863 ms)
+    {'id': 'e9cb7bc4-8e76-4e9a-8b15-b074413dd907', 'cached': False}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (65.643 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 202  (65.319 ms)
+    {'id': 'ebcbe302-a423-4983-b3cd-78aedd84f072', 'cached': False}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (64.591 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (61.828 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (58.609 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (17.291 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (12.88 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (12.895 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> POST /api/analyses
+    body: {"patch_id": 10003, "season": "2018–2019", "geometry": {"type": "Polygon", "coordinates": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.3073464451152
+<<< HTTP 429  (7.111 ms)
+    {'detail': 'The analysis queue is full. Please try again shortly.'}
+
+>>> DELETE /api/analyses/48a9bc90-f559-41b0-a8a1-5ac877832b67
+<<< HTTP 200  (4.313 ms)
+    {'id': '48a9bc90-f559-41b0-a8a1-5ac877832b67', 'cancellation_requested': True}
+
+>>> DELETE /api/analyses/0976ccb1-72bd-453f-b787-e0081ee82898
+<<< HTTP 200  (3.083 ms)
+    {'id': '0976ccb1-72bd-453f-b787-e0081ee82898', 'cancellation_requested': True}
+
+>>> DELETE /api/analyses/e9cb7bc4-8e76-4e9a-8b15-b074413dd907
+<<< HTTP 200  (2.442 ms)
+    {'id': 'e9cb7bc4-8e76-4e9a-8b15-b074413dd907', 'cancellation_requested': True}
+
+>>> DELETE /api/analyses/ebcbe302-a423-4983-b3cd-78aedd84f072
+<<< HTTP 200  (2.348 ms)
+    {'id': 'ebcbe302-a423-4983-b3cd-78aedd84f072', 'cancellation_requested': True}
+
+>>> GET /api/analyses/48a9bc90-f559-41b0-a8a1-5ac877832b67
+<<< HTTP 200  (16.241 ms)
+    {'id': '48a9bc90-f559-41b0-a8a1-5ac877832b67', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/0976ccb1-72bd-453f-b787-e0081ee82898
+<<< HTTP 200  (4.745 ms)
+    {'id': '0976ccb1-72bd-453f-b787-e0081ee82898', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/e9cb7bc4-8e76-4e9a-8b15-b074413dd907
+<<< HTTP 200  (6.481 ms)
+    {'id': 'e9cb7bc4-8e76-4e9a-8b15-b074413dd907', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/ebcbe302-a423-4983-b3cd-78aedd84f072
+<<< HTTP 200  (3.238 ms)
+    {'id': 'ebcbe302-a423-4983-b3cd-78aedd84f072', 'status': 'queued', 'progress': 0, 'message': 'Waiting to start analysis', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/48a9bc90-f559-41b0-a8a1-5ac877832b67
+<<< HTTP 200  (3.006 ms)
+    {'id': '48a9bc90-f559-41b0-a8a1-5ac877832b67', 'status': 'cancelled', 'progress': 0, 'started_at': 1794663623.741554, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'Analysis cancelled', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/0976ccb1-72bd-453f-b787-e0081ee82898
+<<< HTTP 200  (1.999 ms)
+    {'id': '0976ccb1-72bd-453f-b787-e0081ee82898', 'status': 'cancelled', 'progress': 0, 'started_at': 1794663623.6466885, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'Analysis cancelled', 'phase': 'inference', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/e9cb7bc4-8e76-4e9a-8b15-b074413dd907
+<<< HTTP 200  (2.975 ms)
+    {'id': 'e9cb7bc4-8e76-4e9a-8b15-b074413dd907', 'status': 'cancelled', 'progress': 0, 'started_at': 1794663623.7419872, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'Analysis cancelled', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/analyses/ebcbe302-a423-4983-b3cd-78aedd84f072
+<<< HTTP 200  (2.157 ms)
+    {'id': 'ebcbe302-a423-4983-b3cd-78aedd84f072', 'status': 'cancelled', 'progress': 0, 'started_at': 1794663623.7422743, 'cache_key': '70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7', 'message': 'Analysis cancelled', 'request': {'patch_id': 10003, 'season': '2018–2019', 'geometry': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}}
+
+>>> GET /api/health
+<<< HTTP 200  (2.532 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}

@@ -1,0 +1,137 @@
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 422  (3.106 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36608353487300543, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 422  (3.122 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36608353487300543, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.36609353487300544, 49.30734644511522]]]}}", "bytes": 228}
+<<< HTTP 422  (2.006 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.36609353487300544, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.36609353487300544, 49.30734644511522]]]}}", "bytes": 228}
+<<< HTTP 422  (1.391 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.36609353487300544, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"MultiPolygon\", \"coordinates\": [[[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315
+<<< HTTP 422  (1.617 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'MultiPolygon', 'coordinates': [[[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"MultiPolygon\", \"coordinates\": [[[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315
+<<< HTTP 422  (1.901 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'MultiPolygon', 'coordinates': [[[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 422  (1.576 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]], [[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.307346445115
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 422  (1.72 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]], [[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.307346445115
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [NaN, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.3660935348730054
+<<< HTTP 500  (1.945 ms)
+    Internal Server Error
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [NaN, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.3660935348730054
+<<< HTTP 500  (1.892 ms)
+    Internal Server Error
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [Infinity, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487
+<<< HTTP 500  (2.63 ms)
+    Internal Server Error
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [Infinity, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487
+<<< HTTP 500  (1.977 ms)
+    Internal Server Error
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-Infinity, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.3660935348
+<<< HTTP 500  (1.685 ms)
+    Internal Server Error
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-Infinity, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.3660935348
+<<< HTTP 500  (1.63 ms)
+    Internal Server Error
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [181, 91], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.307346445
+<<< HTTP 422  (1.493 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [181, 91], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [181, 91], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.307346445
+<<< HTTP 422  (1.42 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522], [181, 91], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522, 10], [-0.36279540647615505, 49.30727117723436, 10], [-0.362910582848446, 49.3051146334352, 10], [-0.3662085676102853, 49.305189895
+<<< HTTP 422  (1.493 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522, 10], [-0.36279540647615505, 49.30727117723436, 10], [-0.362910582848446, 49.3051146334352, 10], [-0.3662085676102853, 49.305189895623315, 10], [-0.36609353487300544, 49.30734644511522, 10]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522, 10], [-0.36279540647615505, 49.30727117723436, 10], [-0.362910582848446, 49.3051146334352, 10], [-0.3662085676102853, 49.305189895
+<<< HTTP 422  (1.587 ms)
+    {'detail': [{'type': 'value_error', 'loc': ['body', 'geometry'], 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[-0.36609353487300544, 49.30734644511522, 10], [-0.36279540647615505, 49.30727117723436, 10], [-0.362910582848446, 49.3051146334352, 10], [-0.3662085676102853, 49.305189895623315, 10], [-0.36609353487300544, 49.30734644511522, 10]]]}, 'ctx': {'error': {}}}]}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.362910582848446, 49.3051146334352], [-0.36279540647615505, 49.30727117723436], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 200  (23.528 ms)
+    {'source': 'PASTIS', 'patch_id': 10003, 'scenes': 43, 'model_observations': 43, 'cached_scenes': 43, 'estimated_download_gb': 0, 'exceeds_download_limit': False, 'selected_area_ha': 2.88, 'preview_date': '2019-07-16', 'first_date': '2018-09-24', 'last_date': '2019-10-19', 'split': 'test', 'windows': 1, 'valid_area_ha': 2.88, 'prediction_ready': False, 'blocks': 1, 'observation_range': [43, 43], 'max_analysis_windows': None, 'exceeds_analysis_limit': False}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.362910582848446, 49.3051146334352], [-0.36279540647615505, 49.30727117723436], [-0.3662085676102853, 49.305189895623315], [-0
+<<< HTTP 202  (4.802 ms)
+    {'id': '390af90b-0c55-4348-bd1e-1b8de3472c84', 'cached': False}
+
+>>> DELETE /api/analyses/390af90b-0c55-4348-bd1e-1b8de3472c84
+<<< HTTP 200  (2.279 ms)
+    {'id': '390af90b-0c55-4348-bd1e-1b8de3472c84', 'cancellation_requested': True}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522]]]
+<<< HTTP 422  (2.615 ms)
+    {'detail': 'Select an area containing at least one 10 m pixel centre.'}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522], [-0.36609353487300544, 49.30734644511522]]]
+<<< HTTP 422  (3.081 ms)
+    {'detail': 'Select an area containing at least one 10 m pixel centre.'}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[0, 0], [0.01, 0], [0.01, 0.01], [0, 0.01], [0, 0]]]}}", "bytes": 151}
+<<< HTTP 422  (2.48 ms)
+    {'detail': 'Keep the selection inside the outlined area with available imagery.'}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[0, 0], [0.01, 0], [0.01, 0.01], [0, 0.01], [0, 0]]]}}", "bytes": 151}
+<<< HTTP 422  (5.195 ms)
+    {'detail': 'Keep the selection inside the outlined area with available imagery.'}
+
+>>> POST /api/imagery-plan
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-90, -80], [90, -80], [90, 80], [-90, 80], [-90, -80]]]}}", "bytes": 155}
+<<< HTTP 422  (6.223 ms)
+    {'detail': 'Keep the selection inside the outlined area with available imagery.'}
+
+>>> POST /api/analyses
+    body: {"raw_prefix": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-90, -80], [90, -80], [90, 80], [-90, 80], [-90, -80]]]}}", "bytes": 155}
+<<< HTTP 422  (17.992 ms)
+    {'detail': 'Keep the selection inside the outlined area with available imagery.'}
+
+>>> GET /api/health
+<<< HTTP 200  (9.041 ms)
+    {'status': 'ok', 'model': 'TSViT', 'device': 'cpu', 'checkpoint_sha256': '92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733', 'available_patches': 19, 'source_mode': 'prepared', 'imagery': {'name': 'Prepared Sentinel‑2', 'configured': True, 'available_regions': 9, 'offline_imagery': True}}

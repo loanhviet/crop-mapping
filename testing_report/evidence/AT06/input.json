@@ -1,0 +1,37 @@
+{
+  "patch_id": 10003,
+  "positions": [
+    [
+      0,
+      0
+    ],
+    [
+      48,
+      48
+    ],
+    [
+      96,
+      96
+    ]
+  ],
+  "seed": 20261114,
+  "uniform_range": [
+    0,
+    10000
+  ],
+  "high_constant": 10000,
+  "scale": 3,
+  "band_order": [
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "checkpoint": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733"
+}

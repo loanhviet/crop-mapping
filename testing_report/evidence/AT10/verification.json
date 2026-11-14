@@ -1,0 +1,51 @@
+{
+  "scripts": 10,
+  "results": 10,
+  "passed": 2,
+  "failed": 8,
+  "blocked": 0,
+  "png_verified": true,
+  "expected_at09_unchanged": true,
+  "summary": {
+    "AT01": [
+      "Chuỗi/số thực patch_id bị ép kiểu; bỏ qua trường thừa",
+      "3/12 payload nhận 202"
+    ],
+    "AT02": [
+      "6 MiB được nhận; JSON sâu trả 500",
+      "100000 đỉnh: 422, 462 ms"
+    ],
+    "AT03": [
+      "Health ổn định; hàng đợi chặn đủ mức",
+      "200 GET, p95 23.32 ms; POST 4×202 + 8×429"
+    ],
+    "AT04": [
+      "PGD làm suy giảm mạnh so với nhiễu ngẫu nhiên cùng chuẩn",
+      "accuracy 0.8378 → 0.1455 (ε=0.1)"
+    ],
+    "AT05": [
+      "Ghép sai thời gian/lặp frame làm accuracy giảm; đảo cả cặp bất biến",
+      "25 cửa sổ: sạch 0.8734 → lặp frame 0.1593"
+    ],
+    "AT06": [
+      "Ảnh zero/cloud/noise vẫn có confidence gần 1",
+      "noise mean=0.9972, 100% pixel ≥0.9"
+    ],
+    "AT07": [
+      "NaN/±Inf trả 500; bow-tie được nhận",
+      "6 lỗi 500; bow-tie plan 200 / job 202"
+    ],
+    "AT08": [
+      "ID training ẩn và hủy job từ client B đều được nhận",
+      "training 202; DELETE khác client 200"
+    ],
+    "AT09": [
+      "Job lớn vẫn cho health và hủy phản hồi tốt trong 60 giây",
+      "9216 cửa sổ; 218 đã chạy; hủy 0.511s; p95 3.939 ms"
+    ],
+    "AT10": [
+      "Chặn NaN/Inf/shape sai; chấp nhận chuỗi rỗng, âm/cực trị",
+      "10/18 ValueError; T=200 cắt 60; NaN job=error"
+    ]
+  }
+}

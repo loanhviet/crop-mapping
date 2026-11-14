@@ -1,0 +1,511 @@
+{
+  "id": "AT07",
+  "name": "Tấn công GeoJSON không hợp lệ",
+  "type": "security",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Mọi hình học sai hoặc không hỗ trợ bị 422 trên cả imagery-plan và analyses, không 500, không tạo job.",
+  "actual": "Có 8 / 26 trường hợp không trả 422.",
+  "notes": "Bow-tie thử hoàn toàn bên trong patch thật; chỉ quan sát cục bộ. NaN/Infinity được gửi bằng raw JSON ngoài chuẩn để kiểm tra parser và đường lỗi.",
+  "metrics": {
+    "objective": "Kiểm tra cấu trúc, tính hữu hạn, topology và giới hạn phủ của polygon.",
+    "component": "AnalysisRequest.validate_polygon và selection_mask",
+    "method": "Gửi 13 biến thể trên 2 endpoint; chụp mã HTTP và thư mục job; hủy mọi job ngoài dự kiến.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at07_malformed_geojson",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Ring hở/3 điểm, MultiPolygon, lỗ, NaN/±Infinity, tọa độ ngoài miền/3D, bow-tie, diện tích 0, ngoài phủ, nửa địa cầu.",
+    "impact": "Trung bình: lỗi 500 do đường serialize hoặc polygon tự cắt được nhận có thể gây kết quả bất định và tốn job.",
+    "remediation": "Kiểm tra topology bằng thư viện hình học; từ chối số không hữu hạn trước bước serialize lỗi; chuẩn hóa HTTP 422.",
+    "limits": {
+      "max_requests": 60,
+      "max_concurrency": 1,
+      "max_seconds": 90
+    },
+    "cases": [
+      {
+        "case": "ring không khép",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "ring không khép",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "3 điểm",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "3 điểm",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "MultiPolygon",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "MultiPolygon",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "Polygon có lỗ",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "Polygon có lỗ",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "NaN",
+        "endpoint": "/api/imagery-plan",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "NaN",
+        "endpoint": "/api/analyses",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "+Infinity",
+        "endpoint": "/api/imagery-plan",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "+Infinity",
+        "endpoint": "/api/analyses",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "-Infinity",
+        "endpoint": "/api/imagery-plan",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "-Infinity",
+        "endpoint": "/api/analyses",
+        "status": 500,
+        "created_job_ids": []
+      },
+      {
+        "case": "lon181 lat91",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "lon181 lat91",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "tọa độ 3D",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "tọa độ 3D",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "tự cắt bow-tie",
+        "endpoint": "/api/imagery-plan",
+        "status": 200,
+        "created_job_ids": []
+      },
+      {
+        "case": "tự cắt bow-tie",
+        "endpoint": "/api/analyses",
+        "status": 202,
+        "created_job_ids": [
+          "390af90b-0c55-4348-bd1e-1b8de3472c84"
+        ]
+      },
+      {
+        "case": "diện tích 0",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "diện tích 0",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "ngoài vùng phủ",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "ngoài vùng phủ",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "nửa địa cầu",
+        "endpoint": "/api/imagery-plan",
+        "status": 422,
+        "created_job_ids": []
+      },
+      {
+        "case": "nửa địa cầu",
+        "endpoint": "/api/analyses",
+        "status": 422,
+        "created_job_ids": []
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "ring không khép /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "ring không khép /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "ring không khép /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "ring không khép /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "3 điểm /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "3 điểm /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "3 điểm /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "3 điểm /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "MultiPolygon /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "MultiPolygon /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "MultiPolygon /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "MultiPolygon /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "Polygon có lỗ /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "Polygon có lỗ /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "Polygon có lỗ /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "Polygon có lỗ /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "NaN /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "NaN /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "NaN /api/analyses 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "NaN /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "+Infinity /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "+Infinity /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "+Infinity /api/analyses 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "+Infinity /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "-Infinity /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "-Infinity /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "-Infinity /api/analyses 422",
+      "expected": 422,
+      "actual": 500,
+      "passed": false
+    },
+    {
+      "check": "-Infinity /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "lon181 lat91 /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "lon181 lat91 /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "lon181 lat91 /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "lon181 lat91 /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "tọa độ 3D /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "tọa độ 3D /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "tọa độ 3D /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "tọa độ 3D /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "tự cắt bow-tie /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 200,
+      "passed": false
+    },
+    {
+      "check": "tự cắt bow-tie /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "tự cắt bow-tie /api/analyses 422",
+      "expected": 422,
+      "actual": 202,
+      "passed": false
+    },
+    {
+      "check": "tự cắt bow-tie /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 1,
+      "passed": false
+    },
+    {
+      "check": "diện tích 0 /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "diện tích 0 /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "diện tích 0 /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "diện tích 0 /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "ngoài vùng phủ /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "ngoài vùng phủ /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "ngoài vùng phủ /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "ngoài vùng phủ /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "nửa địa cầu /api/imagery-plan 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "nửa địa cầu /api/imagery-plan không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "nửa địa cầu /api/analyses 422",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "nửa địa cầu /api/analyses không tạo job",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "check": "dịch vụ còn sống",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 1.68,
+  "finished_at": "2026-11-14T20:42:31"
+}

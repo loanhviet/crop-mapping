@@ -1,0 +1,237 @@
+[
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.35949729186176166,
+              49.30719581531416
+            ],
+            [
+              -0.3597279180746521,
+              49.302882738106625
+            ],
+            [
+              -0.366323586584366,
+              49.303033345123495
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 27.5,
+    "response": {
+      "id": "32693864-b462-4254-8357-e36cfee04990",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/32693864-b462-4254-8357-e36cfee04990",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "status": "error",
+      "message": "Analysis failed. Please retry or check the server log.",
+      "progress": 10
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/32693864-b462-4254-8357-e36cfee04990/download/tif",
+    "body": null,
+    "status": 409,
+    "elapsed_ms": 2.7,
+    "response": {
+      "detail": "This analysis has no completed results yet."
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.35949729186176166,
+              49.30719581531416
+            ],
+            [
+              -0.3597279180746521,
+              49.302882738106625
+            ],
+            [
+              -0.366323586584366,
+              49.303033345123495
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 17.4,
+    "response": {
+      "id": "c80c2dbb-5cd4-40ed-b999-a1026855c632",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/c80c2dbb-5cd4-40ed-b999-a1026855c632",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "status": "error",
+      "message": "Analysis failed. Please retry or check the server log.",
+      "progress": 0
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.35949729186176166,
+              49.30719581531416
+            ],
+            [
+              -0.3597279180746521,
+              49.302882738106625
+            ],
+            [
+              -0.366323586584366,
+              49.303033345123495
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 30.2,
+    "response": {
+      "id": "d40f32b7-7b4f-4d7a-822f-350c6afa681a",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/d40f32b7-7b4f-4d7a-822f-350c6afa681a",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "status": "error",
+      "message": "Analysis failed. Please retry or check the server log.",
+      "progress": 0
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ],
+            [
+              -0.35949729186176166,
+              49.30719581531416
+            ],
+            [
+              -0.3597279180746521,
+              49.302882738106625
+            ],
+            [
+              -0.366323586584366,
+              49.303033345123495
+            ],
+            [
+              -0.36609353487300544,
+              49.30734644511522
+            ]
+          ]
+        ]
+      }
+    },
+    "status": 202,
+    "elapsed_ms": 17.4,
+    "response": {
+      "id": "86268197-cd61-4471-9d00-f216af8af8ce",
+      "cached": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/86268197-cd61-4471-9d00-f216af8af8ce",
+    "status": 200,
+    "elapsed_ms": "-",
+    "response": {
+      "status": "done",
+      "message": "All selected pixels labeled",
+      "progress": 100
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null,
+    "status": 200,
+    "elapsed_ms": 4.0,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  }
+]

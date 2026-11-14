@@ -1,0 +1,24 @@
+{
+  "expected": "NaN/±Inf, int16 cực trị, reflectance âm, kích thước sai, T=0 và DOY lệch độ dài bị ValueError sạch; T=200 được cắt đúng 60; job chứa NaN kết thúc error với thông báo chung.",
+  "type": "security/robustness",
+  "metrics": {
+    "objective": "Kiểm tra ranh giới số học từ preprocess đến job API và hành vi cắt chuỗi.",
+    "component": "preprocess, Engine.predict, run_analysis exception handler",
+    "method": "Chạy từng tensor qua preprocess và Engine.predict; đối chiếu T=200 với 60 frame đầu; mock riêng provider.window bằng NaN trong một job thật.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at10_invalid_numerics",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "NaN, +Inf, -Inf, -32768/32767, -1; 23x24, 0/200 frame, DOY lệch độ dài.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Thêm kiểm tra T>=1 và miền reflectance theo hợp đồng dữ liệu/QA; giữ kiểm tra hữu hạn và thông báo lỗi job chung.",
+    "limits": {
+      "max_model_calls": 24,
+      "max_api_requests": 65,
+      "max_concurrency": 1,
+      "max_seconds": 120
+    }
+  }
+}

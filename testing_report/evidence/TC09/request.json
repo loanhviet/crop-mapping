@@ -1,0 +1,221 @@
+[
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/imagery-plan",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/3ca554f2-4a04-44cd-a31e-b4021c37dee1",
+    "body": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/analyses",
+    "body": {
+      "season": "2018–2019",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4,
+              49.1
+            ],
+            [
+              1.405,
+              49.1
+            ],
+            [
+              1.405,
+              49.097
+            ],
+            [
+              1.4,
+              49.097
+            ],
+            [
+              1.4,
+              49.1
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "/api/analyses/ff6da779-1951-4d9d-9059-ff5b819d4771",
+    "body": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  }
+]

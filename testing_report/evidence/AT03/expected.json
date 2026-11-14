@@ -1,0 +1,25 @@
+{
+  "expected": "200 GET health đều 200 với p95 dưới 1000 ms; đợt 12 POST có 429 khi hàng đợi đủ 4; mọi job được hủy và dịch vụ còn sống.",
+  "type": "security",
+  "metrics": {
+    "objective": "Kiểm tra tính sẵn sàng và giới hạn hàng đợi khi có đợt tải ngắn.",
+    "component": "health, analyses, hàng đợi ThreadPoolExecutor",
+    "method": "8 luồng gửi tối đa 200 GET rồi 12 POST cửa sổ thật; DELETE và kiểm tra trạng thái tối đa 80 lần.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at03_api_flooding",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Đợt tải health và yêu cầu suy luận 24x24 px hợp lệ.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Giữ giới hạn hàng đợi, bổ sung rate limit theo người dùng/IP và giới hạn khối lượng mỗi job.",
+    "limits": {
+      "max_requests": 310,
+      "max_concurrency": 8,
+      "max_seconds": 120,
+      "health_requests": 200,
+      "analysis_requests": 12
+    }
+  }
+}

@@ -1,0 +1,113 @@
+[
+  {
+    "status": 202,
+    "elapsed_ms": 20.291,
+    "response": {
+      "id": "d8b8071d-34ed-4752-982e-ee9e6f2e0ee2",
+      "cached": false
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.109,
+    "response": {
+      "id": "d8b8071d-34ed-4752-982e-ee9e6f2e0ee2",
+      "status": "queued",
+      "progress": 0,
+      "message": "Waiting to start analysis",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.179,
+    "response": {
+      "id": "d8b8071d-34ed-4752-982e-ee9e6f2e0ee2",
+      "status": "error",
+      "progress": 0,
+      "started_at": 1794663801.5458097,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis failed. Please retry or check the server log.",
+      "phase": "inference",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.186,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  }
+]

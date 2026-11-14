@@ -1,0 +1,5 @@
+.pydeps/
+.pydeps-pw/
+.runtime/
+__pycache__/
+.pydeps-pdf/

@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "case": "101 đỉnh",
+      "bytes": 4090,
+      "sha256": "421b60fb7b4f338f7e9e3d77c5ca93512785b0171f2a166a0a9e4c9a951bdca3",
+      "status": 422,
+      "latency_ms": 3.911,
+      "rss_before_mb": 326.8125,
+      "rss_after_mb": 326.9765625,
+      "rss_delta_mb": 0.1640625
+    },
+    {
+      "case": "100000 đỉnh",
+      "bytes": 4083923,
+      "sha256": "a71eaed81f6a3d23b3bf4a933234e29039e7efeeb149d706277594d178b31adb",
+      "status": 422,
+      "latency_ms": 462.416,
+      "rss_before_mb": 326.9765625,
+      "rss_after_mb": 371.328125,
+      "rss_delta_mb": 44.3515625
+    },
+    {
+      "case": "6 MiB JSON hợp lệ + trường thừa",
+      "bytes": 6291782,
+      "sha256": "ff58d48448fab95a915f456f82039e42c1a66751ade58ccf555a2333ac2dd429",
+      "status": 200,
+      "latency_ms": 33.677,
+      "rss_before_mb": 371.328125,
+      "rss_after_mb": 406.07421875,
+      "rss_delta_mb": 34.74609375
+    },
+    {
+      "case": "JSON sâu 1100 mức",
+      "bytes": 2214,
+      "sha256": "aa8011fcc589bf377d50457f833a292a7719b1fdafb6c6287efcb6211360ef8f",
+      "status": 500,
+      "latency_ms": 3.389,
+      "rss_before_mb": 406.07421875,
+      "rss_after_mb": 406.35546875,
+      "rss_delta_mb": 0.28125
+    }
+  ],
+  "reproduction": "Sinh payload theo mã nguồn at02_oversized_payload.py; chỉ lưu prefix trong request.json để tránh nhân bản body lớn."
+}

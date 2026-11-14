@@ -1,0 +1,9 @@
+{
+  "patches": {
+    "10003": "S2_10003.npy + TARGET_10003.npy (official PASTIS, Fold 5 = test)",
+    "10000": "S2_10000.npy + TARGET_10000.npy (Fold 1 = training, reference only)"
+  },
+  "windows": "25 windows 24x24 covering 120x120 px",
+  "ignore_label": 19,
+  "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733"
+}

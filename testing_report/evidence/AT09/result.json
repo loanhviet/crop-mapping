@@ -1,0 +1,290 @@
+{
+  "id": "AT09",
+  "name": "Tiêu thụ tài nguyên vùng Normandy có giới hạn",
+  "type": "security/availability",
+  "environment": "Local",
+  "status": "PASS",
+  "expected": "Kế hoạch vùng Normandy có >1000 cửa sổ; job được nhận; trong 60 giây health luôn 200 và p95 <1000 ms, RSS tăng <1024 MiB; hủy chuyển cancelled trong 15 giây.",
+  "actual": "9216 cửa sổ; đã xử lý 218 trong 60.0s; trạng thái cuối cancelled; hủy 0.511s.",
+  "notes": "Thư mục kết quả riêng theo helper chung đã được coordinator cập nhật để tránh tiến trình kiểm thử khác đánh dấu job là restart. Thời gian toàn vùng là NGOẠI SUY tuyến tính từ số cửa sổ trong message, gồm overhead khởi tạo; không phải lần chạy hoàn chỉnh. RSS/CPU là cả tiến trình TestClient, CPU 100% tương ứng một lõi. Hàng đợi giới hạn 4 nhưng không có quota cửa sổ mỗi job.",
+  "metrics": {
+    "objective": "Đo chi phí một job lớn và khả năng phản hồi/hủy trong lúc CPU suy luận.",
+    "component": "imagery-plan, worker TSViT, health và DELETE analyses",
+    "method": "Lập kế hoạch toàn mosaic 900010; chạy thật tối đa 60 giây với 13 mẫu RSS/CPU/health; hủy và thăm dò tối đa 30 lần.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at09_resource_exhaustion",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Polygon 2304x2304 px từ catalog thật; một job duy nhất, không gọi production.",
+    "impact": "Cao: một yêu cầu hợp lệ có thể chiếm worker duy nhất hàng chục phút; phép thử cho thấy phản hồi health/hủy trong khoảng đo, không chứng minh chống DoS dài hạn.",
+    "remediation": "Áp quota cửa sổ/diện tích/thời gian theo người dùng; giới hạn mỗi job và lập lịch công bằng ngoài giới hạn 4 pending.",
+    "limits": {
+      "max_requests": 65,
+      "max_concurrency": 1,
+      "job_run_seconds": 60,
+      "max_seconds": 110,
+      "max_jobs": 1
+    },
+    "windows": 9216,
+    "completed_windows": 218,
+    "observed_seconds": 60.00559108200105,
+    "estimated_full_run_seconds_extrapolated": 2536.7501257418426,
+    "health_p95_ms": 3.9389999999999996,
+    "rss_baseline_mb": 317.08984375,
+    "rss_peak_sampled_mb": 478.04296875,
+    "cancel_latency_seconds": 0.5107720859996334,
+    "final_job": {
+      "id": "f82efca1-5ea0-4a0f-ad58-e7d15e5a690c",
+      "status": "cancelled",
+      "progress": 2,
+      "started_at": 1794663894.4768493,
+      "cache_key": "3d280d331e785802b2a235073fa6b675f38a8ad70e85de60ae41382af535c2d4",
+      "message": "Analysis cancelled",
+      "phase": "inference",
+      "request": {
+        "patch_id": 900010,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.5147067138444833,
+                49.33978835304554
+              ],
+              [
+                -0.19790336193221075,
+                49.33253721560301
+              ],
+              [
+                -0.20959504568684403,
+                49.12553354261756
+              ],
+              [
+                -0.5250800509368184,
+                49.13273223975904
+              ],
+              [
+                -0.5147067138444833,
+                49.33978835304554
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "samples": [
+      {
+        "seconds": 0.024485469002684113,
+        "rss_mb": 319.48046875,
+        "cpu_percent": 158.53541180516376,
+        "health_status": 200,
+        "health_latency_ms": 3.691,
+        "job_status": "queued",
+        "progress": 0,
+        "completed_windows": 0,
+        "message": "Waiting to start analysis"
+      },
+      {
+        "seconds": 5.03256605000206,
+        "rss_mb": 469.70703125,
+        "cpu_percent": 244.40501309899997,
+        "health_status": 200,
+        "health_latency_ms": 4.023,
+        "job_status": "running",
+        "progress": 0,
+        "completed_windows": 6,
+        "message": "Identifying crops · 6 / 9216 windows"
+      },
+      {
+        "seconds": 10.039398345001246,
+        "rss_mb": 426.1015625,
+        "cpu_percent": 396.2585289668312,
+        "health_status": 200,
+        "health_latency_ms": 3.296,
+        "job_status": "running",
+        "progress": 0,
+        "completed_windows": 20,
+        "message": "Identifying crops · 20 / 9216 windows"
+      },
+      {
+        "seconds": 15.045940858002723,
+        "rss_mb": 464.55859375,
+        "cpu_percent": 397.47989652183594,
+        "health_status": 200,
+        "health_latency_ms": 2.792,
+        "job_status": "running",
+        "progress": 0,
+        "completed_windows": 36,
+        "message": "Identifying crops · 36 / 9216 windows"
+      },
+      {
+        "seconds": 20.051985183003126,
+        "rss_mb": 464.2578125,
+        "cpu_percent": 397.1199356090082,
+        "health_status": 200,
+        "health_latency_ms": 3.239,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 52,
+        "message": "Identifying crops · 52 / 9216 windows"
+      },
+      {
+        "seconds": 25.060445347000496,
+        "rss_mb": 475.06640625,
+        "cpu_percent": 396.7287219898995,
+        "health_status": 200,
+        "health_latency_ms": 3.168,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 69,
+        "message": "Identifying crops · 69 / 9216 windows"
+      },
+      {
+        "seconds": 30.068619504003436,
+        "rss_mb": 478.04296875,
+        "cpu_percent": 397.3503990905304,
+        "health_status": 200,
+        "health_latency_ms": 3.883,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 84,
+        "message": "Identifying crops · 84 / 9216 windows"
+      },
+      {
+        "seconds": 35.07575547900342,
+        "rss_mb": 447.79296875,
+        "cpu_percent": 398.23164578629337,
+        "health_status": 200,
+        "health_latency_ms": 3.072,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 104,
+        "message": "Identifying crops · 104 / 9216 windows"
+      },
+      {
+        "seconds": 40.08126095100306,
+        "rss_mb": 461.41015625,
+        "cpu_percent": 398.76092657683625,
+        "health_status": 200,
+        "health_latency_ms": 2.626,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 124,
+        "message": "Identifying crops · 124 / 9216 windows"
+      },
+      {
+        "seconds": 45.08635731400136,
+        "rss_mb": 448.01953125,
+        "cpu_percent": 399.3929097505928,
+        "health_status": 200,
+        "health_latency_ms": 2.697,
+        "job_status": "running",
+        "progress": 1,
+        "completed_windows": 147,
+        "message": "Identifying crops · 147 / 9216 windows"
+      },
+      {
+        "seconds": 50.091508637000516,
+        "rss_mb": 431.84375,
+        "cpu_percent": 398.1897591870939,
+        "health_status": 200,
+        "health_latency_ms": 2.613,
+        "job_status": "running",
+        "progress": 2,
+        "completed_windows": 170,
+        "message": "Identifying crops · 170 / 9216 windows"
+      },
+      {
+        "seconds": 55.09733232200233,
+        "rss_mb": 468.40625,
+        "cpu_percent": 392.94232553444226,
+        "health_status": 200,
+        "health_latency_ms": 2.892,
+        "job_status": "running",
+        "progress": 2,
+        "completed_windows": 193,
+        "message": "Identifying crops · 193 / 9216 windows"
+      },
+      {
+        "seconds": 60.00559108200105,
+        "rss_mb": 464.7421875,
+        "cpu_percent": 398.51199695113644,
+        "health_status": 200,
+        "health_latency_ms": 2.979,
+        "job_status": "running",
+        "progress": 2,
+        "completed_windows": 218,
+        "message": "Identifying crops · 218 / 9216 windows"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "plan thành công",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "check": "vùng có >1000 cửa sổ",
+      "expected": ">1000",
+      "actual": 9216,
+      "passed": true
+    },
+    {
+      "check": "job lớn được nhận",
+      "expected": 202,
+      "actual": 202,
+      "passed": true
+    },
+    {
+      "check": "health luôn 200",
+      "expected": "tất cả 200",
+      "actual": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "check": "health p95 <1000 ms",
+      "expected": "<1000",
+      "actual": 3.9389999999999996,
+      "passed": true
+    },
+    {
+      "check": "RSS tăng <1024 MiB",
+      "expected": "<1024",
+      "actual": 160.953125,
+      "passed": true
+    },
+    {
+      "check": "job chuyển cancelled",
+      "expected": "cancelled",
+      "actual": "cancelled",
+      "passed": true
+    },
+    {
+      "check": "hủy trong 15 giây",
+      "expected": "<15",
+      "actual": 0.5107720859996334,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 62.37,
+  "finished_at": "2026-11-14T20:45:55"
+}

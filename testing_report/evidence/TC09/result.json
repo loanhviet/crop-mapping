@@ -1,0 +1,63 @@
+{
+  "id": "TC09",
+  "name": "External Service Failure",
+  "type": "Mock Test",
+  "environment": "Local (mock)",
+  "status": "PASS",
+  "expected": "Khi dịch vụ ảnh vệ tinh lỗi (mất kết nối, timeout, HTTP 503, thiếu khóa API, lỗi giữa job), API trả mã lỗi phù hợp (502/503) hoặc job chuyển status=error, không có HTTP 500, không lộ chi tiết nội bộ, dịch vụ vẫn hoạt động.",
+  "actual": "S1 Mất kết nối GEODES=OK; S1 Request thực sự đi qua lớp mạng (mock được gọi)=OK; S2 GEODES timeout=OK; S3 GEODES trả HTTP 503=OK; S4 Thiếu GEODES_API_KEY=OK; S5 Lỗi ImageryError giữa chừng=OK; S6 Lỗi mạng bất ngờ=OK; S7 Sau các lỗi, /api/health vẫn 200 và hàng đợi rỗng=OK",
+  "notes": "Mock test: không có dữ liệu GEODES thật được tải; mã của GeodesProvider chạy thật, chỉ lớp httpx (S1–S3) hoặc phương thức prepare (S5–S6) bị thay thế bằng unittest.mock. Production chạy chế độ prepared (offline), không phụ thuộc GEODES lúc chạy.",
+  "metrics": {},
+  "checks": [
+    {
+      "check": "S1 Mất kết nối GEODES: /api/imagery-plan trả 502 có thông báo thân thiện",
+      "expected": "502 + thông báo",
+      "actual": "502 {'detail': 'The GEODES catalogue is temporarily unavailable. Please retry.'}",
+      "passed": true
+    },
+    {
+      "check": "S1 Request thực sự đi qua lớp mạng (mock được gọi)",
+      "expected": ">=1 lần gọi",
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "check": "S2 GEODES timeout: trả 502, không treo, không 500",
+      "expected": "502",
+      "actual": 502,
+      "passed": true
+    },
+    {
+      "check": "S3 GEODES trả HTTP 503: hệ thống trả 502 cho client",
+      "expected": "502",
+      "actual": 502,
+      "passed": true
+    },
+    {
+      "check": "S4 Thiếu GEODES_API_KEY: POST /api/analyses trả 503, không tạo job",
+      "expected": "503 + 0 job",
+      "actual": "503, 0 job",
+      "passed": true
+    },
+    {
+      "check": "S5 Lỗi ImageryError giữa chừng: job kết thúc status=error kèm thông báo rõ ràng",
+      "expected": "error + thông báo",
+      "actual": "error",
+      "passed": true
+    },
+    {
+      "check": "S6 Lỗi mạng bất ngờ: job=error, thông báo chung, không lộ chi tiết nội bộ",
+      "expected": "error, không lộ host",
+      "actual": "error, leaked=False",
+      "passed": true
+    },
+    {
+      "check": "S7 Sau các lỗi, /api/health vẫn 200 và hàng đợi rỗng",
+      "expected": "200, pending=0",
+      "actual": "200, pending=0",
+      "passed": true
+    }
+  ],
+  "duration_seconds": 0.68,
+  "finished_at": "2026-11-14T20:43:59"
+}

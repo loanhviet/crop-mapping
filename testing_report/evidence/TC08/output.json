@@ -1,0 +1,54 @@
+{
+  "PASTIS test (in-distribution)": {
+    "source": "8 patch PASTIS split test: [10003, 10010, 20000, 20004, 30001, 30004, 40002, 40005]",
+    "windows": 200,
+    "pixels": 115200,
+    "mean_confidence": 0.8782,
+    "median_confidence": 0.9595,
+    "share_conf_below_0_5": 0.0289,
+    "share_conf_below_0_7": 0.1648,
+    "class_distribution": {
+      "Background": 0.3799,
+      "Meadow": 0.1193,
+      "Soft winter wheat": 0.1084,
+      "Corn": 0.1453,
+      "Winter barley": 0.022,
+      "Winter rapeseed": 0.0081,
+      "Spring barley": 0.0022,
+      "Sunflower": 0.0008,
+      "Grapevine": 0.0001,
+      "Beet": 0.0284,
+      "Winter triticale": 0.0025,
+      "Winter durum wheat": 0.0027,
+      "Fruits, vegetables, flowers": 0.0561,
+      "Potatoes": 0.0402,
+      "Leguminous fodder": 0.0022,
+      "Soybeans": 0.0039,
+      "Orchard": 0.0483,
+      "Mixed cereal": 0.0019,
+      "Sorghum": 0.0277
+    }
+  },
+  "Normandy THEIA COG (domain shift)": {
+    "source": "Region 900010: 100 cửa sổ 24x24 chọn ngẫu nhiên (seed 0) trong 7665 cửa sổ hợp lệ",
+    "windows": 100,
+    "pixels": 57600,
+    "mean_confidence": 0.9417,
+    "median_confidence": 0.9983,
+    "share_conf_below_0_5": 0.0115,
+    "share_conf_below_0_7": 0.0782,
+    "class_distribution": {
+      "Background": 0.4438,
+      "Meadow": 0.0691,
+      "Soft winter wheat": 0.2275,
+      "Corn": 0.0348,
+      "Winter barley": 0.0243,
+      "Winter rapeseed": 0.0677,
+      "Spring barley": 0.0063,
+      "Beet": 0.0999,
+      "Fruits, vegetables, flowers": 0.0085,
+      "Potatoes": 0.0126,
+      "Leguminous fodder": 0.0056
+    }
+  }
+}

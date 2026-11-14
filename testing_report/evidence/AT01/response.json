@@ -1,0 +1,197 @@
+[
+  {
+    "status": 422,
+    "elapsed_ms": 3.572,
+    "response": {
+      "detail": [
+        {
+          "type": "json_invalid",
+          "loc": [
+            "body",
+            12
+          ],
+          "msg": "JSON decode error",
+          "input": {},
+          "ctx": {
+            "error": "Expecting value"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 13.071,
+    "response": {
+      "detail": [
+        {
+          "type": "model_attributes_type",
+          "loc": [
+            "body"
+          ],
+          "msg": "Input should be a valid dictionary or object to extract fields from",
+          "input": "{\"patch_id\": 10003, \"season\": \"2018\\u20132019\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-0.36609353487300544, 49.30734644511522], [-0.36279540647615505, 49.30727117723436], [-0.362910582848446, 49.3051146334352], [-0.3662085676102853, 49.305189895623315], [-0.36609353487300544, 49.30734644511522]]]}}"
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 4.321,
+    "response": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Field required",
+          "input": {
+            "patch_id": 10003
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.968,
+    "response": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Field required",
+          "input": {}
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.867,
+    "response": {
+      "detail": [
+        {
+          "type": "dict_type",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Input should be a valid dictionary",
+          "input": "polygon"
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.477,
+    "response": {
+      "detail": [
+        {
+          "type": "dict_type",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Input should be a valid dictionary",
+          "input": []
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.734,
+    "response": {
+      "detail": [
+        {
+          "type": "dict_type",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Input should be a valid dictionary",
+          "input": 42
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.686,
+    "response": {
+      "detail": [
+        {
+          "type": "string_type",
+          "loc": [
+            "body",
+            "season"
+          ],
+          "msg": "Input should be a valid string",
+          "input": 2019
+        }
+      ]
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 19.724,
+    "response": {
+      "id": "9e93991b-6356-46d0-a9f2-ecd8f754bfc0",
+      "cached": false
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 3.074,
+    "response": {
+      "id": "9e93991b-6356-46d0-a9f2-ecd8f754bfc0",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 7.546,
+    "response": {
+      "id": "33e22ca6-013b-4e74-88bd-6254862eac23",
+      "cached": false
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.677,
+    "response": {
+      "id": "33e22ca6-013b-4e74-88bd-6254862eac23",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 3.071,
+    "response": {
+      "detail": "This area has no prepared imagery. Choose an available region."
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 8.955,
+    "response": {
+      "id": "5020d6b6-eaca-40e8-94f5-f39cd07cf567",
+      "cached": false
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.89,
+    "response": {
+      "id": "5020d6b6-eaca-40e8-94f5-f39cd07cf567",
+      "cancellation_requested": true
+    }
+  }
+]

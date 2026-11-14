@@ -1,0 +1,41 @@
+/home/viet/projects/TLU/TSViT/crop-mapping/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+Traceback (most recent call last):
+  File "/home/viet/projects/TLU/TSViT/crop-mapping/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/viet/projects/TLU/TSViT/crop-mapping/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 151, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/viet/projects/TLU/TSViT/crop-mapping/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 778, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'value_error', 'loc': ('body', 'geometry'), 'msg': 'Value error, Supply a closed WGS84 Polygon with one ring.', 'input': {'type': 'Polygon', 'coordinates': [[[nan, 49], [1, 49], [1, 48], [nan, 49]]]}, 'ctx': {'error': ValueError('Supply a closed WGS84 Polygon with one ring.')}}
+
+  File "/home/viet/orca/workspaces/crop-mapping/marron/app.py", line 130, in imagery_plan
+    POST /api/imagery-plan
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/viet/projects/TLU/TSViT/crop-mapping/.venv/lib/python3.13/site-packages/starlette/responses.py", line 200, in render
+    return json.dumps(
+           ~~~~~~~~~~^
+        content,
+        ^^^^^^^^
+    ...<3 lines>...
+        separators=(",", ":"),
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ).encode("utf-8")
+    ^
+  File "/home/viet/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/home/viet/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/viet/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+ValueError: Out of range float values are not JSON compliant: nan
+# AT07 root cause: POST /api/imagery-plan with NaN coordinate (raw JSON)
+
+# AT02 root cause: JSON nested 1100 levels
+RecursionError: maximum recursion depth exceeded

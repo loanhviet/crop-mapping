@@ -1,0 +1,120 @@
+{
+  "Local": {
+    "job_id": "bb3bf88a-056c-4352-973e-fcc1e4907347",
+    "plan": {
+      "source": "Sentinel-2 COG",
+      "patch_id": 900010,
+      "scenes": 40,
+      "model_observations": 40,
+      "cached_scenes": 40,
+      "estimated_download_gb": 0,
+      "exceeds_download_limit": false,
+      "selected_area_ha": 5.76,
+      "preview_date": "Per block",
+      "first_date": "2018-10-04",
+      "last_date": "2019-09-21",
+      "split": "external",
+      "windows": 4,
+      "valid_area_ha": 5.76,
+      "prediction_ready": false,
+      "blocks": 1,
+      "observation_range": [
+        40,
+        40
+      ],
+      "max_analysis_windows": null,
+      "exceeds_analysis_limit": false
+    },
+    "total_seconds": 3.69,
+    "server_duration_seconds": 3.05,
+    "polls": 13,
+    "area_ha": 5.76,
+    "mean_confidence": 0.9321,
+    "classes": {
+      "Fruits, vegetables, flowers": 321,
+      "Background": 250,
+      "Meadow": 5
+    },
+    "files": {
+      "tif": [
+        200,
+        37352
+      ],
+      "csv": [
+        200,
+        163
+      ],
+      "geojson": [
+        200,
+        4443
+      ],
+      "png": [
+        200,
+        26552
+      ],
+      "zip": [
+        200,
+        6700
+      ]
+    }
+  },
+  "Production": {
+    "job_id": "4926e95e-aab6-420f-9058-cf0515b18d7f",
+    "plan": {
+      "source": "Sentinel-2 COG",
+      "patch_id": 900010,
+      "scenes": 40,
+      "model_observations": 40,
+      "cached_scenes": 40,
+      "estimated_download_gb": 0,
+      "exceeds_download_limit": false,
+      "selected_area_ha": 5.76,
+      "preview_date": "Per block",
+      "first_date": "2018-10-04",
+      "last_date": "2019-09-21",
+      "split": "external",
+      "windows": 4,
+      "valid_area_ha": 5.76,
+      "prediction_ready": false,
+      "blocks": 1,
+      "observation_range": [
+        40,
+        40
+      ],
+      "max_analysis_windows": null,
+      "exceeds_analysis_limit": false
+    },
+    "total_seconds": 6.46,
+    "server_duration_seconds": 2.11,
+    "polls": 3,
+    "area_ha": 5.76,
+    "mean_confidence": 0.9321,
+    "classes": {
+      "Fruits, vegetables, flowers": 321,
+      "Background": 250,
+      "Meadow": 5
+    },
+    "files": {
+      "tif": [
+        200,
+        37352
+      ],
+      "csv": [
+        200,
+        163
+      ],
+      "geojson": [
+        200,
+        4447
+      ],
+      "png": [
+        200,
+        26552
+      ],
+      "zip": [
+        200,
+        6701
+      ]
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "local": {
+    "geotiff": {
+      "driver": "GTiff",
+      "dtype": "uint8",
+      "crs": "EPSG:32630",
+      "nodata": 255.0,
+      "shape": [
+        2304,
+        2304
+      ],
+      "pixel_size": [
+        10.0,
+        10.0
+      ],
+      "tags": {
+        "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+        "model": "TSViT",
+        "season": "2018–2019",
+        "source": "Sentinel-2 COG",
+        "AREA_OR_POINT": "Area"
+      },
+      "has_colormap": true
+    },
+    "csv": [
+      {
+        "id": "12",
+        "name": "Fruits, vegetables, flowers",
+        "color": "#ce9bd6",
+        "pixels": "321",
+        "area_ha": "3.21",
+        "percent": "55.73"
+      },
+      {
+        "id": "0",
+        "name": "Background",
+        "color": "#89969b",
+        "pixels": "250",
+        "area_ha": "2.5",
+        "percent": "43.4"
+      },
+      {
+        "id": "1",
+        "name": "Meadow",
+        "color": "#78a754",
+        "pixels": "5",
+        "area_ha": "0.05",
+        "percent": "0.87"
+      }
+    ],
+    "geojson_features": 5,
+    "geojson_area_ha": 5.7594,
+    "zip": [
+      "classification.geojson",
+      "classification.png",
+      "classification.tif",
+      "result.json",
+      "summary.csv"
+    ],
+    "result_keys": [
+      "area_ha",
+      "available_observations",
+      "block_dates",
+      "checkpoint_sha256",
+      "classes",
+      "crs",
+      "dataset_version",
+      "dates",
+      "duration_seconds",
+      "excluded_pixels",
+      "footprint",
+      "geometry",
+      "id",
+      "mean_confidence",
+      "model_dates",
+      "observation_range",
+      "observations",
+      "overlay_bounds",
+      "patch_id",
+      "pixel_size_m",
+      "pixels",
+      "preview_bounds",
+      "preview_date",
+      "reused_prediction",
+      "season",
+      "selected_area_ha",
+      "source",
+      "split"
+    ]
+  },
+  "production": {
+    "geotiff": {
+      "driver": "GTiff",
+      "dtype": "uint8",
+      "crs": "EPSG:32630",
+      "nodata": 255.0,
+      "shape": [
+        2304,
+        2304
+      ],
+      "pixel_size": [
+        10.0,
+        10.0
+      ],
+      "tags": {
+        "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+        "model": "TSViT",
+        "season": "2018–2019",
+        "source": "Sentinel-2 COG",
+        "AREA_OR_POINT": "Area"
+      },
+      "has_colormap": true
+    },
+    "csv": [
+      {
+        "id": "12",
+        "name": "Fruits, vegetables, flowers",
+        "color": "#ce9bd6",
+        "pixels": "321",
+        "area_ha": "3.21",
+        "percent": "55.73"
+      },
+      {
+        "id": "0",
+        "name": "Background",
+        "color": "#89969b",
+        "pixels": "250",
+        "area_ha": "2.5",
+        "percent": "43.4"
+      },
+      {
+        "id": "1",
+        "name": "Meadow",
+        "color": "#78a754",
+        "pixels": "5",
+        "area_ha": "0.05",
+        "percent": "0.87"
+      }
+    ],
+    "geojson_features": 5,
+    "geojson_area_ha": 5.7594,
+    "zip": [
+      "classification.geojson",
+      "classification.png",
+      "classification.tif",
+      "result.json",
+      "summary.csv"
+    ],
+    "result_keys": [
+      "area_ha",
+      "available_observations",
+      "block_dates",
+      "checkpoint_sha256",
+      "classes",
+      "crs",
+      "dataset_version",
+      "dates",
+      "duration_seconds",
+      "excluded_pixels",
+      "footprint",
+      "geometry",
+      "id",
+      "mean_confidence",
+      "model_dates",
+      "observation_range",
+      "observations",
+      "overlay_bounds",
+      "patch_id",
+      "pixel_size_m",
+      "pixels",
+      "preview_bounds",
+      "preview_date",
+      "reused_prediction",
+      "season",
+      "selected_area_ha",
+      "source",
+      "split"
+    ]
+  }
+}

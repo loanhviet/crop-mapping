@@ -1,0 +1,197 @@
+{
+  "id": "AT08",
+  "name": "Can thiệp tham số và định danh tài nguyên",
+  "type": "security",
+  "environment": "Local",
+  "status": "FAIL",
+  "expected": "Patch training ẩn bị từ chối 422 theo chính sách cách ly tập test; patch sai/season sai bị 422; traversal/UUID không chuẩn bị 404; include sai 422; tọa độ sai 422; client khác không được hủy job (401/403).",
+  "actual": "Training explicit ID và DELETE từ client B: [{'case': 'training 10000', 'status': 202}, {'case': 'DELETE client B', 'status': 200, 'response': {'id': '7e5ac0f3-076d-49c2-a4ed-3134ae86109a', 'cancellation_requested': True}}].",
+  "notes": "Không có khái niệm chủ job/xác thực trong thiết kế hiện tại; DELETE từ client B là quan sát thiết kế đa người dùng, không chứng minh đoán được UUIDv4. Chính sách cách ly training là tiêu chí đánh giá đặt trước, không phải cam kết đã công bố của ứng dụng.",
+  "metrics": {
+    "objective": "Đánh giá kiểm tra định danh, truy cập dữ liệu ẩn và ranh giới quyền sở hữu job.",
+    "component": "resolve, job_directory, download, pixel, DELETE analyses",
+    "method": "Dùng một job hoàn tất để tránh nhầm 409 với validation download; tạo job khác và thử DELETE từ client B không có cookie/token.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at08_parameter_tampering",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "ID training/nonexistent/negative, season giả, traversal, UUID viết hoa, format/include giả, lat/lng sai.",
+    "impact": "Trung bình: UUIDv4 khó đoán nhưng ai biết URL job có thể hủy; patch training ẩn vẫn có thể được chọn bằng ID.",
+    "remediation": "Nếu cần cách ly training thì kiểm tra split khi resolve explicit ID; thêm xác thực và quyền sở hữu job nếu triển khai đa người dùng; giữ UUID/path validation.",
+    "limits": {
+      "max_requests": 120,
+      "max_concurrency": 1,
+      "max_seconds": 120
+    },
+    "observations": [
+      {
+        "case": "training 10000",
+        "status": 202
+      },
+      {
+        "case": "patch không tồn tại",
+        "status": 422
+      },
+      {
+        "case": "patch âm",
+        "status": 422
+      },
+      {
+        "case": "season giả",
+        "status": 422
+      },
+      {
+        "case": "season tương lai",
+        "status": 422
+      },
+      {
+        "case": "/api/analyses/../weights/best.pth",
+        "status": 404
+      },
+      {
+        "case": "/api/analyses/%2e%2e%2fweights%2fbest.pth",
+        "status": 404
+      },
+      {
+        "case": "/api/analyses/A5946A75-85C1-4140-A398-2D484146C8A8",
+        "status": 404
+      },
+      {
+        "case": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/..%2F..%2Fweights%2Fbest.pth",
+        "status": 404
+      },
+      {
+        "case": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=../../weights/best.pth",
+        "status": 422
+      },
+      {
+        "case": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=tif,secret",
+        "status": 422
+      },
+      {
+        "case": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=91&lng=181",
+        "status": 422
+      },
+      {
+        "case": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=-91&lng=-181",
+        "status": 422
+      },
+      {
+        "case": "DELETE client B",
+        "status": 200,
+        "response": {
+          "id": "7e5ac0f3-076d-49c2-a4ed-3134ae86109a",
+          "cancellation_requested": true
+        }
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "catalog ẩn training",
+      "expected": "không có 10000",
+      "actual": false,
+      "passed": true
+    },
+    {
+      "check": "training 10000 bị chặn",
+      "expected": 422,
+      "actual": 202,
+      "passed": false
+    },
+    {
+      "check": "patch không tồn tại bị chặn",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "patch âm bị chặn",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "season giả bị chặn",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "season tương lai bị chặn",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "job kiểm soát được tạo",
+      "expected": 202,
+      "actual": 202,
+      "passed": true
+    },
+    {
+      "check": "job kiểm soát hoàn tất",
+      "expected": "done",
+      "actual": "done",
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/../weights/best.pth",
+      "expected": 404,
+      "actual": 404,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/%2e%2e%2fweights%2fbest.pth",
+      "expected": 404,
+      "actual": 404,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/A5946A75-85C1-4140-A398-2D484146C8A8",
+      "expected": 404,
+      "actual": 404,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/..%2F..%2Fweights%2Fbest.pth",
+      "expected": 404,
+      "actual": 404,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=../../weights/best.pth",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/download/zip?include=tif,secret",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=91&lng=181",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "/api/analyses/a5946a75-85c1-4140-a398-2d484146c8a8/pixel?lat=-91&lng=-181",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "check": "client khác không được hủy job",
+      "expected": "401/403",
+      "actual": 200,
+      "passed": false
+    }
+  ],
+  "duration_seconds": 2.42,
+  "finished_at": "2026-11-14T20:42:35"
+}

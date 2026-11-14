@@ -1,0 +1,24 @@
+{
+  "expected": "Payload 101/100000 đỉnh, JSON 6 MiB và JSON sâu 1100 mức bị từ chối bằng 422/413; dịch vụ còn phản hồi.",
+  "type": "security",
+  "metrics": {
+    "objective": "Đo khả năng chặn tiêu thụ tài nguyên ở tầng body và cấu trúc.",
+    "component": "HTTP parser, Pydantic, imagery-plan",
+    "method": "Gửi tuần tự 4 yêu cầu có giới hạn, đo thời gian và RSS trước/sau.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at02_oversized_payload",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "101 đỉnh, 100000 đỉnh, trường thừa chứa 6 MiB ký tự, JSON lồng sâu 1100.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Giới hạn byte body tại ứng dụng/proxy; chặn trường thừa và độ sâu JSON; trả 413/422 nhất quán.",
+    "limits": {
+      "max_requests": 5,
+      "max_concurrency": 1,
+      "max_body_bytes": 20971520,
+      "max_seconds": 60
+    }
+  }
+}

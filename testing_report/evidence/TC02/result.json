@@ -1,0 +1,305 @@
+{
+  "id": "TC02",
+  "name": "API Input Validation",
+  "type": "Automation",
+  "environment": "Local + Production",
+  "status": "PASS",
+  "expected": "Input hợp lệ → 200 kèm kế hoạch phân tích; mọi input sai → 422 với thông báo rõ ràng, không có 500/stack trace; hành vi Local và Production giống nhau.",
+  "actual": "20/20 lượt đúng mã kỳ vọng; Local/Production nhất quán: True.",
+  "notes": "Production: 10 POST tuần tự tới /api/imagery-plan (không tạo job, không ghi dữ liệu).",
+  "metrics": {
+    "cases": 10,
+    "table": [
+      {
+        "env": "Local",
+        "case": "V1 hợp lệ: ô 24x24 trong patch 10003",
+        "expected": 200,
+        "actual": 200,
+        "message": "",
+        "ms": 38.3
+      },
+      {
+        "env": "Local",
+        "case": "I1 thiếu geometry",
+        "expected": 422,
+        "actual": 422,
+        "message": "Field required",
+        "ms": 2.2
+      },
+      {
+        "env": "Local",
+        "case": "I2 geometry là Point",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 1.0
+      },
+      {
+        "env": "Local",
+        "case": "I3 ring không khép kín",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 1.1
+      },
+      {
+        "env": "Local",
+        "case": "I4 chỉ 3 điểm",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 0.8
+      },
+      {
+        "env": "Local",
+        "case": "I5 vĩ độ 95° (ngoài WGS84)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 0.8
+      },
+      {
+        "env": "Local",
+        "case": "I6 mùa không có dữ liệu 2025–2026",
+        "expected": 422,
+        "actual": 422,
+        "message": "No prepared imagery is available for that season. Choose 2018–2019.",
+        "ms": 1.0
+      },
+      {
+        "env": "Local",
+        "case": "I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Select an area inside one outlined region. Choose another available region to move the map.",
+        "ms": 2.5
+      },
+      {
+        "env": "Local",
+        "case": "I8 patch_id không tồn tại",
+        "expected": 422,
+        "actual": 422,
+        "message": "This area has no prepared imagery. Choose an available region.",
+        "ms": 0.9
+      },
+      {
+        "env": "Local",
+        "case": "I9 patch_id sai kiểu (chuỗi)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Input should be a valid integer, unable to parse string as an integer",
+        "ms": 0.7
+      },
+      {
+        "env": "Production",
+        "case": "V1 hợp lệ: ô 24x24 trong patch 10003",
+        "expected": 200,
+        "actual": 200,
+        "message": "",
+        "ms": 675.5
+      },
+      {
+        "env": "Production",
+        "case": "I1 thiếu geometry",
+        "expected": 422,
+        "actual": 422,
+        "message": "Field required",
+        "ms": 191.5
+      },
+      {
+        "env": "Production",
+        "case": "I2 geometry là Point",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 112.1
+      },
+      {
+        "env": "Production",
+        "case": "I3 ring không khép kín",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 80.4
+      },
+      {
+        "env": "Production",
+        "case": "I4 chỉ 3 điểm",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 138.3
+      },
+      {
+        "env": "Production",
+        "case": "I5 vĩ độ 95° (ngoài WGS84)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Value error, Supply a closed WGS84 Polygon with one ring.",
+        "ms": 109.8
+      },
+      {
+        "env": "Production",
+        "case": "I6 mùa không có dữ liệu 2025–2026",
+        "expected": 422,
+        "actual": 422,
+        "message": "No prepared imagery is available for that season. Choose 2018–2019.",
+        "ms": 108.9
+      },
+      {
+        "env": "Production",
+        "case": "I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Select an area inside one outlined region. Choose another available region to move the map.",
+        "ms": 109.3
+      },
+      {
+        "env": "Production",
+        "case": "I8 patch_id không tồn tại",
+        "expected": 422,
+        "actual": 422,
+        "message": "This area has no prepared imagery. Choose an available region.",
+        "ms": 108.8
+      },
+      {
+        "env": "Production",
+        "case": "I9 patch_id sai kiểu (chuỗi)",
+        "expected": 422,
+        "actual": 422,
+        "message": "Input should be a valid integer, unable to parse string as an integer",
+        "ms": 109.0
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "[Local] V1 hợp lệ: ô 24x24 trong patch 10003",
+      "expected": 200,
+      "actual": "200 ",
+      "passed": true
+    },
+    {
+      "check": "[Local] I1 thiếu geometry",
+      "expected": 422,
+      "actual": "422 Field required",
+      "passed": true
+    },
+    {
+      "check": "[Local] I2 geometry là Point",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I3 ring không khép kín",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I4 chỉ 3 điểm",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I5 vĩ độ 95° (ngoài WGS84)",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I6 mùa không có dữ liệu 2025–2026",
+      "expected": 422,
+      "actual": "422 No prepared imagery is available for that season. Choose 2018–2019.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+      "expected": 422,
+      "actual": "422 Select an area inside one outlined region. Choose another available region to move the map",
+      "passed": true
+    },
+    {
+      "check": "[Local] I8 patch_id không tồn tại",
+      "expected": 422,
+      "actual": "422 This area has no prepared imagery. Choose an available region.",
+      "passed": true
+    },
+    {
+      "check": "[Local] I9 patch_id sai kiểu (chuỗi)",
+      "expected": 422,
+      "actual": "422 Input should be a valid integer, unable to parse string as an integer",
+      "passed": true
+    },
+    {
+      "check": "[Production] V1 hợp lệ: ô 24x24 trong patch 10003",
+      "expected": 200,
+      "actual": "200 ",
+      "passed": true
+    },
+    {
+      "check": "[Production] I1 thiếu geometry",
+      "expected": 422,
+      "actual": "422 Field required",
+      "passed": true
+    },
+    {
+      "check": "[Production] I2 geometry là Point",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I3 ring không khép kín",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I4 chỉ 3 điểm",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I5 vĩ độ 95° (ngoài WGS84)",
+      "expected": 422,
+      "actual": "422 Value error, Supply a closed WGS84 Polygon with one ring.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I6 mùa không có dữ liệu 2025–2026",
+      "expected": 422,
+      "actual": "422 No prepared imagery is available for that season. Choose 2018–2019.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I7 vùng ngoài khu vực có ảnh (Hà Nội)",
+      "expected": 422,
+      "actual": "422 Select an area inside one outlined region. Choose another available region to move the map",
+      "passed": true
+    },
+    {
+      "check": "[Production] I8 patch_id không tồn tại",
+      "expected": 422,
+      "actual": "422 This area has no prepared imagery. Choose an available region.",
+      "passed": true
+    },
+    {
+      "check": "[Production] I9 patch_id sai kiểu (chuỗi)",
+      "expected": 422,
+      "actual": "422 Input should be a valid integer, unable to parse string as an integer",
+      "passed": true
+    },
+    {
+      "check": "Local và Production trả cùng mã trạng thái và cùng thông báo lỗi cho mọi case",
+      "expected": "giống nhau",
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "duration_seconds": 5.52,
+  "finished_at": "2026-11-14T20:46:03"
+}

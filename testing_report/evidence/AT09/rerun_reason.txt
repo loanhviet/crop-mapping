@@ -1,0 +1,1 @@
+Lần đầu không hợp lệ do các tiến trình TestClient dùng chung RESULTS và startup của tiến trình khác đánh dấu job đang chạy là interrupted. Coordinator đã sửa helper common.py để dùng thư mục riêng theo tiến trình; chạy lại AT09 với cùng tiêu chí expected, giữ bản ghi lần đầu để đối chiếu.

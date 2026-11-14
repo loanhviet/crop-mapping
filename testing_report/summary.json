@@ -1,0 +1,263 @@
+{
+  "total": 20,
+  "executed": 20,
+  "counts": {
+    "PASS": 11,
+    "FAIL": 9
+  },
+  "group_a": {
+    "PASS": 9,
+    "FAIL": 1
+  },
+  "group_b": {
+    "FAIL": 8,
+    "PASS": 2
+  },
+  "checks": 270,
+  "checks_passed": 221,
+  "production_api_requests_scripted": 36,
+  "production_api_requests_from_ui": 76,
+  "evidence_images": 68,
+  "rows": [
+    {
+      "id": "TC01",
+      "name": "API Health & Availability",
+      "type": "Automation",
+      "environment": "Local + Production",
+      "status": "PASS",
+      "expected": "Mọi endpoint public trả 200; health báo ok/TSViT với checkpoint đúng manifest; catalog đủ 19 lớp; median /api/health < 3 s; Local và Production cùng checkpoint.",
+      "actual": "Local median health=4.7 ms; Production median health=105.9 ms, max=5536.1 ms; số request production=15.",
+      "checks": 11,
+      "checks_passed": 11,
+      "duration_seconds": 20.69
+    },
+    {
+      "id": "TC02",
+      "name": "API Input Validation",
+      "type": "Automation",
+      "environment": "Local + Production",
+      "status": "PASS",
+      "expected": "Input hợp lệ → 200 kèm kế hoạch phân tích; mọi input sai → 422 với thông báo rõ ràng, không có 500/stack trace; hành vi Local và Production giống nhau.",
+      "actual": "20/20 lượt đúng mã kỳ vọng; Local/Production nhất quán: True.",
+      "checks": 21,
+      "checks_passed": 21,
+      "duration_seconds": 5.52
+    },
+    {
+      "id": "TC03",
+      "name": "End-to-End Inference Workflow",
+      "type": "Automation",
+      "environment": "Local + Production",
+      "status": "PASS",
+      "expected": "Cả hai môi trường: kế hoạch → job 202 → trạng thái queued/running → done; diện tích 5.76 ha; tải được GeoTIFF, CSV, GeoJSON, PNG, ZIP; kết quả Local và Production trùng nhau.",
+      "actual": "Local: 3.69 s (suy luận 3.05 s); Production: 6.46 s (suy luận 2.11 s); phân bố lớp giống nhau: True.",
+      "checks": 9,
+      "checks_passed": 9,
+      "duration_seconds": 14.06
+    },
+    {
+      "id": "TC04",
+      "name": "Output Format & Data Integrity",
+      "type": "Automation",
+      "environment": "Local + Production (artifacts TC03)",
+      "status": "PASS",
+      "expected": "GeoTIFF đúng kiểu/CRS/nodata/độ phân giải và có metadata checkpoint; CSV khớp GeoTIFF; GeoJSON hợp lệ và diện tích khớp; ZIP đủ file; Local và Production trùng từng pixel.",
+      "actual": "Mọi kiểm tra định dạng đạt ở cả hai môi trường; GeoTIFF khác 0 pixel; toạ độ GeoJSON lệch tối đa 7.105427357601002e-15 độ.",
+      "checks": 20,
+      "checks_passed": 20,
+      "duration_seconds": 1.0
+    },
+    {
+      "id": "TC05",
+      "name": "Model Prediction Quality",
+      "type": "AI Test",
+      "environment": "Local",
+      "status": "PASS",
+      "expected": "Trên patch held-out 10003: OA >= 0.70 và mIoU >= 0.40; nhãn hợp lệ 0..18.",
+      "actual": "10003: OA=0.8734, mIoU=0.7089, macro-F1=0.7835; 10000 (training, tham khảo): OA=0.9166, mIoU=0.6581",
+      "checks": 3,
+      "checks_passed": 3,
+      "duration_seconds": 9.79
+    },
+    {
+      "id": "TC06",
+      "name": "Model Robustness to Noise",
+      "type": "AI Test",
+      "environment": "Local",
+      "status": "PASS",
+      "expected": "Nhiễu nhỏ (σ=0.1·STD) làm OA giảm không quá 5 điểm %, σ=0.2·STD không quá 10 điểm %; mô hình không lỗi ở mọi mức nhiễu.",
+      "actual": "OA sạch=0.8734; σ=0.1 → 0.8779 (giảm -0.0045); σ=0.2 → 0.8567 (giảm 0.0167); σ=1.0 → 0.2287.",
+      "checks": 3,
+      "checks_passed": 3,
+      "duration_seconds": 95.87
+    },
+    {
+      "id": "TC07",
+      "name": "Temporal Data Consistency",
+      "type": "AI Test",
+      "environment": "Local",
+      "status": "PASS",
+      "expected": "Kết quả tất định; mất 25% mốc thời gian làm OA giảm <= 5 điểm %, mất 50% giảm <= 15 điểm %.",
+      "actual": "Tất định: True; OA đầy đủ=0.8734, mất 25% → 0.8826, 50% → 0.8439, 75% → 0.763. mất mùa hè (DOY 152–243): 0.6231; mất mùa xuân (DOY 60–151): 0.8628; mất mùa đông (DOY 1–59 & 335–365): 0.8752; chỉ giữ nửa đầu năm (DOY <= 182): 0.7456",
+      "checks": 3,
+      "checks_passed": 3,
+      "duration_seconds": 93.49
+    },
+    {
+      "id": "TC08",
+      "name": "Out-of-Distribution Behavior",
+      "type": "AI Test",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Mô hình chạy ổn định trên dữ liệu ngoài phân phối huấn luyện và thể hiện độ bất định cao hơn (mean confidence thấp hơn ít nhất 0.05 so với in-distribution).",
+      "actual": "Mean confidence ID=0.8782, Normandy=0.9417; tỉ lệ pixel confidence<0.5: ID=0.0289, Normandy=0.0115.",
+      "checks": 2,
+      "checks_passed": 1,
+      "duration_seconds": 118.82
+    },
+    {
+      "id": "TC09",
+      "name": "External Service Failure",
+      "type": "Mock Test",
+      "environment": "Local (mock)",
+      "status": "PASS",
+      "expected": "Khi dịch vụ ảnh vệ tinh lỗi (mất kết nối, timeout, HTTP 503, thiếu khóa API, lỗi giữa job), API trả mã lỗi phù hợp (502/503) hoặc job chuyển status=error, không có HTTP 500, không lộ chi tiết nội bộ, dịch vụ vẫn hoạt động.",
+      "actual": "S1 Mất kết nối GEODES=OK; S1 Request thực sự đi qua lớp mạng (mock được gọi)=OK; S2 GEODES timeout=OK; S3 GEODES trả HTTP 503=OK; S4 Thiếu GEODES_API_KEY=OK; S5 Lỗi ImageryError giữa chừng=OK; S6 Lỗi mạng bất ngờ=OK; S7 Sau các lỗi, /api/health vẫn 200 và hàng đợi rỗng=OK",
+      "checks": 8,
+      "checks_passed": 8,
+      "duration_seconds": 0.68
+    },
+    {
+      "id": "TC10",
+      "name": "Model Inference Failure",
+      "type": "Mock Test",
+      "environment": "Local (mock)",
+      "status": "PASS",
+      "expected": "Lỗi suy luận/đọc dữ liệu làm job chuyển status=error với thông báo chung, không lộ chi tiết nội bộ, không ghi kết quả dở dang; worker phục hồi để chạy job kế tiếp; checkpoint bị sửa đổi bị từ chối ngay khi khởi động.",
+      "actual": "S1=OK; S1=OK; S1=OK; S2=OK; S3=OK; S4=OK; S4=OK; S5=OK; S5=OK",
+      "checks": 9,
+      "checks_passed": 9,
+      "duration_seconds": 7.53
+    },
+    {
+      "id": "AT01",
+      "name": "Tấn công đầu vào sai cấu trúc",
+      "type": "security",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Mọi đầu vào sai trả 422, không lộ stack trace và không tạo thư mục job.",
+      "actual": "Có 3 / 12 payload sai được chấp nhận hoặc xử lý khác 422.",
+      "checks": 36,
+      "checks_passed": 30,
+      "duration_seconds": 2.58
+    },
+    {
+      "id": "AT02",
+      "name": "Tấn công payload quá lớn",
+      "type": "security",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Payload 101/100000 đỉnh, JSON 6 MiB và JSON sâu 1100 mức bị từ chối bằng 422/413; dịch vụ còn phản hồi.",
+      "actual": "HTTP từng payload: [422, 422, 200, 500].",
+      "checks": 5,
+      "checks_passed": 3,
+      "duration_seconds": 2.8
+    },
+    {
+      "id": "AT03",
+      "name": "Dồn yêu cầu API có giới hạn",
+      "type": "security",
+      "environment": "Local",
+      "status": "PASS",
+      "expected": "200 GET health đều 200 với p95 dưới 1000 ms; đợt 12 POST có 429 khi hàng đợi đủ 4; mọi job được hủy và dịch vụ còn sống.",
+      "actual": "Health lỗi=0; POST nhận=4, từ chối 429=8.",
+      "checks": 6,
+      "checks_passed": 6,
+      "duration_seconds": 3.46
+    },
+    {
+      "id": "AT04",
+      "name": "Nhiễu đối kháng FGSM và PGD",
+      "type": "adversarial",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Ở epsilon <=0.05 trong không gian chuẩn hóa, accuracy và mIoU không giảm quá 5 điểm phần trăm so với ảnh sạch trên cùng pixel hợp lệ.",
+      "actual": "Accuracy sạch 0.8378; giảm lớn nhất 0.6923 tại PGD, epsilon=0.1.",
+      "checks": 8,
+      "checks_passed": 0,
+      "duration_seconds": 40.92
+    },
+    {
+      "id": "AT05",
+      "name": "Thao túng chuỗi thời gian và ngày quan sát",
+      "type": "adversarial/robustness",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Accuracy mỗi biến thể thay thời gian không giảm quá 5 điểm phần trăm; đảo cả ảnh và DOY là đối chứng bất biến; DOY 0/366 bị ValueError.",
+      "actual": "Accuracy theo biến thể: clean=0.8734, reverse_images=0.2739, shuffle_images=0.4822, reverse_pairs=0.8734, doy_-60=0.5573, doy_-30=0.6905, doy_30=0.7153, doy_60=0.3819, duplicate_first=0.1593.",
+      "checks": 10,
+      "checks_passed": 3,
+      "duration_seconds": 73.3
+    },
+    {
+      "id": "AT06",
+      "name": "Đầu vào ngoài phân bố",
+      "type": "robustness",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Ba đầu vào rác zero/cloud/noise có confidence softmax trung bình <=0.60 và tỷ lệ pixel confidence >=0.90 <=10%; ghi nhận riêng ảnh scale và đổi band.",
+      "actual": "Confidence trung bình: real=0.936, zeros=1.000, cloud10000=1.000, uniform_noise=0.997, scaled_x3=0.795, band_reversed=1.000.",
+      "checks": 6,
+      "checks_passed": 0,
+      "duration_seconds": 5.37
+    },
+    {
+      "id": "AT07",
+      "name": "Tấn công GeoJSON không hợp lệ",
+      "type": "security",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Mọi hình học sai hoặc không hỗ trợ bị 422 trên cả imagery-plan và analyses, không 500, không tạo job.",
+      "actual": "Có 8 / 26 trường hợp không trả 422.",
+      "checks": 53,
+      "checks_passed": 44,
+      "duration_seconds": 1.68
+    },
+    {
+      "id": "AT08",
+      "name": "Can thiệp tham số và định danh tài nguyên",
+      "type": "security",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "Patch training ẩn bị từ chối 422 theo chính sách cách ly tập test; patch sai/season sai bị 422; traversal/UUID không chuẩn bị 404; include sai 422; tọa độ sai 422; client khác không được hủy job (401/403).",
+      "actual": "Training explicit ID và DELETE từ client B: [{'case': 'training 10000', 'status': 202}, {'case': 'DELETE client B', 'status': 200, 'response': {'id': '7e5ac0f3-076d-49c2-a4ed-3134ae86109a', 'cancellation_requested': True}}].",
+      "checks": 17,
+      "checks_passed": 15,
+      "duration_seconds": 2.42
+    },
+    {
+      "id": "AT09",
+      "name": "Tiêu thụ tài nguyên vùng Normandy có giới hạn",
+      "type": "security/availability",
+      "environment": "Local",
+      "status": "PASS",
+      "expected": "Kế hoạch vùng Normandy có >1000 cửa sổ; job được nhận; trong 60 giây health luôn 200 và p95 <1000 ms, RSS tăng <1024 MiB; hủy chuyển cancelled trong 15 giây.",
+      "actual": "9216 cửa sổ; đã xử lý 218 trong 60.0s; trạng thái cuối cancelled; hủy 0.511s.",
+      "checks": 8,
+      "checks_passed": 8,
+      "duration_seconds": 62.37
+    },
+    {
+      "id": "AT10",
+      "name": "Giá trị số và kích thước tensor không hợp lệ",
+      "type": "security/robustness",
+      "environment": "Local",
+      "status": "FAIL",
+      "expected": "NaN/±Inf, int16 cực trị, reflectance âm, kích thước sai, T=0 và DOY lệch độ dài bị ValueError sạch; T=200 được cắt đúng 60; job chứa NaN kết thúc error với thông báo chung.",
+      "actual": "10/18 phép thử tensor bị ValueError; T=200 cắt đúng=True; job NaN=error.",
+      "checks": 32,
+      "checks_passed": 24,
+      "duration_seconds": 2.78
+    }
+  ]
+}

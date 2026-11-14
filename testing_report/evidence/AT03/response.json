@@ -1,0 +1,4077 @@
+[
+  {
+    "status": 200,
+    "elapsed_ms": 17.837,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.978,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 27.997,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 32.789,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 26.507,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.506,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.899,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.965,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 23.314,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 22.113,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.728,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.267,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.64,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.759,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.561,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.595,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.237,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.871,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.024,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.432,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.985,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.887,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.724,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.048,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.006,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.499,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.97,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.88,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.745,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.476,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.503,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.542,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.684,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.062,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.862,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.402,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.715,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.158,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.793,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.228,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.86,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.255,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.55,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.351,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.889,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.603,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 22.963,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.576,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.882,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 22.935,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 24.679,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 22.47,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 21.395,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 23.456,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.488,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.351,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.293,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.553,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.234,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.849,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.926,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.061,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.194,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.01,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.124,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.302,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.226,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.737,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.714,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.072,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.396,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.048,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.172,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.772,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.638,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.528,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.036,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.075,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.668,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.521,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.092,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.554,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.378,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.479,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.771,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.549,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.702,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.622,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.136,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.193,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.61,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.631,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.22,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.341,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.06,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.96,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.916,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.66,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.104,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.615,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.979,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.33,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.566,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.903,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.861,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.382,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.842,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.744,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.118,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.999,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.447,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.749,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.451,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.474,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.951,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.566,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.682,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.801,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.746,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.155,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.143,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.423,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.876,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.71,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.296,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.112,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.363,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.453,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.555,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.342,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.781,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.224,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.723,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.824,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.362,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.617,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.124,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.331,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.157,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.863,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.494,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.344,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.053,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.48,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.69,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.291,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.879,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.3,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.35,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.129,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.158,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.065,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.78,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.146,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.645,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.613,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.838,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.919,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.231,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.722,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.646,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 21.316,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.865,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.052,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 19.736,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 17.082,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.273,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.583,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.247,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.097,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.999,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.175,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.642,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.119,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.945,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.676,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.063,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.227,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.168,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.257,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 20.206,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 13.892,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.472,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.447,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.683,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.296,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 18.278,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.821,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.552,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.01,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.996,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 15.608,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 14.604,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.643,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 12.706,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.767,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.577,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 11.537,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 10.921,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.229,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 57.522,
+    "response": {
+      "id": "48a9bc90-f559-41b0-a8a1-5ac877832b67",
+      "cached": false
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 52.679,
+    "response": {
+      "id": "0976ccb1-72bd-453f-b787-e0081ee82898",
+      "cached": false
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 61.863,
+    "response": {
+      "id": "e9cb7bc4-8e76-4e9a-8b15-b074413dd907",
+      "cached": false
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 65.643,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 65.319,
+    "response": {
+      "id": "ebcbe302-a423-4983-b3cd-78aedd84f072",
+      "cached": false
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 64.591,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 61.828,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 58.609,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 17.291,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 12.88,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 12.895,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 429,
+    "elapsed_ms": 7.111,
+    "response": {
+      "detail": "The analysis queue is full. Please try again shortly."
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 4.313,
+    "response": {
+      "id": "48a9bc90-f559-41b0-a8a1-5ac877832b67",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 3.083,
+    "response": {
+      "id": "0976ccb1-72bd-453f-b787-e0081ee82898",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.442,
+    "response": {
+      "id": "e9cb7bc4-8e76-4e9a-8b15-b074413dd907",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.348,
+    "response": {
+      "id": "ebcbe302-a423-4983-b3cd-78aedd84f072",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 16.241,
+    "response": {
+      "id": "48a9bc90-f559-41b0-a8a1-5ac877832b67",
+      "status": "queued",
+      "progress": 0,
+      "message": "Waiting to start analysis",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 4.745,
+    "response": {
+      "id": "0976ccb1-72bd-453f-b787-e0081ee82898",
+      "status": "queued",
+      "progress": 0,
+      "message": "Waiting to start analysis",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 6.481,
+    "response": {
+      "id": "e9cb7bc4-8e76-4e9a-8b15-b074413dd907",
+      "status": "queued",
+      "progress": 0,
+      "message": "Waiting to start analysis",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 3.238,
+    "response": {
+      "id": "ebcbe302-a423-4983-b3cd-78aedd84f072",
+      "status": "queued",
+      "progress": 0,
+      "message": "Waiting to start analysis",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 3.006,
+    "response": {
+      "id": "48a9bc90-f559-41b0-a8a1-5ac877832b67",
+      "status": "cancelled",
+      "progress": 0,
+      "started_at": 1794663623.741554,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis cancelled",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 1.999,
+    "response": {
+      "id": "0976ccb1-72bd-453f-b787-e0081ee82898",
+      "status": "cancelled",
+      "progress": 0,
+      "started_at": 1794663623.6466885,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis cancelled",
+      "phase": "inference",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.975,
+    "response": {
+      "id": "e9cb7bc4-8e76-4e9a-8b15-b074413dd907",
+      "status": "cancelled",
+      "progress": 0,
+      "started_at": 1794663623.7419872,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis cancelled",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.157,
+    "response": {
+      "id": "ebcbe302-a423-4983-b3cd-78aedd84f072",
+      "status": "cancelled",
+      "progress": 0,
+      "started_at": 1794663623.7422743,
+      "cache_key": "70ae771c22538701d1979bf8072ead217dfdc57fbcb29dccb326b3e3cdf9e7d7",
+      "message": "Analysis cancelled",
+      "request": {
+        "patch_id": 10003,
+        "season": "2018–2019",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ],
+              [
+                -0.36279540647615505,
+                49.30727117723436
+              ],
+              [
+                -0.362910582848446,
+                49.3051146334352
+              ],
+              [
+                -0.3662085676102853,
+                49.305189895623315
+              ],
+              [
+                -0.36609353487300544,
+                49.30734644511522
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.532,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  }
+]

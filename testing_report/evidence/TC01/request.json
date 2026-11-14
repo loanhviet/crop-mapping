@@ -1,0 +1,182 @@
+[
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Local",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/health",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/api/catalog",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/openapi.json",
+    "body": null
+  },
+  {
+    "env": "Production",
+    "method": "GET",
+    "url": "/docs",
+    "body": null
+  }
+]

@@ -1,0 +1,730 @@
+[
+  {
+    "status": 422,
+    "elapsed_ms": 3.106,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36608353487300543,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 3.122,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36608353487300543,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.006,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.391,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.617,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    -0.36609353487300544,
+                    49.30734644511522
+                  ],
+                  [
+                    -0.36279540647615505,
+                    49.30727117723436
+                  ],
+                  [
+                    -0.362910582848446,
+                    49.3051146334352
+                  ],
+                  [
+                    -0.3662085676102853,
+                    49.305189895623315
+                  ],
+                  [
+                    -0.36609353487300544,
+                    49.30734644511522
+                  ]
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.901,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    -0.36609353487300544,
+                    49.30734644511522
+                  ],
+                  [
+                    -0.36279540647615505,
+                    49.30727117723436
+                  ],
+                  [
+                    -0.362910582848446,
+                    49.3051146334352
+                  ],
+                  [
+                    -0.3662085676102853,
+                    49.305189895623315
+                  ],
+                  [
+                    -0.36609353487300544,
+                    49.30734644511522
+                  ]
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.576,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ],
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.72,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ],
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 1.945,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 1.892,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 2.63,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 1.977,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 1.685,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 500,
+    "elapsed_ms": 1.63,
+    "response": "Internal Server Error"
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.493,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  181,
+                  91
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.42,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ],
+                [
+                  181,
+                  91
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.493,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522,
+                  10
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436,
+                  10
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352,
+                  10
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315,
+                  10
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522,
+                  10
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 1.587,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "geometry"
+          ],
+          "msg": "Value error, Supply a closed WGS84 Polygon with one ring.",
+          "input": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -0.36609353487300544,
+                  49.30734644511522,
+                  10
+                ],
+                [
+                  -0.36279540647615505,
+                  49.30727117723436,
+                  10
+                ],
+                [
+                  -0.362910582848446,
+                  49.3051146334352,
+                  10
+                ],
+                [
+                  -0.3662085676102853,
+                  49.305189895623315,
+                  10
+                ],
+                [
+                  -0.36609353487300544,
+                  49.30734644511522,
+                  10
+                ]
+              ]
+            ]
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 23.528,
+    "response": {
+      "source": "PASTIS",
+      "patch_id": 10003,
+      "scenes": 43,
+      "model_observations": 43,
+      "cached_scenes": 43,
+      "estimated_download_gb": 0,
+      "exceeds_download_limit": false,
+      "selected_area_ha": 2.88,
+      "preview_date": "2019-07-16",
+      "first_date": "2018-09-24",
+      "last_date": "2019-10-19",
+      "split": "test",
+      "windows": 1,
+      "valid_area_ha": 2.88,
+      "prediction_ready": false,
+      "blocks": 1,
+      "observation_range": [
+        43,
+        43
+      ],
+      "max_analysis_windows": null,
+      "exceeds_analysis_limit": false
+    }
+  },
+  {
+    "status": 202,
+    "elapsed_ms": 4.802,
+    "response": {
+      "id": "390af90b-0c55-4348-bd1e-1b8de3472c84",
+      "cached": false
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 2.279,
+    "response": {
+      "id": "390af90b-0c55-4348-bd1e-1b8de3472c84",
+      "cancellation_requested": true
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.615,
+    "response": {
+      "detail": "Select an area containing at least one 10 m pixel centre."
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 3.081,
+    "response": {
+      "detail": "Select an area containing at least one 10 m pixel centre."
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 2.48,
+    "response": {
+      "detail": "Keep the selection inside the outlined area with available imagery."
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 5.195,
+    "response": {
+      "detail": "Keep the selection inside the outlined area with available imagery."
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 6.223,
+    "response": {
+      "detail": "Keep the selection inside the outlined area with available imagery."
+    }
+  },
+  {
+    "status": 422,
+    "elapsed_ms": 17.992,
+    "response": {
+      "detail": "Keep the selection inside the outlined area with available imagery."
+    }
+  },
+  {
+    "status": 200,
+    "elapsed_ms": 9.041,
+    "response": {
+      "status": "ok",
+      "model": "TSViT",
+      "device": "cpu",
+      "checkpoint_sha256": "92a83d0d94e529e762233c571efdcf36513cf503b678fc9dba09b8171a40b733",
+      "available_patches": 19,
+      "source_mode": "prepared",
+      "imagery": {
+        "name": "Prepared Sentinel‑2",
+        "configured": true,
+        "available_regions": 9,
+        "offline_imagery": true
+      }
+    }
+  }
+]

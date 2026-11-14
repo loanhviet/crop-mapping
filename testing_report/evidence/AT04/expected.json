@@ -1,0 +1,25 @@
+{
+  "expected": "Ở epsilon <=0.05 trong không gian chuẩn hóa, accuracy và mIoU không giảm quá 5 điểm phần trăm so với ảnh sạch trên cùng pixel hợp lệ.",
+  "type": "adversarial",
+  "metrics": {
+    "objective": "Định lượng độ nhạy white-box của checkpoint với nhiễu nhỏ và đối chứng ngẫu nhiên cùng chuẩn.",
+    "component": "TSViT thật; kênh ảnh chuẩn hóa, giữ nguyên DOY và padding",
+    "method": "3 cửa sổ patch test 10003; FGSM và PGD 3 bước ở epsilon 0.01/0.05/0.1; đối chứng Rademacher cùng chuẩn L2 và Linf cho từng nhiễu.",
+    "steps": [
+      "Chạy từ testing_report bằng Python đã cấp: python -m scripts.at04_adversarial_noise",
+      "Nạp checkpoint và dữ liệu thật qua scripts.common; chỉ gọi TestClient cục bộ.",
+      "Gửi các đầu vào mô tả trong request.json hoặc input.json và ghi kết quả thực đo.",
+      "Đối chiếu các tiêu chí đã lưu trước khi chạy trong expected.json."
+    ],
+    "payload": "Gradient cross-entropy theo GT, bỏ void=19; chỉ thay 10 kênh phổ của frame thật.",
+    "impact": "Trung bình: cần xem kết quả từng phép kiểm và phạm vi cục bộ.",
+    "remediation": "Huấn luyện đối kháng, đánh giá trên nhiều patch và phát hiện đầu vào bất thường trước suy luận.",
+    "limits": {
+      "max_windows": 3,
+      "max_model_forwards": 100,
+      "max_seconds": 540,
+      "pgd_steps": 3,
+      "seed": 20261114
+    }
+  }
+}
